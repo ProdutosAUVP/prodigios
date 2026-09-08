@@ -11,9 +11,9 @@ export function Footer() {
         </div>
         <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm" aria-label="Rodapé">
           {nav.map((n) => (
-            <a key={n.href} href={n.href} className="transition-colors duration-240 hover:text-lime">{n.label}</a>
+            <a key={n.href} href={n.href} className="transition-colors duration-240 hover:text-paper">{n.label}</a>
           ))}
-          <a href="#inscricao" className="transition-colors duration-240 hover:text-lime">Inscrição</a>
+          <a href="#inscricao" className="transition-colors duration-240 hover:text-paper">Inscrição</a>
         </nav>
       </div>
       <div className="wrap-wide mt-10 flex flex-col gap-2 border-t border-paper/10 pt-6 text-xs text-paper/40 md:flex-row md:justify-between">

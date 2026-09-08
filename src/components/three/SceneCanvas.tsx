@@ -3,133 +3,161 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { scrollState } from "@/lib/scroll-progress";
 
-/* Cores em hex fixo (HSL dos tokens → hex): verde AUVP, mint #5A8770, lime da LP. */
-const FOREST = "#0b5a33";
+/*
+ * Apoios visuais ligados ao discurso da página (não ilustrações soltas):
+ *
+ *  - Curva      → a "curva" do mercado/da média. Tubo escuro que se desenha
+ *                 na entrada e ganha inclinação com o scroll.
+ *  - Ponto      → o talento "fora da curva": único acento de cor da cena,
+ *                 flutua acima do fim da curva, ligado a ela por um fio.
+ *  - Degraus    → as cinco fases do processo seletivo; sobem um a um
+ *                 conforme o usuário desce até a dobra do processo.
+ *  - Grade      → papel milimetrado ao fundo, quase invisível: contexto de
+ *                 gráfico/finanças sem competir com o texto.
+ *
+ * Cores em hex fixo (materiais Three.js não leem variáveis CSS).
+ */
+const FOREST = "#0f5a35";
+const FOREST_DEEP = "#062e1b";
 const MINT = "#5A8770";
 const LIME = "#B9F53B";
 const PAPER = "#f4f2ee";
 
-const glass = { roughness: 0.15, metalness: 0.1, clearcoat: 1, clearcoatRoughness: 0.2, transmission: 0, envMapIntensity: 1 } as const;
+/** lerp independente do framerate */
+const damp = (a: number, b: number, dt: number, k = 4) => THREE.MathUtils.lerp(a, b, 1 - Math.exp(-k * dt));
 
-/** Flutuação suave (substitui <Float> do drei: menos ~350 KB no chunk 3D). */
-function Float({ children, speed = 1, rotationIntensity = 1, floatIntensity = 1, seed }: {
-  children: React.ReactNode; speed?: number; rotationIntensity?: number; floatIntensity?: number; seed: number;
-}) {
-  const ref = useRef<THREE.Group>(null);
-  useFrame((s) => {
-    const g = ref.current;
-    if (!g) return;
-    const t = seed + s.clock.elapsedTime * speed;
-    g.rotation.x = (Math.cos(t / 4) / 8) * rotationIntensity;
-    g.rotation.y = (Math.sin(t / 4) / 8) * rotationIntensity;
-    g.rotation.z = (Math.sin(t / 4) / 20) * rotationIntensity;
-    g.position.y = (Math.sin(t / 1.5) / 6) * floatIntensity;
-  });
-  return <group ref={ref}>{children}</group>;
-}
+/** Curva de crescimento que se desenha (drawRange) e inclina com o scroll. */
+function GrowthCurve({ compact }: { compact: boolean }) {
+  const mesh = useRef<THREE.Mesh>(null);
+  const group = useRef<THREE.Group>(null);
+  const draw = useRef(0);
 
-/** Moeda — finanças. */
-function Coin(props: JSX.IntrinsicElements["group"]) {
-  const ref = useRef<THREE.Group>(null);
-  useFrame((s) => {
-    if (!ref.current) return;
-    ref.current.rotation.y = s.clock.elapsedTime * 0.6 + scrollState.progress * Math.PI * 4;
+  const { geometry, total, end } = useMemo(() => {
+    // Câmera em z=10, fov 38: meia-largura visível ≈ 5.5 (desktop 16:9) e
+    // ≈ 1.6 (mobile 9:19.5); meia-altura ≈ 3.4. A curva termina no vazio à
+    // direita do título, e o ponto flutua acima dela.
+    const pts = compact
+      ? [new THREE.Vector3(-1.9, -2.7, 0), new THREE.Vector3(-1.0, -2.4, 0), new THREE.Vector3(-0.1, -1.8, 0), new THREE.Vector3(0.7, -1.0, 0), new THREE.Vector3(1.35, 0.3, 0)]
+      : [new THREE.Vector3(-6.2, -3.1, 0), new THREE.Vector3(-3.6, -2.8, 0), new THREE.Vector3(-1.2, -2.2, 0), new THREE.Vector3(0.8, -1.6, 0), new THREE.Vector3(2.3, -0.9, 0), new THREE.Vector3(3.5, -0.2, 0), new THREE.Vector3(4.3, 0.5, 0)];
+    const curve = new THREE.CatmullRomCurve3(pts, false, "catmullrom", 0.4);
+    const geometry = new THREE.TubeGeometry(curve, 160, compact ? 0.06 : 0.09, 12, false);
+    return { geometry, total: geometry.index!.count, end: pts[pts.length - 1] };
+  }, [compact]);
+
+  useFrame((s, dt) => {
+    // desenha em ~2 s na entrada, depois estende levemente com o scroll
+    const target = Math.min(1, s.clock.elapsedTime / 2.2);
+    draw.current = damp(draw.current, target, dt, 3);
+    geometry.setDrawRange(0, Math.floor(total * draw.current));
+    if (group.current) {
+      group.current.rotation.z = damp(group.current.rotation.z, scrollState.progress * 0.35 + scrollState.mouseY * -0.03, dt);
+      group.current.rotation.y = damp(group.current.rotation.y, scrollState.mouseX * 0.12, dt);
+    }
   });
+
   return (
-    <group ref={ref} {...props}>
-      <mesh castShadow rotation={[Math.PI / 2, 0, 0]}>
-        <cylinderGeometry args={[1, 1, 0.18, 64]} />
-        <meshPhysicalMaterial color={LIME} {...glass} />
+    <group ref={group}>
+      <mesh ref={mesh} geometry={geometry}>
+        <meshStandardMaterial color={FOREST} roughness={0.55} metalness={0.25} />
       </mesh>
-      <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0, 0.1]}>
-        <torusGeometry args={[0.72, 0.05, 16, 64]} />
-        <meshStandardMaterial color={FOREST} roughness={0.3} metalness={0.6} />
-      </mesh>
-      <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0, -0.1]}>
-        <torusGeometry args={[0.72, 0.05, 16, 64]} />
-        <meshStandardMaterial color={FOREST} roughness={0.3} metalness={0.6} />
-      </mesh>
+      <Outlier at={end} compact={compact} />
     </group>
   );
 }
 
-/** Gráfico de barras — crescimento; as barras "sobem" com o scroll. */
-function Bars(props: JSX.IntrinsicElements["group"]) {
+/** O talento fora da curva: ponto de luz acima do fim da curva, preso por um fio. */
+function Outlier({ at, compact }: { at: THREE.Vector3; compact: boolean }) {
+  const sphere = useRef<THREE.Mesh>(null);
+  const line = useRef<THREE.Line>(null);
+  const lift = compact ? 1.15 : 1.4;
+
+  const lineGeo = useMemo(() => {
+    const g = new THREE.BufferGeometry();
+    g.setAttribute("position", new THREE.Float32BufferAttribute([at.x, at.y, at.z, at.x, at.y + lift, at.z], 3));
+    return g;
+  }, [at, lift]);
+
+  useFrame((s, dt) => {
+    const t = s.clock.elapsedTime;
+    const y = at.y + lift + Math.sin(t * 1.3) * 0.18;
+    const x = at.x + Math.sin(t * 0.7) * 0.08;
+    if (sphere.current) {
+      sphere.current.position.set(x, y, at.z);
+      const appear = THREE.MathUtils.smoothstep(t, 2.0, 3.0);
+      const k = damp(sphere.current.scale.x, appear, dt, 5);
+      sphere.current.scale.setScalar(k);
+    }
+    if (line.current) {
+      const pos = line.current.geometry.getAttribute("position") as THREE.BufferAttribute;
+      pos.setXYZ(1, x, y - (compact ? 0.16 : 0.22), at.z);
+      pos.needsUpdate = true;
+      (line.current.material as THREE.LineBasicMaterial).opacity = THREE.MathUtils.smoothstep(t, 2.2, 3.2) * 0.45;
+    }
+  });
+
+  return (
+    <>
+      {/* @ts-expect-error — <line> é o primitivo THREE.Line no R3F, não o SVG */}
+      <line ref={line} geometry={lineGeo}>
+        <lineBasicMaterial color={PAPER} transparent opacity={0} />
+      </line>
+      <mesh ref={sphere} position={[at.x, at.y + lift, at.z]} scale={0}>
+        <sphereGeometry args={[compact ? 0.12 : 0.18, 32, 32]} />
+        <meshStandardMaterial color={LIME} emissive={LIME} emissiveIntensity={0.4} roughness={0.35} />
+      </mesh>
+      <pointLight position={[at.x, at.y + lift, at.z + 1]} intensity={compact ? 6 : 10} distance={7} color={LIME} />
+    </>
+  );
+}
+
+/** Cinco degraus — as fases do processo. Sobem conforme o scroll se aproxima da dobra do processo. */
+function Steps() {
   const refs = useRef<THREE.Mesh[]>([]);
-  const heights = useMemo(() => [0.6, 1.1, 1.7, 2.4], []);
-  useFrame(() => {
-    const p = THREE.MathUtils.clamp(scrollState.progress * 3, 0, 1);
+  const heights = [0.5, 1, 1.5, 2, 2.5];
+  useFrame((_, dt) => {
+    // progresso 0..1 entre o Hero e o fim do processo (~0.3 do documento)
+    const p = THREE.MathUtils.clamp(scrollState.progress / 0.3, 0, 1);
     refs.current.forEach((m, i) => {
       if (!m) return;
-      const h = 0.25 + heights[i] * THREE.MathUtils.smoothstep(p, i * 0.12, 0.7 + i * 0.1);
-      m.scale.y = THREE.MathUtils.lerp(m.scale.y, h, 0.08);
-      m.position.y = m.scale.y / 2;
+      const on = THREE.MathUtils.smoothstep(p, i * 0.16, i * 0.16 + 0.3);
+      const h = 0.12 + heights[i] * on;
+      m.scale.y = damp(m.scale.y, h, dt, 5);
+      m.position.y = -3.4 + m.scale.y / 2;
     });
   });
   return (
-    <group {...props}>
+    <group position={[-5.2, 0, -2]} rotation={[0.12, 0.5, 0]}>
       {heights.map((_, i) => (
-        <mesh key={i} ref={(el) => { if (el) refs.current[i] = el; }} position={[(i - 1.5) * 0.55, 0, 0]} castShadow>
-          <boxGeometry args={[0.38, 1, 0.38]} />
-          <meshPhysicalMaterial color={i === 3 ? LIME : i === 2 ? MINT : FOREST} {...glass} />
+        <mesh key={i} ref={(el) => { if (el) refs.current[i] = el; }} position={[i * 0.66, -3.4, 0]} scale={[1, 0.12, 1]}>
+          <boxGeometry args={[0.62, 1, 0.9]} />
+          <meshStandardMaterial color={i === 4 ? MINT : FOREST} roughness={0.6} metalness={0.15} />
         </mesh>
       ))}
     </group>
   );
 }
 
-/** Nó de toro — tech / rede. */
-function Knot(props: JSX.IntrinsicElements["mesh"]) {
-  const ref = useRef<THREE.Mesh>(null);
-  useFrame((s) => {
-    if (!ref.current) return;
-    ref.current.rotation.x = s.clock.elapsedTime * 0.25 + scrollState.progress * Math.PI;
-    ref.current.rotation.z = scrollState.progress * Math.PI * 2;
-  });
-  return (
-    <mesh ref={ref} {...props}>
-      <torusKnotGeometry args={[0.7, 0.22, 160, 24]} />
-      <meshPhysicalMaterial color={MINT} {...glass} roughness={0.25} />
-    </mesh>
-  );
+/** Grade de fundo (papel milimetrado), quase invisível. */
+function Grid() {
+  const grid = useMemo(() => {
+    const g = new THREE.GridHelper(60, 60, FOREST_DEEP, FOREST_DEEP);
+    const m = g.material as THREE.Material;
+    m.transparent = true;
+    m.opacity = 0.35;
+    m.depthWrite = false;
+    return g;
+  }, []);
+  return <primitive object={grid} rotation={[Math.PI / 2, 0, 0]} position={[0, 0, -6]} />;
 }
 
-/** Icosaedro em wireframe — dados. */
-function Ico(props: JSX.IntrinsicElements["group"]) {
-  const ref = useRef<THREE.Group>(null);
-  useFrame((s) => {
-    if (!ref.current) return;
-    ref.current.rotation.y = -s.clock.elapsedTime * 0.2 - scrollState.progress * Math.PI * 2;
-    ref.current.rotation.x = Math.sin(s.clock.elapsedTime * 0.3) * 0.2;
-  });
-  return (
-    <group ref={ref} {...props}>
-      <mesh>
-        <icosahedronGeometry args={[1.1, 1]} />
-        <meshBasicMaterial color={PAPER} wireframe transparent opacity={0.35} />
-      </mesh>
-      <mesh>
-        <icosahedronGeometry args={[0.55, 0]} />
-        <meshPhysicalMaterial color={LIME} {...glass} />
-      </mesh>
-    </group>
-  );
-}
-
-/** Grupo raiz: parallax com o mouse + deriva vertical/rotação com o scroll. */
+/** Parallax do conjunto com o mouse + deriva vertical com o scroll. */
 function Rig({ children, compact }: { children: React.ReactNode; compact: boolean }) {
   const ref = useRef<THREE.Group>(null);
   useFrame((_, dt) => {
     const g = ref.current;
     if (!g) return;
-    const k = 1 - Math.pow(0.001, dt); // lerp independente do framerate
-    const targetX = scrollState.mouseX * (compact ? 0.15 : 0.45);
-    const targetY = -scrollState.mouseY * 0.25;
-    g.rotation.y = THREE.MathUtils.lerp(g.rotation.y, targetX + scrollState.progress * Math.PI * 0.5, k);
-    g.rotation.x = THREE.MathUtils.lerp(g.rotation.x, targetY, k);
-    // Sobe conforme o scroll para dar sensação de profundidade nas dobras
-    g.position.y = THREE.MathUtils.lerp(g.position.y, Math.sin(scrollState.progress * Math.PI * 2) * 1.2, k);
-    g.position.x = THREE.MathUtils.lerp(g.position.x, scrollState.mouseX * 0.25, k);
+    g.position.x = damp(g.position.x, scrollState.mouseX * (compact ? 0.1 : 0.3), dt);
+    g.position.y = damp(g.position.y, -scrollState.mouseY * 0.15 + Math.sin(scrollState.progress * Math.PI) * 0.8, dt);
   });
   return <group ref={ref}>{children}</group>;
 }
@@ -141,33 +169,21 @@ export default function SceneCanvas({ compact, active }: SceneCanvasProps) {
     <Canvas
       dpr={[1, compact ? 1.25 : 1.5]}
       frameloop={active ? "always" : "never"}
-      camera={{ position: [0, 0, 9], fov: 38 }}
+      camera={{ position: [0, 0, 10], fov: 38 }}
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       style={{ pointerEvents: "none" }}
     >
-      <ambientLight intensity={0.55} />
-      <directionalLight position={[5, 6, 6]} intensity={2.2} color={PAPER} />
-      <pointLight position={[-6, -3, 4]} intensity={18} color={LIME} />
-      <pointLight position={[6, 2, -4]} intensity={12} color={MINT} />
+      <ambientLight intensity={0.35} />
+      <directionalLight position={[4, 6, 8]} intensity={1.6} color={PAPER} />
+      <directionalLight position={[-6, -2, 4]} intensity={0.5} color={MINT} />
 
       <Rig compact={compact}>
-        <Float seed={7} speed={1.4} rotationIntensity={0.6} floatIntensity={1.2}>
-          <Coin position={compact ? [1.6, 2.3, -1] : [3.6, 1.8, -1]} scale={compact ? 0.7 : 0.9} />
-        </Float>
-        <Float seed={14} speed={1.1} rotationIntensity={0.3} floatIntensity={0.9}>
-          <Bars position={compact ? [-2.2, -2.6, -2] : [4.8, -2.6, -2]} rotation={[0.2, -0.6, 0]} scale={compact ? 0.7 : 0.85} />
-        </Float>
-        {!compact && (
-          <Float seed={21} speed={1.6} rotationIntensity={0.8} floatIntensity={1.4}>
-            <Knot position={[-4.6, 1.2, -3]} scale={0.9} />
-          </Float>
-        )}
-        <Float seed={28} speed={1.2} rotationIntensity={0.4} floatIntensity={1}>
-          <Ico position={compact ? [2, -1.6, -4] : [-3.2, -2.4, -4]} scale={compact ? 0.75 : 1} />
-        </Float>
+        <Grid />
+        <GrowthCurve compact={compact} />
+        {!compact && <Steps />}
       </Rig>
 
-      <fog attach="fog" args={["#0a0a0a", 8, 18]} />
+      <fog attach="fog" args={["#0a0a0a", 9, 20]} />
     </Canvas>
   );
 }

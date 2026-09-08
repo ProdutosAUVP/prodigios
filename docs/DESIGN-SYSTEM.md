@@ -58,6 +58,10 @@ Estão marcadas no final de `src/styles/tokens.css` e em `tailwind.config.ts`:
 
 Critério: **a extensão nunca substitui um token do DS onde o DS já responde**. O verde `#023619` continua sendo o CTA nas dobras claras; o lime só aparece sobre preto, onde o DS já prescreve "cor clara + texto quase-preto".
 
+### Uso pontual de cor
+
+A página é essencialmente preto, branco quente (`--paper`) e verde AUVP. O **lime** é reservado a três lugares: o botão de CTA (navegação, Hero, inscrição), o ponto "fora da curva" da cena 3D e o check de sucesso do formulário — mais o ponto final das palavras do loader. Nada de lime em ícones, hovers, números, marcadores ou palavras de ênfase: ênfase em dobra escura é `text-paper` cheio contra `text-paper/70`, e o único acento secundário é o **mint** (`#5A8770`, o verde de acento do DS dark) nas palavras-chave da Cultura. Hovers em dobra escura viram papel (fundo `paper`, texto `ink`); em dobra clara, o verde `--primary`.
+
 ## Sincronizando com o central
 
 ```bash

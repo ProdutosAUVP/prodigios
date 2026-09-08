@@ -100,7 +100,7 @@ export function Loader({ onDone, reducedMotion }: Props) {
     <div ref={root} className="fixed inset-0 z-[100] overflow-hidden" aria-live="polite" aria-label="Carregando AUVP Prodígios">
       <div data-curtain-top className="absolute inset-x-0 top-0 h-1/2 bg-forest" />
       <div data-curtain-bottom className="absolute inset-x-0 bottom-0 h-1/2 bg-forest" />
-      <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--lime)/0.18),transparent_60%)]" />
+      <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--mint)/0.22),transparent_60%)]" />
 
       <div data-content className="relative flex h-full flex-col items-center justify-center gap-8 p-6 md:p-10">
         <Eye className="h-14 w-auto text-paper will-change-transform md:h-20" title="Olho AUVP" data-eye />
@@ -118,7 +118,7 @@ export function Loader({ onDone, reducedMotion }: Props) {
 
         <div className="flex w-full max-w-sm items-center gap-5">
           <div className="h-px flex-1 bg-paper/15">
-            <div data-bar className="h-full origin-left bg-lime" style={{ transform: "scaleX(0)" }} />
+            <div data-bar className="h-full origin-left bg-paper" style={{ transform: "scaleX(0)" }} />
           </div>
           <span data-counter className="font-anek text-3xl font-bold tabular-nums leading-none text-paper">
             000

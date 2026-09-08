@@ -37,18 +37,16 @@ Desligado com `prefers-reduced-motion`.
 
 `src/components/three/Scene.tsx` é o wrapper: checa WebGL, espera `requestIdleCallback`, escolhe `compact` (< 900px) e pausa o render (`frameloop="never"`) quando alguma dobra `data-scene-off` cobre a viewport inteira ou a aba está oculta.
 
-`SceneCanvas.tsx` (chunk lazy) monta:
+`SceneCanvas.tsx` (chunk lazy) monta **apoios visuais ligados ao discurso**, não ilustrações soltas:
 
-| Objeto | Referência | Reação |
+| Objeto | O que representa | Comportamento |
 |---|---|---|
-| Moeda (cilindro + aros) | finanças | gira com o tempo + 4 voltas ao longo do scroll |
-| Barras (4 caixas) | crescimento | sobem conforme `scrollState.progress` (smoothstep por barra) |
-| Nó de toro | tech / rede | rotação contínua + `progress × π` |
-| Icosaedro (wireframe + núcleo) | dados | rotação contrária ao scroll |
+| **Curva** (tubo ao longo de uma `CatmullRomCurve3`) | a curva da média/do mercado, o "fora da curva" do título | desenha-se em ~2 s na entrada (`setDrawRange`) e inclina levemente com o scroll e o mouse |
+| **Ponto** (esfera lime + fio + luz pontual) | o talento fora da curva — único acento de cor da cena | aparece depois da curva, flutua acima do fim dela; no desktop ocupa o vazio à direita do título, no mobile fica ao lado de "curva." |
+| **Degraus** (5 caixas, só desktop) | as cinco fases do processo seletivo | sobem um a um conforme o scroll avança do Hero até a dobra do processo |
+| **Grade** (`GridHelper` quase invisível) | papel milimetrado / contexto de gráfico | estática, no fundo, com fog |
 
-O grupo raiz (`Rig`) faz parallax com o mouse (`scrollState.mouseX/Y`) e deriva verticalmente com um seno do progresso, com lerp independente do framerate. Luzes: ambient + directional + dois point lights (lime e mint). Sem HDR/Environment para não depender de rede.
-
-`Float` é uma implementação própria (12 linhas) que substitui o `<Float>` do drei — economizou ~350 KB no chunk 3D.
+Enquadramento: câmera em `z = 10`, `fov 38` → meia-largura visível ≈ 5.5 no desktop (16:9) e ≈ 1.6 no mobile; meia-altura ≈ 3.4. As coordenadas da curva foram escolhidas para esse recorte (`compact` troca o traçado). O grupo raiz (`Rig`) faz parallax com o mouse e deriva verticalmente com um seno do progresso, com lerp independente do framerate (`damp`). Luzes: ambient + directional (papel) + directional (mint) + a luz do ponto. Sem HDR/Environment para não depender de rede nem do drei.
 
 Cores em hex fixo (`FOREST`, `MINT`, `LIME`, `PAPER`) porque materiais Three.js não leem variáveis CSS; se os tokens mudarem, atualize as constantes no topo do arquivo.
 

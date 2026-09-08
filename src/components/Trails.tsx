@@ -74,14 +74,14 @@ export function Trails({ reducedMotion }: { reducedMotion: boolean }) {
               style={{ transformStyle: "preserve-3d" }}
             >
               {/* brilho que segue o mouse */}
-              <div aria-hidden className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-320 group-hover:opacity-100" style={{ background: "radial-gradient(400px circle at var(--mx,50%) var(--my,50%), hsl(var(--lime)/0.14), transparent 45%)" }} />
+              <div aria-hidden className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-320 group-hover:opacity-100" style={{ background: "radial-gradient(400px circle at var(--mx,50%) var(--my,50%), hsl(var(--mint)/0.18), transparent 45%)" }} />
 
               <Photo photo={PHOTO[t.id]} overlay={0.35} className="aspect-[4/3] w-full" imgClassName="transition-transform duration-[1200ms] ease-expo group-hover:scale-110" />
 
               <div className="relative flex flex-1 flex-col p-7">
                 <div className="mb-5 flex items-center justify-between">
-                  <span className="label text-lime">{t.n}</span>
-                  <span className="grid h-10 w-10 place-items-center rounded-md border border-paper/10 text-paper transition-all duration-320 ease-elastic group-hover:rotate-[-8deg] group-hover:scale-110 group-hover:border-lime group-hover:text-lime">
+                  <span className="label text-paper/50">{t.n}</span>
+                  <span className="grid h-10 w-10 place-items-center rounded-md border border-paper/10 text-paper transition-all duration-320 ease-elastic group-hover:rotate-[-8deg] group-hover:scale-110 group-hover:border-paper group-hover:bg-paper group-hover:text-ink">
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>{ICONS[t.id]}</svg>
                   </span>
                 </div>
@@ -89,7 +89,7 @@ export function Trails({ reducedMotion }: { reducedMotion: boolean }) {
                 <p className="mt-3 text-paper/60">{t.blurb}</p>
                 <ul className="mt-6 flex flex-wrap gap-2">
                   {t.areas.map((a) => (
-                    <li key={a} className="rounded-full border border-paper/15 px-3 py-1 text-xs font-medium text-paper/80 transition-all duration-240 hover:border-lime hover:bg-lime hover:text-lime-foreground">
+                    <li key={a} className="rounded-full border border-paper/15 px-3 py-1 text-xs font-medium text-paper/80 transition-all duration-240 hover:border-paper hover:bg-paper hover:text-ink">
                       {a}
                     </li>
                   ))}

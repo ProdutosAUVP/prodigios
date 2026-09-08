@@ -25,7 +25,7 @@ export default {
       },
       fontSize: {
         // Escala display da LP (extrapola o DS, que para no text-5xl).
-        "display-xl": ["clamp(3.25rem, 9.5vw, 9rem)", { lineHeight: "0.92", letterSpacing: "-0.03em" }],
+        "display-xl": ["clamp(2.75rem, 8.4vw, 8.5rem)", { lineHeight: "0.92", letterSpacing: "-0.03em" }],
         "display-lg": ["clamp(2.5rem, 6.5vw, 5.75rem)", { lineHeight: "0.95", letterSpacing: "-0.025em" }],
         "display-md": ["clamp(2rem, 4.5vw, 3.75rem)", { lineHeight: "1", letterSpacing: "-0.02em" }],
         "display-sm": ["clamp(1.5rem, 2.8vw, 2.25rem)", { lineHeight: "1.05", letterSpacing: "-0.015em" }],

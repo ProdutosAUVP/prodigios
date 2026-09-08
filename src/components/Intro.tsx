@@ -33,10 +33,10 @@ export function Intro({ reducedMotion }: { reducedMotion: boolean }) {
   return (
     <section ref={root} className="relative bg-ink/80 py-24 md:py-36">
       <div className="wrap">
-        <h2 className="mb-8 max-w-4xl font-anek text-display-sm font-semibold text-lime">{intro.title}</h2>
+        <h2 className="mb-8 max-w-4xl font-anek text-display-sm font-semibold text-paper/60">{intro.title}</h2>
         <p data-statement className="max-w-5xl font-anek text-display-md font-semibold leading-[1.08] text-paper">
           {words.map((w, i) => (
-            <span key={i} data-w className={`mr-[0.28em] inline-block ${emphasis.has(w.toLowerCase()) ? "text-lime" : ""}`}>
+            <span key={i} data-w className={`mr-[0.28em] inline-block ${emphasis.has(w.toLowerCase()) ? "text-paper" : "text-paper/70"}`}>
               {w}
             </span>
           ))}
@@ -50,7 +50,7 @@ export function Intro({ reducedMotion }: { reducedMotion: boolean }) {
               {["Tecnologia", "Growth & Marketing", "Negócios & Finanças", "Alta performance", "Sentimento de dono"].map((t) => (
                 <span key={t} className="flex items-center gap-10">
                   {t}
-                  <span className="h-2 w-2 rounded-full bg-lime" />
+                  <span className="h-1.5 w-1.5 rounded-full bg-paper/30" />
                 </span>
               ))}
             </span>
