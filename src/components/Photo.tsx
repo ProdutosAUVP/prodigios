@@ -19,10 +19,10 @@ const TONES: Record<PhotoData["tone"], string> = {
 };
 
 /**
- * Fotografia humanizada com fallback: se a imagem não carregar, mostra um
+ * Fotografia oficial da AUVP com fallback: se a imagem não carregar, mostra um
  * gradiente da marca no mesmo enquadramento — a página nunca "quebra".
  */
-export function Photo({ photo, className = "", imgClassName = "", overlay = 0.2, loading = "lazy", position = "center" }: Props) {
+export function Photo({ photo, className = "", imgClassName = "", overlay = 0.2, loading = "lazy", position }: Props) {
   const [failed, setFailed] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
@@ -42,7 +42,7 @@ export function Photo({ photo, className = "", imgClassName = "", overlay = 0.2,
           decoding="async"
           onLoad={() => setLoaded(true)}
           onError={() => setFailed(true)}
-          style={{ objectPosition: position }}
+          style={{ objectPosition: position ?? photo.position ?? "center" }}
           className={`absolute inset-0 h-full w-full object-cover saturate-[0.85] contrast-[1.03] transition-opacity duration-600 ${
             loaded ? "opacity-100" : "opacity-0"
           } ${imgClassName}`}

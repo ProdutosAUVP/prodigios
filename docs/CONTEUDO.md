@@ -10,32 +10,45 @@ Para alterar um texto, edite o objeto correspondente (`hero`, `process`, `trails
 
 A página não usa *eyebrows* (a etiqueta pequena em caixa alta acima dos títulos). Cada dobra abre direto no título display; frases do briefing que eram etiquetas viraram títulos de verdade (`intro.title`, `cta.formTitle`). A classe `.label` continua existindo para etiquetas funcionais (carimbo "Opcional", "Trilha 1", rótulos de formulário).
 
-## Fotografia humanizada
+## Fotografia
 
-`src/data/photos.ts` mapeia cada foto usada na página. Hoje são **placeholders de alta qualidade** do Unsplash (jovens em ambiente de foco/tecnologia) servidos pelo CDN deles.
+`src/data/photos.ts` mapeia cada foto usada na página. São **fotos oficiais da AUVP**, vindas do repositório [ProdutosAUVP/etica](https://github.com/ProdutosAUVP/etica) (código de ética) e convertidas para WebP em `src/assets/photos/` (largura máxima 900–1400px, qualidade 78, EXIF removido; ~650 KB no total).
+
+| Arquivo | Origem em `etica` | Onde aparece |
+|---|---|---|
+| `hero-arco.webp` | `imagem que acompanha item 5.1.jpg` | Hero, foto-âncora em arco |
+| `hero-bandeira.webp` | `item 5 - imagem diversidade.webp` (recorte quadrado) | Hero, foto menor sobreposta |
+| `cultura-tatuagens.webp` | `item 3 - imagem diversidade.jpg` | Cultura |
+| `trilha-tecnologia.webp` | `imagem que acompanha item 4.jpg` | Trilha 1 — Tecnologia |
+| `trilha-growth.webp` | `item 4 - imagem diversidade.webp` | Trilha 2 — Growth & Marketing |
+| `trilha-negocios.webp` | `item 2 - imagem ultrawide crescimento.webp` | Trilha 3 — Negócios & Finanças |
+| `inscricao-trofeu.webp` | `item 1 - imagem vertical quem somos.webp` | Inscrição |
+| `evento-plateia.webp` | `imagem que acompanha itens 10, 11 e 12..jpg` | reserva (não usada) |
+
+Para regerar a partir dos originais, o script usado está descrito abaixo (Node + `sharp`, fora do projeto):
+
+```js
+sharp(origem).rotate().resize({ width, withoutEnlargement: true }).webp({ quality: 78 }).toFile(destino)
+```
 
 Cada entrada tem:
 
 | Campo | Uso |
 |---|---|
-| `src` | URL (ou import de `src/assets/`) |
+| `src` | import de `src/assets/photos/` |
 | `alt` | texto alternativo — obrigatório |
 | `tone` | `forest` \| `mint` \| `lime` — gradiente de fallback se a imagem não carregar |
+| `position` | `object-position` do recorte (ex.: `center 30%` para preservar rostos) |
 
 O componente `<Photo>` aplica: recorte (`clip-slant`, `clip-arch`, `clip-blob` ou radius), sobreposição com a cor da marca (`overlay`, 0–1), degradê inferior e fade-in no `onLoad`. Se o `src` falhar, o gradiente do `tone` fica no lugar e a composição não quebra.
 
-### Trocando pelas fotos oficiais
+### Trocando uma foto
 
-1. Coloque os arquivos em `src/assets/photos/` (WebP, largura máxima ~1600px para o Hero/Cultura e ~900px para cards).
-2. Importe e substitua o `src` em `photos.ts`:
+1. Gere o WebP em `src/assets/photos/` (largura máxima ~1400px; retrato para Hero, Cultura e Inscrição, paisagem para as Trilhas).
+2. Importe e aponte o `src` em `photos.ts`, ajustando `alt` e `position`.
+3. Os componentes recortam por `object-fit: cover` nas proporções `aspect-[4/5]` (Hero, Cultura, Inscrição), `aspect-square` (foto menor do Hero) e `aspect-[4/3]` (Trilhas).
 
-```ts
-import heroA from "@/assets/photos/hero-a.webp";
-// ...
-heroA: { id: "heroA", src: heroA, alt: "…", tone: "forest" },
-```
-
-3. Mantenha as proporções usadas nos componentes (`aspect-[4/5]`, `aspect-[3/4]`, `aspect-[5/4]`, `aspect-[4/3]`).
+Os cinco SVGs de valores que também vivem em `etica` (Manda a Real, Divide o Rum, Sangue nos Olhos, Impiedoso, Imediato) não são usados aqui: os pilares da dobra Cultura seguem o texto do briefing.
 
 ## Imagem de compartilhamento (OG)
 

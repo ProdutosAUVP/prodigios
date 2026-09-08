@@ -87,7 +87,7 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 - Padrões únicos de espaçamento (`--section-y`, `--section-gap`, `--stack`), curvatura (12px do DS + arco como forma-assinatura) e tratamento de foto (`<Photo>`), documentados em `docs/DESIGN-SYSTEM.md`.
 - Mobile-first: classes base para 360px, `sm`/`lg` só adicionam colunas. Título do Hero em 3 linhas curtas que cabem em 360px (`text-display-xl` = `clamp(2.75rem, 8.4vw, 8.5rem)`).
 - Cor pontual: lime nos CTAs, na última linha do título do Hero, no adesivo circular, na dobra da Intro e no check do formulário (ver `docs/DESIGN-SYSTEM.md`).
-- Fotos com `loading="lazy"` (exceto o Hero) e fallback em gradiente da marca se a imagem não carregar.
+- Fotos oficiais da AUVP (repositório `etica`) em WebP local, `loading="lazy"` (exceto o Hero) e fallback em gradiente da marca se a imagem não carregar.
 - Navegação por teclado com `:focus-visible` em lime; formulário com labels e `aria-live` no loader.
 - Contraste seguindo os tokens `*-emphasis` do DS nas dobras claras.
 
