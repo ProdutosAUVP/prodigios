@@ -46,23 +46,29 @@ export function CTA({ reducedMotion }: { reducedMotion: boolean }) {
     <section ref={root} id="inscricao" className="section relative overflow-hidden bg-ink grain">
       <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-[70vmax] w-[70vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,hsl(var(--paper)/0.06),transparent_60%)] blur-3xl" />
 
-      <div className="wrap-wide relative grid items-center gap-14 lg:grid-cols-12">
-        <div className="lg:col-span-6">
-          <h2 className="text-display-lg text-paper">{splitWords(cta.title)}</h2>
-          <p data-reveal className="mt-6 max-w-xl text-lg leading-relaxed text-paper/70">{cta.text}</p>
+      {/*
+        Grid de 12 colunas com as duas colunas esticadas na mesma altura:
+        à esquerda, título + texto no topo e a foto (arco) preenchendo o que
+        sobra até a base do formulário; à direita, o formulário. No mobile a
+        foto some e a ordem é título, texto, formulário.
+      */}
+      <div className="wrap-wide relative grid gap-12 lg:grid-cols-12 lg:items-stretch lg:gap-8">
+        <div className="flex flex-col lg:col-span-5">
+          <h2 className="max-w-md text-display-md text-paper">{splitWords(cta.title)}</h2>
+          <p data-reveal className="mt-6 max-w-lg text-lg leading-relaxed text-paper/70">{cta.text}</p>
 
-          <div data-reveal className="relative mt-10 hidden lg:block">
-            <div className="w-[70%]">
-              <Photo photo={photos.ctaSide} className="clip-arch aspect-[4/5]" />
+          <div data-reveal className="relative mt-10 hidden min-h-[220px] flex-1 lg:block">
+            <div className="clip-arch absolute inset-0 overflow-hidden">
+              <Photo photo={photos.ctaSide} className="h-full w-full !rounded-none" />
             </div>
-            <div className="glass absolute right-[10%] top-[35%] rounded-lg p-4">
+            <div className="glass absolute bottom-6 left-6 rounded-lg px-5 py-4">
               <p className="label text-paper/60">Sua trilha</p>
               <p className="font-anek text-2xl font-bold text-paper">Começa aqui.</p>
             </div>
           </div>
         </div>
 
-        <div data-reveal className="lg:col-span-6">
+        <div data-reveal className="lg:col-span-7">
           <form onSubmit={onSubmit} className="glass relative rounded-lg p-6 md:p-10" aria-describedby="form-help">
             {status === "done" ? (
               <div className="py-10 text-center">

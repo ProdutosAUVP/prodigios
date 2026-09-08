@@ -36,7 +36,7 @@ export function Intro({ reducedMotion }: { reducedMotion: boolean }) {
         <h2 className="mb-8 max-w-4xl font-anek text-display-sm font-semibold text-paper/55">{intro.title}</h2>
         <p data-statement className="max-w-5xl font-anek text-display-md font-semibold leading-[1.08] text-paper">
           {words.map((w, i) => (
-            <span key={i} data-w className={`mr-[0.28em] inline-block ${emphasis.has(w.toLowerCase()) ? "text-paper" : "text-paper/60"}`}>
+            <span key={i} data-w className={`mr-[0.28em] inline-block ${emphasis.has(w.toLowerCase()) ? "text-lime" : "text-paper/60"}`}>
               {w}
             </span>
           ))}

@@ -14,11 +14,11 @@ Desligado com `prefers-reduced-motion`.
 |---|---|---|
 | Loader | uma única timeline GSAP, sem estado React: o olho AUVP abre, contador 0→100 (`onUpdate`), palavras trocam por `yPercent` num slot com `overflow: hidden`; `tl.call(finish)` libera a página **no instante em que as cortinas começam a abrir**, e o Hero (pré-escondido com `gsap.set` no mount) entra junto com a revelação. Fallback de 6 s libera a página se algo travar | `Loader.tsx`, `Hero.tsx` |
 | Hero | estado inicial escondido via `gsap.set` e entrada com `.to` quando `ready` vira `true`: linhas do título sobem da máscara (`.line-mask`, `expo.out`); o arco se revela de baixo para cima (`clipPath: inset(100% 0 0 0)` → `inset(0)`, `expo.inOut`) enquanto a foto "assenta" de `scale 1.14` para 1 em 2.4 s (Ken Burns); a foto menor sobe, o adesivo circular (SVG `textPath`, gira em 18 s por CSS) e os adesivos-pílula entram com `back.out`, e o marquee sobe por último. Scroll: parallax por `data-depth` (arco 0.5, foto menor 1.1) e o texto recua | `Hero.tsx` |
-| Intro | dobra grafite; palavras `opacity 0.18 → 1` com `scrub: 0.4` | `Intro.tsx` |
+| Intro | dobra grafite; palavras `opacity 0.18 → 1` com `scrub: 0.4`; palavras-chave em lime | `Intro.tsx` |
 | Process | seção **pinada** (`pin: true`), track translada `-(scrollWidth - innerWidth)` com `scrub: 0.8`; cada card monta via `containerAnimation`; linha de progresso `scaleX`. Abaixo de 900px (`gsap.matchMedia`) vira lista vertical | `Process.tsx` |
 | Trails | cards entram com `elastic.out(1, 0.7)` e rotação por índice; tilt em perspectiva no `mousemove` (`rotateX/Y` + `transformPerspective`); brilho radial segue o mouse via `--mx/--my` | `Trails.tsx` |
-| NotRequired | linha sobe; risco cresce por `backgroundSize` (`.strike`, respeita quebra de linha); carimbo com `back.out(2.5)` | `NotRequired.tsx` |
-| Culture | foto sticky com parallax `yPercent -12 → 12`; manifesto palavra a palavra com scrub; pilares entram da esquerda | `Culture.tsx` |
+| NotRequired | linha sobe; risco cresce por `backgroundSize` (`.strike`, respeita quebra de linha); carimbo "Opcional" surge em lime com `back.out(2.5)` e, 0,45 s depois, repousa no preto (`backgroundColor`/`borderColor` animados) | `NotRequired.tsx` |
+| Culture | foto sticky com parallax `yPercent -12 → 12`; manifesto palavra a palavra com scrub; pilares entram da esquerda; no hover o número em outline vira lime | `Culture.tsx` |
 | Benefits / Fit / CTA | `useReveal()` — `data-reveal` em cascata | vários |
 | Botões | `useMagnetic()` — `quickTo` segue o cursor, volta com `elastic.out` | `Button.tsx` |
 | Nav | esconde ao rolar para baixo (> 400px), volta ao subir; vidro após 24px | `Nav.tsx` |

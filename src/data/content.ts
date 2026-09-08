@@ -94,7 +94,7 @@ export const benefits = {
 } as const;
 
 export const learn = {
-  title: "O que você vai aprender na jornada e os requisitos da entrega",
+  title: "O que você vai aprender na jornada",
   items: [
     "Visão sistêmica e estratégica de negócios.",
     "Execução prática com foco em métricas.",

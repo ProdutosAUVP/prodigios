@@ -81,7 +81,7 @@ export function Trails({ reducedMotion }: { reducedMotion: boolean }) {
               <div className="relative flex flex-1 flex-col p-7">
                 <div className="mb-5 flex items-center justify-between">
                   <span className="label text-paper/50">{t.n}</span>
-                  <span className="grid h-10 w-10 place-items-center rounded-md border border-paper/10 text-paper transition-all duration-320 ease-elastic group-hover:rotate-[-8deg] group-hover:scale-110 group-hover:border-paper group-hover:bg-paper group-hover:text-ink">
+                  <span className="grid h-10 w-10 place-items-center rounded-md border border-paper/10 text-paper transition-all duration-320 ease-elastic group-hover:rotate-[-8deg] group-hover:scale-110 group-hover:border-lime group-hover:bg-lime group-hover:text-lime-foreground">
                     <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>{ICONS[t.id]}</svg>
                   </span>
                 </div>
