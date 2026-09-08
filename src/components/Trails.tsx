@@ -57,7 +57,7 @@ export function Trails({ reducedMotion }: { reducedMotion: boolean }) {
   };
 
   return (
-    <section ref={root} id="trilhas" className="section relative bg-ink/85 grain">
+    <section ref={root} id="trilhas" className="section relative bg-ink grain">
       <div aria-hidden className="pointer-events-none absolute right-0 top-0 h-[50vmax] w-[50vmax] translate-x-1/3 -translate-y-1/3 rounded-full bg-[radial-gradient(circle,hsl(var(--forest)/0.6),transparent_60%)] blur-3xl" />
 
       <div className="wrap-wide relative">

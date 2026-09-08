@@ -17,7 +17,7 @@ export function Benefits({ reducedMotion }: { reducedMotion: boolean }) {
   const root = useReveal<HTMLElement>({ disabled: reducedMotion, stagger: 0.1 });
 
   return (
-    <section ref={root} id="beneficios" data-scene-off className="section relative bg-mist text-foreground">
+    <section ref={root} id="beneficios" className="section relative bg-mist text-foreground">
       <div className="wrap-wide">
         <SectionHeader tone="light" title={benefits.title} align="center" className="section-head" />
 

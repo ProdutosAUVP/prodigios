@@ -31,7 +31,7 @@ export function Intro({ reducedMotion }: { reducedMotion: boolean }) {
   const emphasis = new Set(["garra", "aprender,", "alta", "performance."]);
 
   return (
-    <section ref={root} className="section relative bg-ink/80">
+    <section ref={root} className="section relative bg-ink">
       <div className="wrap">
         <h2 className="mb-8 max-w-4xl font-anek text-display-sm font-semibold text-paper/60">{intro.title}</h2>
         <p data-statement className="max-w-5xl font-anek text-display-md font-semibold leading-[1.08] text-paper">

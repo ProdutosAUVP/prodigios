@@ -43,7 +43,7 @@ export function CTA({ reducedMotion }: { reducedMotion: boolean }) {
   }
 
   return (
-    <section ref={root} id="inscricao" className="section relative overflow-hidden bg-ink/85 grain">
+    <section ref={root} id="inscricao" className="section relative overflow-hidden bg-ink grain">
       <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-[70vmax] w-[70vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,hsl(var(--forest)/0.7),transparent_60%)] blur-3xl" />
 
       <div className="wrap-wide relative grid items-center gap-14 lg:grid-cols-12">

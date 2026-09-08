@@ -42,7 +42,7 @@ export function Culture({ reducedMotion }: { reducedMotion: boolean }) {
   const hot = new Set(["resultados,", "transparência", "meritocracia.", "“sentimento", "dono”"]);
 
   return (
-    <section ref={root} id="cultura" className="section relative overflow-hidden bg-ink/85 grain">
+    <section ref={root} id="cultura" className="section relative overflow-hidden bg-ink grain">
       <div className="wrap-wide grid gap-14 lg:grid-cols-12 lg:gap-8">
         <div className="relative lg:col-span-5">
           <div className="sticky top-28">

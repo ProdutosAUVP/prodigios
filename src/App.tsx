@@ -1,7 +1,6 @@
 import { useCallback, useState } from "react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { useLenis } from "@/hooks/useLenis";
-import { useMouseParallax } from "@/hooks/useMouseParallax";
 import { Loader } from "@/components/Loader";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
@@ -14,12 +13,12 @@ import { Benefits } from "@/components/Benefits";
 import { Fit } from "@/components/Fit";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
-import { Scene } from "@/components/three/Scene";
 
 /**
  * Ordem das dobras (alternância do DS: preta → cinza → branca → preta):
  * Loader → Hero → Intro → Process (cinza) → Trails → NotRequired (branca)
  * → Culture → Benefits (cinza) → Fit (verde/preta) → CTA → Footer.
+ * Sem cena 3D: o fundo das dobras escuras é o preto sólido da marca.
  */
 export default function App() {
   const reducedMotion = useReducedMotion();
@@ -27,13 +26,10 @@ export default function App() {
   const onLoaderDone = useCallback(() => setReady(true), []);
 
   useLenis(!reducedMotion);
-  useMouseParallax();
 
   return (
     <>
       <Loader onDone={onLoaderDone} reducedMotion={reducedMotion} />
-      <Scene enabled={ready && !reducedMotion} />
-
       <Nav ready={ready} />
 
       <main className="relative z-10">
