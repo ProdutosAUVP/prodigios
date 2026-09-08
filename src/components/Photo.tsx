@@ -15,7 +15,7 @@ type Props = {
 const TONES: Record<PhotoData["tone"], string> = {
   forest: "from-forest via-[hsl(150_60%_16%)] to-ink",
   mint: "from-mint via-forest to-ink",
-  lime: "from-lime/70 via-forest to-ink",
+  lime: "from-mint via-forest to-ink",
 };
 
 /**

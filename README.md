@@ -71,7 +71,7 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 | Ordem | Componente | Fundo (DS) | Destaque de interação |
 |---|---|---|---|
 | 0 | `Loader` | verde | Olho AUVP abre, contador 0→100, palavras da cultura, cortinas abrem em sincronia com a entrada do Hero |
-| 1 | `Hero` | preta | Título com reveal linha a linha, colagem assimétrica com parallax em 3 profundidades, cena 3D atrás |
+| 1 | `Hero` | preta | Mobile-first: título display em largura total, subtítulo + ações, faixa de fotos em grade assimétrica (2 no mobile, 3 a partir de `sm`) com parallax; cena 3D atrás |
 | 2 | `Intro` | preta | Declaração que "acende" palavra a palavra com o scroll + marquee |
 | 3 | `Process` | cinza | **Scroll horizontal pinado** com as 5 fases (empilha no mobile) |
 | 4 | `Trails` | preta | Cards que se montam com elasticidade e inclinam em 3D com o mouse |
@@ -86,6 +86,8 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 
 - `prefers-reduced-motion`: animações CSS neutralizadas globalmente (regra do DS); as de JS checam `useReducedMotion()` — sem loader, sem Lenis, sem 3D, conteúdo visível de imediato.
 - Three.js e React Three Fiber ficam num chunk próprio, carregado por `React.lazy` só depois do loader e quando o navegador está ocioso; o render pausa quando uma dobra clara cobre a viewport.
+- Mobile-first: classes base para 360px, `sm`/`lg` só adicionam colunas. Título do Hero em 3 linhas curtas que cabem em 360px (`text-display-xl` = `clamp(2.75rem, 8.4vw, 8.5rem)`).
+- Cor pontual: lime só nos CTAs, no ponto "fora da curva" da cena 3D e no check do formulário (ver `docs/DESIGN-SYSTEM.md`).
 - Fotos com `loading="lazy"` (exceto o Hero) e fallback em gradiente da marca se a imagem não carregar.
 - Navegação por teclado com `:focus-visible` em lime; formulário com labels e `aria-live` no loader.
 - Contraste seguindo os tokens `*-emphasis` do DS nas dobras claras.

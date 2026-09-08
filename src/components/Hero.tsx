@@ -8,135 +8,115 @@ import { Button, ArrowIcon } from "./Button";
 type Props = { ready: boolean; reducedMotion: boolean };
 
 /**
- * Hero: título com reveal linha a linha (dispara quando o Loader termina),
- * colagem assimétrica de fotos com parallax em profundidades diferentes e
- * a cena 3D por trás (montada em App, fixa).
+ * Hero, mobile-first:
+ *   1. título display em largura total (3 linhas curtas que cabem em 360px);
+ *   2. subtítulo + ações;
+ *   3. faixa de fotos em grade assimétrica (2 no mobile, 3 a partir de sm).
+ * No desktop, 2 e 3 dividem a linha (5/7 colunas). Cor: só o CTA leva o lime.
+ * A cena 3D (curva + ponto fora da curva) fica atrás, fixa.
  */
 export function Hero({ ready, reducedMotion }: Props) {
   const root = useRef<HTMLElement>(null);
 
-  // Estado inicial escondido (antes do loader terminar) — evita o Hero
-  // aparecer pronto atrás das cortinas e depois "pular" para animar.
+  // Estado inicial escondido (antes do loader terminar)
   useLayoutEffect(() => {
     if (!root.current || reducedMotion) return;
     const ctx = gsap.context(() => {
-      gsap.set("[data-hero-line]", { yPercent: 110, rotation: 3 });
-      gsap.set("[data-hero-fade]", { y: 24, opacity: 0 });
-      gsap.set("[data-hero-photo]", { y: 80, opacity: 0, rotation: () => gsap.utils.random(-6, 6) });
-      gsap.set("[data-hero-badge]", { scale: 0 });
+      gsap.set("[data-hero-line]", { yPercent: 110, rotation: 2 });
+      gsap.set("[data-hero-fade]", { y: 20, opacity: 0 });
+      gsap.set("[data-hero-photo]", { y: 60, opacity: 0 });
     }, root);
     return () => ctx.revert();
   }, [reducedMotion]);
 
-  // Entrada — dispara quando as cortinas do loader começam a abrir
+  // Entrada — junto com a abertura das cortinas do loader
   useLayoutEffect(() => {
     if (!ready || !root.current || reducedMotion) return;
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "expo.out" }, delay: 0.25 });
-      tl.to("[data-hero-line]", { yPercent: 0, rotation: 0, duration: 1.3, stagger: 0.12 })
+      tl.to("[data-hero-line]", { yPercent: 0, rotation: 0, duration: 1.3, stagger: 0.1 })
         .to("[data-hero-fade]", { y: 0, opacity: 1, duration: 1, stagger: 0.1 }, "-=0.9")
-        .to("[data-hero-photo]", { y: 0, opacity: 1, rotation: 0, duration: 1.4, stagger: 0.12 }, "-=1.1")
-        .to("[data-hero-badge]", { scale: 1, duration: 0.8, ease: "back.out(2)" }, "-=0.8");
+        .to("[data-hero-photo]", { y: 0, opacity: 1, duration: 1.3, stagger: 0.1 }, "-=1");
     }, root);
     return () => ctx.revert();
   }, [ready, reducedMotion]);
 
-  // Parallax por scroll (cada foto numa profundidade) + fade do texto
+  // Parallax por scroll (fotos em profundidades diferentes) + texto recua
   useLayoutEffect(() => {
     if (!root.current || reducedMotion) return;
     const ctx = gsap.context(() => {
       gsap.utils.toArray<HTMLElement>("[data-depth]").forEach((el) => {
-        const depth = Number(el.dataset.depth);
         gsap.to(el, {
-          yPercent: -depth * 40,
+          yPercent: -Number(el.dataset.depth) * 30,
           ease: "none",
           scrollTrigger: { trigger: root.current, start: "top top", end: "bottom top", scrub: 0.6 },
         });
       });
       gsap.to("[data-hero-copy]", {
-        yPercent: -12,
-        opacity: 0.15,
+        yPercent: -10,
+        opacity: 0.2,
         ease: "none",
-        scrollTrigger: { trigger: root.current, start: "40% top", end: "bottom top", scrub: true },
+        scrollTrigger: { trigger: root.current, start: "50% top", end: "bottom top", scrub: true },
       });
     }, root);
     return () => ctx.revert();
   }, [reducedMotion]);
 
   return (
-    <section ref={root} id="top" className="relative isolate min-h-[100svh] overflow-hidden pt-[72px] grain">
-      {/* halo de marca */}
-      <div aria-hidden className="pointer-events-none absolute -left-1/4 top-1/3 h-[60vmax] w-[60vmax] rounded-full bg-[radial-gradient(circle,hsl(var(--forest)/0.55),transparent_60%)] blur-2xl" />
+    <section ref={root} id="top" className="relative isolate overflow-hidden pt-[72px] grain lg:min-h-[100svh]">
+      <div aria-hidden className="pointer-events-none absolute -left-1/3 top-1/4 h-[70vmax] w-[70vmax] rounded-full bg-[radial-gradient(circle,hsl(var(--forest)/0.45),transparent_60%)] blur-3xl" />
 
-      <div className="wrap-wide relative grid min-h-[calc(100svh-72px)] grid-cols-12 items-center gap-y-12 py-16 lg:py-10">
-        {/* Copy */}
-        <div data-hero-copy className="col-span-12 lg:col-span-7">
-          <h1 className="font-anek text-display-xl font-extrabold text-paper">
-            {hero.title.map((line, i) => (
-              <span key={line} className="line-mask">
-                <span data-hero-line className={i === 2 ? "text-gradient-brand" : ""}>
-                  {line}
-                </span>
+      <div className="wrap-wide relative flex flex-col gap-10 pb-16 pt-10 sm:pt-14 lg:min-h-[calc(100svh-72px)] lg:justify-center lg:gap-14 lg:pb-20">
+        {/* 1. Título */}
+        <h1 data-hero-copy className="font-anek text-display-xl font-extrabold text-paper">
+          {hero.title.map((line, i) => (
+            <span key={line} className="line-mask">
+              <span data-hero-line className={i === hero.title.length - 1 ? "text-paper/55" : ""}>
+                {line}
               </span>
-            ))}
-          </h1>
-
-          <p data-hero-fade className="mt-8 max-w-xl text-lg leading-relaxed text-paper/70 md:text-xl">
-            {hero.subtitle}
-          </p>
-
-          <div data-hero-fade className="mt-10 flex flex-wrap items-center gap-4">
-            <Button href={site.applyUrl} variant="lime" className="group">
-              {hero.primaryCta}
-              <ArrowIcon />
-            </Button>
-            <Button href="#trilhas" variant="ghost">
-              {hero.secondaryCta}
-            </Button>
-          </div>
-
-          <ul data-hero-fade className="mt-12 flex flex-wrap gap-x-8 gap-y-3 text-sm text-paper/55">
-            <li className="flex items-center gap-2"><Dot />Qualquer curso</li>
-            <li className="flex items-center gap-2"><Dot />Qualquer idade</li>
-            <li className="flex items-center gap-2"><Dot />3 trilhas de carreira</li>
-          </ul>
-        </div>
-
-        {/* Colagem assimétrica */}
-        <div className="relative col-span-12 h-[440px] sm:h-[520px] lg:col-span-5 lg:h-[640px]">
-          <div data-hero-photo data-depth="0.6" className="absolute left-0 top-6 w-[62%] rotate-[-3deg] will-change-transform">
-            <Photo photo={photos.heroA} loading="eager" className="clip-slant aspect-[4/5] rounded-lg shadow-card-dark" />
-          </div>
-          <div data-hero-photo data-depth="1" className="absolute right-0 top-0 w-[46%] rotate-[4deg] will-change-transform">
-            <Photo photo={photos.heroB} loading="eager" overlay={0.3} className="clip-arch aspect-[3/4] shadow-card-dark" />
-          </div>
-          <div data-hero-photo data-depth="1.4" className="absolute bottom-0 right-[8%] w-[50%] rotate-[-2deg] will-change-transform">
-            <Photo photo={photos.heroC} loading="eager" overlay={0.12} className="aspect-[5/4] rounded-lg shadow-card-dark" />
-          </div>
-
-          <div data-hero-badge className="glass absolute bottom-[26%] left-[4%] flex items-center gap-3 rounded-lg px-4 py-3 shadow-card-dark">
-            <span className="grid h-9 w-9 place-items-center rounded-md bg-lime text-lime-foreground">
-              <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M3 17l6-6 4 4 8-8" /><path d="M14 7h7v7" /></svg>
             </span>
-            <div className="leading-tight">
-              <p className="font-anek text-lg font-bold text-paper">Alta performance</p>
-              <p className="text-xs text-paper/60">desde o primeiro dia</p>
+          ))}
+        </h1>
+
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-end lg:gap-8">
+          {/* 2. Subtítulo + ações */}
+          <div data-hero-copy className="flex flex-col gap-8 lg:col-span-5">
+            <p data-hero-fade className="max-w-md text-base leading-relaxed text-paper/70 sm:text-lg">
+              {hero.subtitle}
+            </p>
+            <div data-hero-fade className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <Button href={site.applyUrl} variant="lime" className="group w-full sm:w-auto">
+                {hero.primaryCta}
+                <ArrowIcon />
+              </Button>
+              <Button href="#trilhas" variant="ghost" className="w-full sm:w-auto">
+                {hero.secondaryCta}
+              </Button>
+            </div>
+            <ul data-hero-fade className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-paper/50">
+              {hero.facts.map((f) => (
+                <li key={f} className="flex items-center gap-2">
+                  <span className="h-1 w-1 rounded-full bg-paper/50" aria-hidden />
+                  {f}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* 3. Fotos — grade assimétrica, sem posicionamento absoluto */}
+          <div className="grid grid-cols-2 items-end gap-3 sm:grid-cols-3 sm:gap-4 lg:col-span-7">
+            <div data-hero-photo data-depth="0.5" className="will-change-transform">
+              <Photo photo={photos.heroA} loading="eager" overlay={0.15} className="aspect-[4/5] rounded-lg" />
+            </div>
+            <div data-hero-photo data-depth="1" className="mb-8 will-change-transform sm:mb-12">
+              <Photo photo={photos.heroB} loading="eager" overlay={0.25} className="clip-arch aspect-[3/4]" />
+            </div>
+            <div data-hero-photo data-depth="0.8" className="hidden will-change-transform sm:block sm:mb-4">
+              <Photo photo={photos.heroC} loading="eager" overlay={0.1} className="aspect-[5/6] rounded-lg" />
             </div>
           </div>
         </div>
       </div>
-
-      {/* indicador de scroll */}
-      <div data-hero-fade className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-paper/40 md:flex">
-        <span className="label text-[10px]">Role para descobrir</span>
-        <span className="h-10 w-px overflow-hidden bg-paper/15">
-          <span className="block h-1/2 w-full animate-[float_1.6s_ease-in-out_infinite] bg-lime" />
-        </span>
-      </div>
     </section>
   );
-}
-
-function Dot() {
-  return <span className="h-1.5 w-1.5 rounded-full bg-lime" aria-hidden />;
 }

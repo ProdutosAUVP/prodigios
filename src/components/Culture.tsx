@@ -52,7 +52,7 @@ export function Culture({ reducedMotion }: { reducedMotion: boolean }) {
               </div>
             </div>
             <div data-reveal className="glass absolute -bottom-6 -right-4 max-w-[240px] rounded-lg p-5 md:-right-10">
-              <p className="font-anek text-4xl font-extrabold text-lime">Erre rápido.</p>
+              <p className="font-anek text-4xl font-extrabold text-paper">Erre rápido.</p>
               <p className="font-anek text-4xl font-extrabold text-paper">Conserte rápido.</p>
             </div>
           </div>
@@ -63,7 +63,7 @@ export function Culture({ reducedMotion }: { reducedMotion: boolean }) {
 
           <p data-manifesto className="mt-10 max-w-2xl font-anek text-2xl font-medium leading-snug text-paper md:text-[2rem]">
             {words.map((w, i) => (
-              <span key={i} data-cw className={`mr-[0.26em] inline-block ${hot.has(w.toLowerCase()) ? "text-lime" : ""}`}>
+              <span key={i} data-cw className={`mr-[0.26em] inline-block ${hot.has(w.toLowerCase()) ? "text-mint" : ""}`}>
                 {w}
               </span>
             ))}
@@ -72,11 +72,11 @@ export function Culture({ reducedMotion }: { reducedMotion: boolean }) {
           <ol data-pillars className="mt-14 divide-y divide-paper/10 border-y border-paper/10">
             {culture.pillars.map((p, i) => (
               <li key={p} data-pillar className="group flex items-center gap-6 py-5 transition-colors duration-240 hover:bg-paper/[0.03]">
-                <span className="stroke-text font-anek text-5xl font-extrabold transition-all duration-320 group-hover:text-lime group-hover:[-webkit-text-stroke:0]">
+                <span className="stroke-text font-anek text-5xl font-extrabold transition-all duration-320 group-hover:text-paper group-hover:[-webkit-text-stroke:0]">
                   0{i + 1}
                 </span>
                 <span className="font-anek text-2xl font-semibold text-paper transition-transform duration-320 ease-elastic group-hover:translate-x-2 md:text-3xl">{p}</span>
-                <span className="ml-auto h-2 w-2 rounded-full bg-paper/20 transition-all duration-320 ease-elastic group-hover:scale-[2] group-hover:bg-lime" aria-hidden />
+                <span className="ml-auto h-2 w-2 rounded-full bg-paper/20 transition-all duration-320 ease-elastic group-hover:scale-[2] group-hover:bg-paper" aria-hidden />
               </li>
             ))}
           </ol>

@@ -57,6 +57,8 @@ Cada dobra é um componente autocontido em `src/components/<Nome>.tsx` que:
 - **Cores em HSL sem `hsl()`** nas variáveis, como no DS, para permitir `hsl(var(--x) / 0.5)`.
 - **Dobras claras** levam `data-scene-off` (pausa o render 3D) e usam `tone="light"` no `SectionHeader`.
 - **Fotos** sempre via `<Photo>` (fallback em gradiente, sobreposição da marca, lazy).
+- **Mobile-first**: classes base descrevem o layout de 360px; `sm:`/`lg:` só acrescentam colunas e alturas. Nada de posicionamento absoluto para compor grades (o Hero usa grid com offsets por margem).
+- **Cor pontual**: lime só em CTA, ponto da cena 3D e check de sucesso; ênfase em texto é opacidade, não cor.
 - **Botões** sempre via `<Button>` (Sora Bold caixa alta, radius 5px, magnético).
 
 ## Build

@@ -57,7 +57,7 @@ export function CTA({ reducedMotion }: { reducedMotion: boolean }) {
             </div>
             <div className="glass absolute right-[10%] top-[35%] rounded-lg p-4">
               <p className="label text-paper/60">Sua trilha</p>
-              <p className="font-anek text-2xl font-bold text-lime">Começa aqui.</p>
+              <p className="font-anek text-2xl font-bold text-paper">Começa aqui.</p>
             </div>
           </div>
         </div>
@@ -121,7 +121,7 @@ export function CTA({ reducedMotion }: { reducedMotion: boolean }) {
         }
         .field::placeholder { color: hsl(0 0% 100% / 0.35); }
         .field:hover { border-color: hsl(0 0% 100% / 0.3); }
-        .field:focus { outline: none; border-color: hsl(var(--lime)); background: hsl(0 0% 100% / 0.07); transform: translateY(-2px); }
+        .field:focus { outline: none; border-color: hsl(var(--paper) / 0.7); background: hsl(0 0% 100% / 0.07); transform: translateY(-2px); }
       `}</style>
     </section>
   );

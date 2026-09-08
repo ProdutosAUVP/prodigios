@@ -11,7 +11,8 @@ export const site = {
 } as const;
 
 export const hero = {
-  title: ["Um programa para", "talentos fora", "da curva."],
+  title: ["Um programa", "para talentos", "fora da curva."],
+  facts: ["Qualquer curso", "Qualquer idade", "Três trilhas de carreira"],
   subtitle:
     "Para estudantes de qualquer curso e qualquer idade que querem entrar no mercado com garra, vontade de aprender e foco em alta performance.",
   primaryCta: "Quero me inscrever",

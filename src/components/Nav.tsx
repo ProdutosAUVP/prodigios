@@ -35,7 +35,7 @@ export function Nav({ ready }: { ready: boolean }) {
             {nav.map((item) => (
               <a key={item.href} href={item.href} className="group relative font-roboto text-sm font-medium text-paper/75 transition-colors duration-240 hover:text-paper">
                 {item.label}
-                <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-lime transition-transform duration-320 ease-expo group-hover:scale-x-100" />
+                <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-paper transition-transform duration-320 ease-expo group-hover:scale-x-100" />
               </a>
             ))}
           </nav>
@@ -64,7 +64,7 @@ export function Nav({ ready }: { ready: boolean }) {
         <div id="mobile-menu" className={`md:hidden overflow-hidden transition-[max-height] duration-600 ease-expo ${open ? "max-h-96" : "max-h-0"}`}>
           <div className="wrap-wide flex flex-col gap-1 pb-6 pt-2">
             {nav.map((item) => (
-              <a key={item.href} href={item.href} onClick={() => setOpen(false)} className="rounded-md px-2 py-3 font-anek text-2xl font-semibold text-paper/85 transition-colors hover:bg-paper/5 hover:text-lime">
+              <a key={item.href} href={item.href} onClick={() => setOpen(false)} className="rounded-md px-2 py-3 font-anek text-2xl font-semibold text-paper/85 transition-colors hover:bg-paper/5">
                 {item.label}
               </a>
             ))}
