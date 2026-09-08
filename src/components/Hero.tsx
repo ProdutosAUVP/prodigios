@@ -15,19 +15,28 @@ type Props = { ready: boolean; reducedMotion: boolean };
 export function Hero({ ready, reducedMotion }: Props) {
   const root = useRef<HTMLElement>(null);
 
-  // Entrada (após o loader)
+  // Estado inicial escondido (antes do loader terminar) — evita o Hero
+  // aparecer pronto atrás das cortinas e depois "pular" para animar.
   useLayoutEffect(() => {
-    if (!ready || !root.current) return;
+    if (!root.current || reducedMotion) return;
     const ctx = gsap.context(() => {
-      if (reducedMotion) {
-        gsap.set(["[data-hero-line]", "[data-hero-fade]", "[data-hero-photo]"], { clearProps: "all", opacity: 1 });
-        return;
-      }
-      const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
-      tl.from("[data-hero-line]", { yPercent: 110, rotation: 3, duration: 1.3, stagger: 0.12 })
-        .from("[data-hero-fade]", { y: 24, opacity: 0, duration: 1, stagger: 0.1 }, "-=0.9")
-        .from("[data-hero-photo]", { y: 80, opacity: 0, rotation: () => gsap.utils.random(-6, 6), duration: 1.4, stagger: 0.12, ease: "expo.out" }, "-=1.1")
-        .from("[data-hero-badge]", { scale: 0, duration: 0.8, ease: "back.out(2)" }, "-=0.8");
+      gsap.set("[data-hero-line]", { yPercent: 110, rotation: 3 });
+      gsap.set("[data-hero-fade]", { y: 24, opacity: 0 });
+      gsap.set("[data-hero-photo]", { y: 80, opacity: 0, rotation: () => gsap.utils.random(-6, 6) });
+      gsap.set("[data-hero-badge]", { scale: 0 });
+    }, root);
+    return () => ctx.revert();
+  }, [reducedMotion]);
+
+  // Entrada — dispara quando as cortinas do loader começam a abrir
+  useLayoutEffect(() => {
+    if (!ready || !root.current || reducedMotion) return;
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: "expo.out" }, delay: 0.25 });
+      tl.to("[data-hero-line]", { yPercent: 0, rotation: 0, duration: 1.3, stagger: 0.12 })
+        .to("[data-hero-fade]", { y: 0, opacity: 1, duration: 1, stagger: 0.1 }, "-=0.9")
+        .to("[data-hero-photo]", { y: 0, opacity: 1, rotation: 0, duration: 1.4, stagger: 0.12 }, "-=1.1")
+        .to("[data-hero-badge]", { scale: 1, duration: 0.8, ease: "back.out(2)" }, "-=0.8");
     }, root);
     return () => ctx.revert();
   }, [ready, reducedMotion]);
@@ -62,14 +71,6 @@ export function Hero({ ready, reducedMotion }: Props) {
       <div className="wrap-wide relative grid min-h-[calc(100svh-72px)] grid-cols-12 items-center gap-y-12 py-16 lg:py-10">
         {/* Copy */}
         <div data-hero-copy className="col-span-12 lg:col-span-7">
-          <p data-hero-fade className="label mb-6 flex items-center gap-3 text-lime">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-pulse-ring rounded-full bg-lime" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-lime" />
-            </span>
-            {hero.eyebrow}
-          </p>
-
           <h1 className="font-anek text-display-xl font-extrabold text-paper">
             {hero.title.map((line, i) => (
               <span key={line} className="line-mask">

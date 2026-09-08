@@ -1,11 +1,10 @@
-/** Marca textual da LP. Substitua pelo SVG oficial do DS (Marca & Logos) se desejar. */
+import { Eye } from "./Eye";
+
+/** Marca da LP: olho AUVP (símbolo oficial) + nome do programa. */
 export function Logo({ className = "", inverted = false }: { className?: string; inverted?: boolean }) {
   return (
-    <a href="#top" className={`group inline-flex items-center gap-2.5 ${className}`} aria-label="AUVP Prodígios — voltar ao topo">
-      <span className="relative grid h-8 w-8 place-items-center rounded-[7px] bg-forest text-paper font-anek text-base font-extrabold">
-        A
-        <span className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full bg-lime transition-transform duration-320 ease-elastic group-hover:scale-150" />
-      </span>
+    <a href="#top" className={`group inline-flex items-center gap-3 ${className}`} aria-label="AUVP Prodígios — voltar ao topo">
+      <Eye className={`h-6 w-auto transition-transform duration-600 ease-elastic group-hover:scale-110 ${inverted ? "text-ink" : "text-paper"}`} title="Olho AUVP" />
       <span className={`font-anek text-lg font-bold tracking-tight ${inverted ? "text-ink" : "text-paper"}`}>
         AUVP <span className={inverted ? "text-forest" : "text-lime"}>Prodígios</span>
       </span>

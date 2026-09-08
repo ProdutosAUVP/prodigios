@@ -11,7 +11,6 @@ export const site = {
 } as const;
 
 export const hero = {
-  eyebrow: "Programa de talentos · AUVP",
   title: ["Um programa para", "talentos fora", "da curva."],
   subtitle:
     "Para estudantes de qualquer curso e qualquer idade que querem entrar no mercado com garra, vontade de aprender e foco em alta performance.",
@@ -20,13 +19,12 @@ export const hero = {
 } as const;
 
 export const intro = {
-  label: "Para estudantes de qualquer curso e qualquer idade",
+  title: "Para estudantes de qualquer curso e qualquer idade",
   statement:
     "O programa é voltado para talentos que desejam ingressar no mercado de trabalho com garra e vontade de aprender, focado em alta performance.",
 } as const;
 
 export const process = {
-  label: "Processo seletivo",
   title: "As fases do nosso processo seletivo",
   steps: [
     { n: "01", title: "Inscrição", text: "Preenchimento de dados e envio de informações." },
@@ -38,7 +36,6 @@ export const process = {
 } as const;
 
 export const trails = {
-  label: "Trilhas",
   title: "Um programa, três trilhas, uma carreira",
   subtitle: "Desenvolva-se em áreas essenciais para o crescimento do ecossistema:",
   items: [
@@ -67,7 +64,6 @@ export const trails = {
 } as const;
 
 export const notRequired = {
-  label: "Sem barreiras",
   title: "O que NÃO fazemos questão que você tenha",
   items: [
     { title: "Inglês fluente", text: "Não é um requisito obrigatório para a maioria das vagas." },
@@ -77,7 +73,6 @@ export const notRequired = {
 } as const;
 
 export const culture = {
-  label: "Cultura",
   title: "A nossa cultura, a verdade nua e crua",
   statement:
     "Foco extremo em resultados, transparência e meritocracia. Aqui valorizamos quem tem proatividade, “sentimento de dono” e assume responsabilidades sem medo de errar rápido e consertar rápido.",
@@ -85,7 +80,6 @@ export const culture = {
 } as const;
 
 export const benefits = {
-  label: "Benefícios",
   title: "Benefícios e incentivos para a jornada",
   items: [
     { title: "Remuneração competitiva", text: "Remuneração competitiva com o mercado." },
@@ -96,7 +90,6 @@ export const benefits = {
 } as const;
 
 export const learn = {
-  label: "Jornada",
   title: "O que você vai aprender na jornada e os requisitos da entrega",
   items: [
     "Visão sistêmica e estratégica de negócios.",
@@ -106,7 +99,6 @@ export const learn = {
 } as const;
 
 export const notFor = {
-  label: "Sinceridade",
   title: "Para quem NÃO é o nosso programa",
   items: [
     "Pessoas que buscam rotinas engessadas e previsíveis.",
@@ -116,8 +108,8 @@ export const notFor = {
 } as const;
 
 export const cta = {
-  label: "Próximos passos e Inscrição",
   title: "Garanta sua chance.",
+  formTitle: "Próximos passos e inscrição",
   text: "Garanta sua chance de participar de um dos processos seletivos mais transformadores do mercado preenchendo os dados e aplicando para a vaga ideal para o seu perfil.",
   button: "Aplicar para a vaga",
 } as const;

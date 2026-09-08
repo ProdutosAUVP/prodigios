@@ -61,7 +61,7 @@ export function Trails({ reducedMotion }: { reducedMotion: boolean }) {
       <div aria-hidden className="pointer-events-none absolute right-0 top-0 h-[50vmax] w-[50vmax] translate-x-1/3 -translate-y-1/3 rounded-full bg-[radial-gradient(circle,hsl(var(--forest)/0.6),transparent_60%)] blur-3xl" />
 
       <div className="wrap-wide relative">
-        <SectionHeader label={trails.label} title={trails.title} subtitle={trails.subtitle} />
+        <SectionHeader title={trails.title} subtitle={trails.subtitle} />
 
         <div ref={grid} className="mt-16 grid gap-6 md:grid-cols-3" style={{ perspective: "1200px" }}>
           {trails.items.map((t, i) => (
