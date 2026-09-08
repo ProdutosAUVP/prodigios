@@ -1,6 +1,6 @@
 # AUVP Prodígios — Landing Page
 
-Landing page do programa **AUVP Prodígios**, "um programa para talentos fora da curva". Experiência imersiva e séria, com scroll interativo, loading screen, objetos 3D reativos e micro-interações elásticas — construída sobre os tokens do [Design System AUVP](https://github.com/ProdutosAUVP/central) e extrapolando-os onde a página pede.
+Landing page do programa **AUVP Prodígios**, "um programa para talentos fora da curva". Experiência imersiva e séria, com scroll interativo, loading screen e micro-interações elásticas — construída sobre os tokens do [Design System AUVP](https://github.com/ProdutosAUVP/central) e extrapolando-os onde a página pede.
 
 Pronta para deploy no **GitHub Pages** (workflow incluído).
 
@@ -16,7 +16,6 @@ Pronta para deploy no **GitHub Pages** (workflow incluído).
 | UI | React 18 | Componentização por dobra (`Hero`, `Process`, `Trails`, …) |
 | Estilo | Tailwind CSS 3.4 + variáveis CSS (HSL) | Tokens idênticos aos do DS AUVP, expostos em `src/styles/tokens.css` |
 | Scroll | [Lenis](https://github.com/darkroomengineering/lenis) + [GSAP ScrollTrigger](https://gsap.com/docs/v3/Plugins/ScrollTrigger/) | Smooth scroll sincronizado ao ticker do GSAP; seções pinadas, scrub, reveals |
-| 3D | [Three.js](https://threejs.org) + [React Three Fiber](https://docs.pmnd.rs/react-three-fiber) | Objetos de finanças/tech flutuando no fundo, reagindo a mouse e scroll; carregados sob demanda |
 | Deploy | GitHub Actions → GitHub Pages | `.github/workflows/deploy.yml` |
 
 ## Rodando localmente
@@ -59,10 +58,9 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 ├── scripts/sync-tokens.mjs
 └── src/
     ├── components/        uma dobra por arquivo + UI compartilhada (Button, Photo, …)
-    │   └── three/         Scene (wrapper lazy) e SceneCanvas (R3F)
     ├── data/              content.ts (copy oficial) e photos.ts (fotografia)
-    ├── hooks/             useLenis, useReveal, useMagnetic, useReducedMotion, useMouseParallax
-    ├── lib/               gsap.ts (registro + helpers), scroll-progress.ts, text.ts
+    ├── hooks/             useLenis, useReveal, useMagnetic, useReducedMotion
+    ├── lib/               gsap.ts (registro + helpers), text.ts
     └── styles/            tokens.css (DS + extensões) e globals.css (base, componentes, utilitários)
 ```
 
@@ -71,10 +69,10 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 | Ordem | Componente | Fundo (DS) | Destaque de interação |
 |---|---|---|---|
 | 0 | `Loader` | verde | Olho AUVP abre, contador 0→100, palavras da cultura, cortinas abrem em sincronia com a entrada do Hero |
-| 1 | `Hero` | preta | Mobile-first: título display em largura total, subtítulo + ações, faixa de fotos em grade assimétrica (2 no mobile, 3 a partir de `sm`) com parallax; cena 3D atrás |
+| 1 | `Hero` | preta | Mobile-first: título display em largura total, subtítulo + ações, faixa de fotos em grade assimétrica (2 no mobile, 3 a partir de `sm`) com parallax |
 | 2 | `Intro` | preta | Declaração que "acende" palavra a palavra com o scroll + marquee |
 | 3 | `Process` | cinza | **Scroll horizontal pinado** com as 5 fases (empilha no mobile) |
-| 4 | `Trails` | preta | Cards que se montam com elasticidade e inclinam em 3D com o mouse |
+| 4 | `Trails` | preta | Cards que se montam com elasticidade e inclinam em perspectiva no hover |
 | 5 | `NotRequired` | branca | Requisitos riscados ao vivo + carimbo "Opcional" |
 | 6 | `Culture` | preta | Foto sticky com parallax e recorte; manifesto revela palavra a palavra |
 | 7 | `Benefits` | cinza | Grade assimétrica com hover oficial do DS + ícones que pulam |
@@ -84,11 +82,11 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 
 ## Acessibilidade e performance
 
-- `prefers-reduced-motion`: animações CSS neutralizadas globalmente (regra do DS); as de JS checam `useReducedMotion()` — sem loader, sem Lenis, sem 3D, conteúdo visível de imediato.
-- Three.js e React Three Fiber ficam num chunk próprio, carregado por `React.lazy` só depois do loader e quando o navegador está ocioso; o render pausa quando uma dobra clara cobre a viewport.
+- `prefers-reduced-motion`: animações CSS neutralizadas globalmente (regra do DS); as de JS checam `useReducedMotion()` — sem loader, sem Lenis, conteúdo visível de imediato.
+- Sem WebGL: o fundo das dobras escuras é o preto sólido da marca com halo e grão em CSS. Bundle inicial ≈ 110 KB gzip (React + GSAP/Lenis + app).
 - Padrões únicos de espaçamento (`--section-y`, `--section-gap`, `--stack`), curvatura (12px do DS + arco como forma-assinatura) e tratamento de foto (`<Photo>`), documentados em `docs/DESIGN-SYSTEM.md`.
 - Mobile-first: classes base para 360px, `sm`/`lg` só adicionam colunas. Título do Hero em 3 linhas curtas que cabem em 360px (`text-display-xl` = `clamp(2.75rem, 8.4vw, 8.5rem)`).
-- Cor pontual: lime só nos CTAs, no ponto "fora da curva" da cena 3D e no check do formulário (ver `docs/DESIGN-SYSTEM.md`).
+- Cor pontual: lime só nos CTAs e no check do formulário (ver `docs/DESIGN-SYSTEM.md`).
 - Fotos com `loading="lazy"` (exceto o Hero) e fallback em gradiente da marca se a imagem não carregar.
 - Navegação por teclado com `:focus-visible` em lime; formulário com labels e `aria-live` no loader.
 - Contraste seguindo os tokens `*-emphasis` do DS nas dobras claras.

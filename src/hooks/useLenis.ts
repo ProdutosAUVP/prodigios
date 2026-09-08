@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
-import { scrollState } from "@/lib/scroll-progress";
 
 let instance: Lenis | null = null;
 
@@ -12,7 +11,7 @@ export function getLenis() {
 
 /**
  * Smooth scroll com Lenis sincronizado ao ticker do GSAP (padrão recomendado
- * pela documentação de ambos). Alimenta scrollState para a cena 3D.
+ * pela documentação de ambos).
  */
 export function useLenis(enabled: boolean) {
   useEffect(() => {
@@ -25,11 +24,7 @@ export function useLenis(enabled: boolean) {
     });
     instance = lenis;
 
-    lenis.on("scroll", (e: { progress: number; velocity: number }) => {
-      scrollState.progress = e.progress;
-      scrollState.velocity = e.velocity;
-      ScrollTrigger.update();
-    });
+    lenis.on("scroll", ScrollTrigger.update);
 
     const tick = (time: number) => lenis.raf(time * 1000);
     gsap.ticker.add(tick);

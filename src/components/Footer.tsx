@@ -18,7 +18,7 @@ export function Footer() {
       </div>
       <div className="wrap-wide mt-10 flex flex-col gap-2 border-t border-paper/10 pt-6 text-xs text-paper/40 md:flex-row md:justify-between">
         <p>© {new Date().getFullYear()} AUVP. Todos os direitos reservados.</p>
-        <p>Design System AUVP como base · feito com React, GSAP, Lenis e Three.js</p>
+        <p>Design System AUVP como base · feito com React, GSAP e Lenis</p>
       </div>
     </footer>
   );

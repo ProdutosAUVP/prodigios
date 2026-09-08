@@ -77,7 +77,7 @@ export function Process({ reducedMotion }: { reducedMotion: boolean }) {
   }, [reducedMotion]);
 
   return (
-    <section ref={root} id="processo" data-scene-off className="relative overflow-hidden bg-mist text-foreground">
+    <section ref={root} id="processo" className="relative overflow-hidden bg-mist text-foreground">
       <div className="section flex flex-col justify-center min-[900px]:h-screen min-[900px]:py-0">
         <div ref={header} className="wrap-wide section-head flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionHeader tone="light" title={process.title} />

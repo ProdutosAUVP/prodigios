@@ -17,15 +17,11 @@ export default defineConfig({
   build: {
     target: "es2020",
     sourcemap: false,
-    chunkSizeWarningLimit: 700,
     rollupOptions: {
       output: {
-        // Three.js e R3F ficam num chunk próprio, carregado sob demanda
-        // (React.lazy em src/components/three/Scene.tsx).
         manualChunks(id) {
           if (!id.includes("node_modules")) return undefined;
           if (/[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/.test(id)) return "react";
-          if (/[\\/]node_modules[\\/](three|@react-three)[\\/]/.test(id)) return "three";
           if (/[\\/]node_modules[\\/](gsap|lenis)[\\/]/.test(id)) return "motion";
           return undefined;
         },

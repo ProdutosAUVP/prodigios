@@ -1,8 +1,8 @@
-# Animações, scroll e 3D
+# Animações e scroll
 
 ## Smooth scroll (Lenis)
 
-`useLenis()` cria o Lenis e o pendura no ticker do GSAP (`gsap.ticker.add`), com `lagSmoothing(0)` — padrão recomendado pelos dois projetos para que o ScrollTrigger e o Lenis vejam o mesmo tempo. Cada evento de scroll alimenta `scrollState.progress` e chama `ScrollTrigger.update()`.
+`useLenis()` cria o Lenis e o pendura no ticker do GSAP (`gsap.ticker.add`), com `lagSmoothing(0)` — padrão recomendado pelos dois projetos para que o ScrollTrigger e o Lenis vejam o mesmo tempo. Cada evento de scroll chama `ScrollTrigger.update()`.
 
 Âncoras internas (`a[href^="#"]`) são interceptadas e passam por `lenis.scrollTo(target, { offset: -72 })`.
 
@@ -16,7 +16,7 @@ Desligado com `prefers-reduced-motion`.
 | Hero | estado inicial escondido via `gsap.set` (linhas, textos, fotos, badge) e entrada com `.to` quando `ready` vira `true`; linhas do título em máscara (`.line-mask`) sobem com `expo.out`; fotos entram com rotação aleatória; badge com `back.out`; parallax por `data-depth` (scrub) | `Hero.tsx` |
 | Intro | palavras `opacity 0.12 → 1` com `scrub: 0.4` | `Intro.tsx` |
 | Process | seção **pinada** (`pin: true`), track translada `-(scrollWidth - innerWidth)` com `scrub: 0.8`; cada card monta via `containerAnimation`; linha de progresso `scaleX`. Abaixo de 900px (`gsap.matchMedia`) vira lista vertical | `Process.tsx` |
-| Trails | cards entram com `elastic.out(1, 0.7)` e rotação por índice; tilt 3D no `mousemove` (`rotateX/Y` + `transformPerspective`); brilho radial segue o mouse via `--mx/--my` | `Trails.tsx` |
+| Trails | cards entram com `elastic.out(1, 0.7)` e rotação por índice; tilt em perspectiva no `mousemove` (`rotateX/Y` + `transformPerspective`); brilho radial segue o mouse via `--mx/--my` | `Trails.tsx` |
 | NotRequired | linha sobe; risco cresce por `backgroundSize` (`.strike`, respeita quebra de linha); carimbo com `back.out(2.5)` | `NotRequired.tsx` |
 | Culture | foto sticky com parallax `yPercent -12 → 12`; manifesto palavra a palavra com scrub; pilares entram da esquerda | `Culture.tsx` |
 | Benefits / Fit / CTA | `useReveal()` — `data-reveal` em cascata | vários |
@@ -33,27 +33,6 @@ Desligado com `prefers-reduced-motion`.
 
 **StrictMode/HMR.** Toda animação vive em `gsap.context()` e é revertida no cleanup do efeito. Sem isso, ScrollTriggers duplicam.
 
-## Cena 3D
+## Fundo das dobras escuras
 
-`src/components/three/Scene.tsx` é o wrapper: checa WebGL, espera `requestIdleCallback`, escolhe `compact` (< 900px) e pausa o render (`frameloop="never"`) quando alguma dobra `data-scene-off` cobre a viewport inteira ou a aba está oculta.
-
-`SceneCanvas.tsx` (chunk lazy) segue a linguagem do **traço da AUVP Analítica** (repositório `lp-etfs`, `QUOTE_WAVE`): linha fina que sobe para sempre, ponta acesa, rastro que esmaece até o fundo, e uma rede de pontos leve. Apoio visual, não ilustração; nada sólido.
-
-| Objeto | O que representa | Como funciona |
-|---|---|---|
-| **Traço** (`Line2` de `three/examples/jsm/lines`, 220 pontos) | a curva que o talento deixa para trás; a ponta é o "fora da curva" | ondulação em torno de uma reta ascendente; a **fase anda** (`sin(x·k − t)`), então a linha parece subir sem fim. Cor por vértice: fundo (transparente) → papel perto da ponta → lime só nos últimos 7%. Na entrada, `reveal` desenha a linha em ~2 s. `LineMaterial.resolution` acompanha o tamanho do canvas |
-| **Ponta** (dois `Sprite` aditivos com textura radial gerada em canvas) | o único acento de cor da cena | segue o último ponto do traço; halo lime pulsando + núcleo branco |
-| **Rede** (`Points` + `LineSegments` com cor por vértice) | contexto de dados/ecossistema, como o fundo do hero em `lp-etfs` | 70 pontos (34 no mobile) derivam num volume raso em z = −1…−3 (profundidade real → parallax), ligam-se quando a distância é menor que 1.45 e são atraídos pelo cursor. Buffer de links pré-alocado com `setDrawRange` |
-
-Como em `lp-etfs`: **não é gráfico e não pode virar um** — sem eixo, ponto de dado ou rótulo, e sempre em movimento, o que impede a leitura como histórico.
-
-Enquadramento: câmera em `z = 10`, `fov 38` → meia-largura visível ≈ 5.5 no desktop (16:9) e ≈ 1.6 no mobile; meia-altura ≈ 3.4. O traço tem um traçado para cada caso (`compact`): no desktop termina no vazio à direita do título; no mobile, ao lado de "curva.". O grupo raiz (`Rig`) faz parallax com o mouse e deriva com um seno do progresso, com lerp independente do framerate (`damp`). Sem luzes de cena (materiais não iluminados), sem HDR, sem drei.
-
-Cores em hex fixo (`FOREST`, `MINT`, `LIME`, `PAPER`) porque materiais Three.js não leem variáveis CSS; se os tokens mudarem, atualize as constantes no topo do arquivo.
-
-### Performance
-
-- `dpr` limitado a 1.5 (1.25 no compact).
-- Geometrias simples, sem sombras projetadas, sem pós-processamento.
-- Canvas fixo com `pointer-events: none`; dobras claras opacas escondem e pausam a cena.
-- Chunk carregado apenas após o loader e em idle.
+Não há WebGL. O fundo é o preto sólido da marca (`--ink`) com dois recursos em CSS: um halo radial verde (`radial-gradient` em `hsl(var(--forest) / 0.45)`, com `blur`) posicionado por dobra, e o grão (`.grain`, SVG `feTurbulence` inline em `mix-blend-mode: overlay` a 6%). Os dois são estáticos e não reagem ao mouse — o único movimento de fundo é o parallax das fotos do Hero, controlado pelo scroll.

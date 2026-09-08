@@ -4,7 +4,7 @@ Guia rápido para IAs e novos contribuidores. Leia antes de mexer no código.
 
 ## O que é
 
-Landing page única (sem rotas) do programa AUVP Prodígios. Vite + React 18 + TypeScript + Tailwind, com Lenis + GSAP ScrollTrigger para o scroll e Three.js/R3F para a cena 3D de fundo. Publicada no GitHub Pages em `/prodigios/`.
+Landing page única (sem rotas) do programa AUVP Prodígios. Vite + React 18 + TypeScript + Tailwind, com Lenis + GSAP ScrollTrigger para o scroll. Sem WebGL. Publicada no GitHub Pages em `/prodigios/`.
 
 ## Entry points
 
@@ -23,9 +23,8 @@ Landing page única (sem rotas) do programa AUVP Prodígios. Vite + React 18 + T
 - `gsap.from()` em elemento com `transition` CSS → envolver com `freezeTransitions()` (ver `docs/ANIMACOES.md`).
 - Usar `rotation`, não `rotate`, nos tweens.
 - Toda animação JS recebe `reducedMotion` e desliga quando `true`.
-- Dobras claras: `data-scene-off` + `tone="light"`. Dobras escuras: `bg-ink/8x` para o 3D transparecer.
+- Dobras claras: `tone="light"` no `SectionHeader`. Dobras escuras: `bg-ink` sólido.
 - Cores novas: HSL sem `hsl()` em `tokens.css`, expostas no `tailwind.config.ts`. Não substituir tokens do DS onde o DS já responde — extensões vão no bloco "LP extensions".
-- Após `npm run build`, `dist/index.html` não pode ter `modulepreload` do chunk `three`.
 
 ## Comandos
 
