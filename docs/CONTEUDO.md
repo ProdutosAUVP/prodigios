@@ -6,6 +6,10 @@ Toda a copy da página vive em `src/data/content.ts`, seção por seção, e é 
 
 Para alterar um texto, edite o objeto correspondente (`hero`, `process`, `trails`, `notRequired`, `culture`, `benefits`, `learn`, `notFor`, `cta`, `nav`). Alguns componentes destacam palavras específicas (por exemplo `garra`, `aprender,`, `alta`, `performance.` na `Intro`; `resultados,`, `transparência`, `meritocracia.` na `Culture`) via um `Set` no próprio componente — ajuste-o se a frase mudar.
 
+## Sem eyebrows
+
+A página não usa *eyebrows* (a etiqueta pequena em caixa alta acima dos títulos). Cada dobra abre direto no título display; frases do briefing que eram etiquetas viraram títulos de verdade (`intro.title`, `cta.formTitle`). A classe `.label` continua existindo para etiquetas funcionais (carimbo "Opcional", "Trilha 1", rótulos de formulário).
+
 ## Fotografia humanizada
 
 `src/data/photos.ts` mapeia cada foto usada na página. Hoje são **placeholders de alta qualidade** do Unsplash (jovens em ambiente de foco/tecnologia) servidos pelo CDN deles.

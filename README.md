@@ -70,7 +70,7 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 
 | Ordem | Componente | Fundo (DS) | Destaque de interação |
 |---|---|---|---|
-| 0 | `Loader` | verde | Contador 0→100, palavras da cultura, cortinas abrem para o Hero |
+| 0 | `Loader` | verde | Olho AUVP abre, contador 0→100, palavras da cultura, cortinas abrem em sincronia com a entrada do Hero |
 | 1 | `Hero` | preta | Título com reveal linha a linha, colagem assimétrica com parallax em 3 profundidades, cena 3D atrás |
 | 2 | `Intro` | preta | Declaração que "acende" palavra a palavra com o scroll + marquee |
 | 3 | `Process` | cinza | **Scroll horizontal pinado** com as 5 fases (empilha no mobile) |

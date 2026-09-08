@@ -59,10 +59,6 @@ export function Culture({ reducedMotion }: { reducedMotion: boolean }) {
         </div>
 
         <div className="lg:col-span-7 lg:pl-8">
-          <p data-reveal className="label mb-5 flex items-center gap-3 text-lime">
-            <span className="h-px w-8 bg-lime" aria-hidden />
-            {culture.label}
-          </p>
           <h2 className="text-display-md text-paper">{culture.title}</h2>
 
           <p data-manifesto className="mt-10 max-w-2xl font-anek text-2xl font-medium leading-snug text-paper md:text-[2rem]">

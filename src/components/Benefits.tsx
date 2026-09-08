@@ -19,7 +19,7 @@ export function Benefits({ reducedMotion }: { reducedMotion: boolean }) {
   return (
     <section ref={root} id="beneficios" data-scene-off className="relative bg-mist py-24 text-foreground md:py-36">
       <div className="wrap-wide">
-        <SectionHeader tone="light" label={benefits.label} title={benefits.title} align="center" />
+        <SectionHeader tone="light" title={benefits.title} align="center" />
 
         <div className="mt-16 grid gap-5 md:grid-cols-6">
           {benefits.items.map((b, i) => (

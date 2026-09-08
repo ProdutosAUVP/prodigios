@@ -27,6 +27,10 @@ Escala do DS: H1 `text-3xl md:text-5xl` bold · H2 `text-2xl md:text-3xl` · cor
 | `--border` | `120 10% 88%` | `0 0% 16%` | bordas |
 | `--radius` | `0.75rem` | | cards: 12px sempre |
 
+### Símbolo — Olho AUVP
+
+O olho é o símbolo oficial da marca (`public/olho-preto.svg`, `olho-branco.svg`, `olho-amarelo.svg` no central; página **Marca & Logos** do DS). Aqui ele vive em `src/components/Eye.tsx` como SVG inline com `fill="currentColor"`: branco na navegação e no loader (fundo escuro), preto/verde em fundo claro. O dourado fica reservado à AUVP Escola. Também é o favicon (`public/favicon.svg`).
+
 ### Regras visuais do DS aplicadas
 
 - **Botões**: Sora Bold, caixa alta, `border-radius: 5px`, hover "vazado" (fundo some, borda aparece). Invertido em dobra escura: fundo `#fafafa`, hover `#e0e0e0`. → `.btn`, `.btn-cta`, `.btn-inverted`.

@@ -12,8 +12,8 @@ Desligado com `prefers-reduced-motion`.
 
 | Dobra | Técnica | Onde |
 |---|---|---|
-| Loader | timeline: contador (`onUpdate`), conteúdo sobe, duas cortinas abrem com `expo.inOut` | `Loader.tsx` |
-| Hero | linhas do título em máscara (`.line-mask`) sobem com `expo.out`; fotos entram com rotação aleatória; badge com `back.out`; parallax por `data-depth` (scrub) | `Hero.tsx` |
+| Loader | uma única timeline GSAP, sem estado React: o olho AUVP abre, contador 0→100 (`onUpdate`), palavras trocam por `yPercent` num slot com `overflow: hidden`; `tl.call(finish)` libera a página **no instante em que as cortinas começam a abrir**, e o Hero (pré-escondido com `gsap.set` no mount) entra junto com a revelação. Fallback de 6 s libera a página se algo travar | `Loader.tsx`, `Hero.tsx` |
+| Hero | estado inicial escondido via `gsap.set` (linhas, textos, fotos, badge) e entrada com `.to` quando `ready` vira `true`; linhas do título em máscara (`.line-mask`) sobem com `expo.out`; fotos entram com rotação aleatória; badge com `back.out`; parallax por `data-depth` (scrub) | `Hero.tsx` |
 | Intro | palavras `opacity 0.12 → 1` com `scrub: 0.4` | `Intro.tsx` |
 | Process | seção **pinada** (`pin: true`), track translada `-(scrollWidth - innerWidth)` com `scrub: 0.8`; cada card monta via `containerAnimation`; linha de progresso `scaleX`. Abaixo de 900px (`gsap.matchMedia`) vira lista vertical | `Process.tsx` |
 | Trails | cards entram com `elastic.out(1, 0.7)` e rotação por índice; tilt 3D no `mousemove` (`rotateX/Y` + `transformPerspective`); brilho radial segue o mouse via `--mx/--my` | `Trails.tsx` |
@@ -28,6 +28,8 @@ Desligado com `prefers-reduced-motion`.
 **Transições CSS × `gsap.from()`.** Elementos com `transition` no `transform`/`opacity` (hover elástico, carimbos) travam no estado inicial quando animados com `from()`: o GSAP lê o valor computado no meio da transição. Use `freezeTransitions(alvos)` antes do tween e passe o restaurador no `onComplete`. Já aplicado em `useReveal`, `Process`, `Trails`, `NotRequired`.
 
 **Pin + altura.** O `Process` usa `invalidateOnRefresh` e `end` como função, então redimensionar recalcula o percurso. Se adicionar conteúdo acima dele que carrega tarde (fontes, imagens grandes), chame `ScrollTrigger.refresh()` depois.
+
+**Loader × Hero.** O Hero não pode "nascer" visível: se as cortinas abrirem sobre o título já montado e só depois o `from()` esconder e reanimar, o usuário vê um pulo. Por isso o estado inicial é definido com `gsap.set` num efeito de mount e a entrada usa `.to` com valores finais explícitos.
 
 **StrictMode/HMR.** Toda animação vive em `gsap.context()` e é revertida no cleanup do efeito. Sem isso, ScrollTriggers duplicam.
 

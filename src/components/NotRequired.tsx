@@ -31,7 +31,7 @@ export function NotRequired({ reducedMotion }: { reducedMotion: boolean }) {
     <section ref={root} data-scene-off className="relative bg-white py-24 text-foreground md:py-36">
       <div className="wrap grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <SectionHeader tone="light" label={notRequired.label} title={notRequired.title} />
+          <SectionHeader tone="light" title={notRequired.title} />
           <p data-reveal className="mt-6 max-w-md text-muted-foreground">
             Potencial e vontade pesam mais que currículo. O resto a gente constrói junto.
           </p>

@@ -48,7 +48,6 @@ export function CTA({ reducedMotion }: { reducedMotion: boolean }) {
 
       <div className="wrap-wide relative grid items-center gap-14 lg:grid-cols-12">
         <div className="lg:col-span-6">
-          <p data-reveal className="label mb-5 flex items-center gap-3 text-lime"><span className="h-px w-8 bg-lime" aria-hidden />{cta.label}</p>
           <h2 className="text-display-lg text-paper">{splitWords(cta.title)}</h2>
           <p data-reveal className="mt-6 max-w-xl text-lg leading-relaxed text-paper/70">{cta.text}</p>
 
@@ -78,7 +77,7 @@ export function CTA({ reducedMotion }: { reducedMotion: boolean }) {
               </div>
             ) : (
               <>
-                <h3 className="font-anek text-3xl font-bold text-paper">Aplique agora</h3>
+                <h3 className="font-anek text-3xl font-bold text-paper">{cta.formTitle}</h3>
                 <p id="form-help" className="mt-1 text-sm text-paper/60">Leva menos de um minuto.</p>
 
                 <div className="mt-8 grid gap-5">
