@@ -13,6 +13,9 @@ export const site = {
 export const hero = {
   title: ["Um programa", "para talentos", "fora da curva."],
   facts: ["Qualquer curso", "Qualquer idade", "Três trilhas de carreira"],
+  badge: "3 trilhas · 5 fases · 1 carreira",
+  band: ["Um programa para talentos fora da curva", "Tecnologia", "Growth & Marketing", "Negócios & Finanças"],
+  ring: "Talentos fora da curva • AUVP Prodígios • ",
   subtitle:
     "Para estudantes de qualquer curso e qualquer idade que querem entrar no mercado com garra, vontade de aprender e foco em alta performance.",
   primaryCta: "Quero me inscrever",
