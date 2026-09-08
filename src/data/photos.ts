@@ -75,7 +75,7 @@ export const photos: Record<string, Photo> = {
     src: inscricaoTrofeu,
     alt: "Integrante da AUVP erguendo um troféu no palco",
     tone: "mint",
-    position: "center 20%",
+    position: "center 42%",
   },
   /** Reserva — plateia em evento interno (não usada no momento) */
   evento: {
