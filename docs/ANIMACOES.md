@@ -17,8 +17,8 @@ Desligado com `prefers-reduced-motion`.
 | Intro | dobra grafite; palavras `opacity 0.18 → 1` com `scrub: 0.4`; palavras-chave em lime | `Intro.tsx` |
 | Process | seção **pinada** (`pin: true`), track translada `-(scrollWidth - innerWidth)` com `scrub: 0.8`; cada card monta via `containerAnimation`; linha de progresso `scaleX`. Abaixo de 900px (`gsap.matchMedia`) vira lista vertical | `Process.tsx` |
 | Trails | cards entram com `elastic.out(1, 0.7)` e rotação por índice; tilt em perspectiva no `mousemove` (`rotateX/Y` + `transformPerspective`); brilho radial segue o mouse via `--mx/--my` | `Trails.tsx` |
-| NotRequired | linha sobe; risco cresce por `backgroundSize` (`.strike`, respeita quebra de linha); carimbo com `back.out(2.5)` | `NotRequired.tsx` |
-| Culture | foto sticky com parallax `yPercent -12 → 12`; manifesto palavra a palavra com scrub; pilares entram da esquerda | `Culture.tsx` |
+| NotRequired | linha sobe; risco cresce por `backgroundSize` (`.strike`, respeita quebra de linha); carimbo "Opcional" surge em lime com `back.out(2.5)` e, 0,45 s depois, repousa no preto (`backgroundColor`/`borderColor` animados) | `NotRequired.tsx` |
+| Culture | foto sticky com parallax `yPercent -12 → 12`; manifesto palavra a palavra com scrub; pilares entram da esquerda; no hover o número em outline vira lime | `Culture.tsx` |
 | Benefits / Fit / CTA | `useReveal()` — `data-reveal` em cascata | vários |
 | Botões | `useMagnetic()` — `quickTo` segue o cursor, volta com `elastic.out` | `Button.tsx` |
 | Nav | esconde ao rolar para baixo (> 400px), volta ao subir; vidro após 24px | `Nav.tsx` |

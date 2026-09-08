@@ -77,7 +77,7 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 | 6 | `Culture` | preta | Foto sticky com parallax e recorte; manifesto revela palavra a palavra |
 | 7 | `Benefits` | cinza | Grade assimétrica com hover oficial do DS + ícones que pulam |
 | 8 | `Fit` | grafite/preta | "O que você vai aprender" × "Para quem NÃO é" |
-| 9 | `CTA` | preta | Formulário de inscrição (nome, e-mail, trilha) |
+| 9 | `CTA` | preta | Título + texto e foto em arco preenchendo a altura do formulário (5/7 colunas); formulário de inscrição (nome, e-mail, trilha) |
 | 10 | `Footer` | preta | — |
 
 ## Acessibilidade e performance

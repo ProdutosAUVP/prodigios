@@ -6,7 +6,8 @@ import { useReveal } from "@/hooks/useReveal";
 
 /**
  * "O que NÃO fazemos questão que você tenha": cada requisito entra e
- * é riscado ao vivo (linha cresce com o scroll), com o carimbo "opcional".
+ * é riscado ao vivo (linha cresce com o scroll), com o carimbo "Opcional"
+ * que surge em lime e repousa no preto.
  */
 export function NotRequired({ reducedMotion }: { reducedMotion: boolean }) {
   const root = useReveal<HTMLElement>({ disabled: reducedMotion });
@@ -21,7 +22,14 @@ export function NotRequired({ reducedMotion }: { reducedMotion: boolean }) {
         tl.from(row, { x: -30, opacity: 0, duration: 0.8, ease: "expo.out" })
           // Risco por linha: background-size cresce de 0% a 100% (box-decoration-break: clone)
           .to(row.querySelector("[data-line]"), { backgroundSize: "100% 3px", duration: 0.7, ease: "power3.inOut" }, "-=0.2")
-          .from(stamp, { scale: 0, rotation: -20, duration: 0.7, ease: "back.out(2.5)" }, "-=0.3");
+          // o carimbo nasce em lime e repousa no preto
+          .fromTo(
+            stamp,
+            { scale: 0, rotation: -20, backgroundColor: "hsl(84, 92%, 62%)", borderColor: "hsl(84, 92%, 62%)", color: "hsl(0, 0%, 4%)" },
+            { scale: 1, rotation: -6, duration: 0.7, ease: "back.out(2.5)" },
+            "-=0.3",
+          )
+          .to(stamp, { backgroundColor: "rgba(0,0,0,0)", borderColor: "hsl(0, 0%, 4%)", duration: 0.9, ease: "power2.out" }, "+=0.45");
       });
     }, root);
     return () => ctx.revert();
