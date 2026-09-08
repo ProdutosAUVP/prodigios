@@ -72,7 +72,7 @@ Três decisões valem para o site inteiro (tokens em `tokens.css`, classes em `g
 
 ### Uso pontual de cor
 
-A página é essencialmente preto, branco quente (`--paper`) e verde AUVP. O **lime** é reservado a três lugares: o botão de CTA (navegação, Hero, inscrição), a última linha do título do Hero ("fora da curva." — uma palavra de acento, como nas referências de LP de carreira) e o check de sucesso do formulário — mais o ponto final das palavras do loader. Nada de lime em ícones, hovers, números, marcadores ou palavras de ênfase: ênfase em dobra escura é `text-paper` cheio contra `text-paper/70`, e o único acento secundário é o **mint** (`#5A8770`, o verde de acento do DS dark) nas palavras-chave da Cultura. Hovers em dobra escura viram papel (fundo `paper`, texto `ink`); em dobra clara, o verde `--primary`.
+A página é essencialmente preto, branco quente (`--paper`) e verde AUVP. O **lime** é reservado a quatro lugares: o botão de CTA (navegação, Hero, inscrição), a última linha do título do Hero ("fora da curva.", esmaecendo em degradê — `.text-fade-lime`), o adesivo circular do Hero e **uma dobra inteira** — a Intro, logo abaixo do Hero, em lime com texto preto (referência NG.CASH: uma dobra-bloco de cor entre dobras pretas) — mais o check de sucesso do formulário — mais o ponto final das palavras do loader. Nada de lime em ícones, hovers, números, marcadores ou palavras de ênfase: ênfase em dobra escura é `text-paper` cheio contra `text-paper/70`, e o único acento secundário é o **mint** (`#5A8770`, o verde de acento do DS dark) nas palavras-chave da Cultura. Hovers em dobra escura viram papel (fundo `paper`, texto `ink`); em dobra clara, o verde `--primary`.
 
 ## Sincronizando com o central
 

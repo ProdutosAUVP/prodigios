@@ -182,6 +182,29 @@
     will-change: transform;
   }
 
+  /* Adesivo: pílula inclinada, papel sobre preto; endireita e cresce no hover */
+  .sticker {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 0.95rem;
+    border-radius: 999px;
+    background: hsl(var(--paper));
+    color: hsl(var(--ink));
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+    transform: rotate(var(--tilt, -6deg));
+    transition: transform 520ms var(--ease-elastic);
+    will-change: transform;
+  }
+  .sticker:hover {
+    transform: rotate(0deg) scale(1.08);
+  }
+
   /* Grade de pontos (matriz), quase invisível — textura de dados no fundo do Hero.
      Estática; some para as bordas via máscara radial. */
   .dots {
@@ -220,6 +243,14 @@
   }
   .clip-arch {
     border-radius: 999px 999px var(--radius) var(--radius);
+  }
+
+  /* Última linha do título do Hero: lime esmaecendo para a direita (referência NG.CASH) */
+  .text-fade-lime {
+    background: linear-gradient(90deg, hsl(var(--lime)) 0%, hsl(var(--lime)) 45%, hsl(var(--lime) / 0.35) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   /* Texto com gradiente da marca */
