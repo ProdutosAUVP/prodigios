@@ -69,7 +69,7 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 | Ordem | Componente | Fundo (DS) | Destaque de interação |
 |---|---|---|---|
 | 0 | `Loader` | verde | Olho AUVP abre, contador 0→100, palavras da cultura, cortinas abrem em sincronia com a entrada do Hero |
-| 1 | `Hero` | preta | Mobile-first: título display em largura total, subtítulo + ações, faixa de fotos em grade assimétrica (2 no mobile, 3 a partir de `sm`) com parallax |
+| 1 | `Hero` | preta | Editorial, mobile-first: título em 3 linhas (a última em papel cheio), subtítulo + ações, e composição fotográfica — foto grande em arco revelada por `clip-path` com Ken Burns e base em meio-tom, foto menor sobreposta e selo de vidro; grade de pontos no fundo; parallax em duas profundidades |
 | 2 | `Intro` | preta | Declaração que "acende" palavra a palavra com o scroll + marquee |
 | 3 | `Process` | cinza | **Scroll horizontal pinado** com as 5 fases (empilha no mobile) |
 | 4 | `Trails` | preta | Cards que se montam com elasticidade e inclinam em perspectiva no hover |
@@ -86,7 +86,7 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 - Sem WebGL: o fundo das dobras escuras é o preto sólido da marca com halo e grão em CSS. Bundle inicial ≈ 110 KB gzip (React + GSAP/Lenis + app).
 - Padrões únicos de espaçamento (`--section-y`, `--section-gap`, `--stack`), curvatura (12px do DS + arco como forma-assinatura) e tratamento de foto (`<Photo>`), documentados em `docs/DESIGN-SYSTEM.md`.
 - Mobile-first: classes base para 360px, `sm`/`lg` só adicionam colunas. Título do Hero em 3 linhas curtas que cabem em 360px (`text-display-xl` = `clamp(2.75rem, 8.4vw, 8.5rem)`).
-- Cor pontual: lime só nos CTAs e no check do formulário (ver `docs/DESIGN-SYSTEM.md`).
+- Cor pontual: lime só nos CTAs, na última linha do título do Hero e no check do formulário (ver `docs/DESIGN-SYSTEM.md`).
 - Fotos com `loading="lazy"` (exceto o Hero) e fallback em gradiente da marca se a imagem não carregar.
 - Navegação por teclado com `:focus-visible` em lime; formulário com labels e `aria-live` no loader.
 - Contraste seguindo os tokens `*-emphasis` do DS nas dobras claras.
