@@ -42,16 +42,16 @@ export function Culture({ reducedMotion }: { reducedMotion: boolean }) {
   const hot = new Set(["resultados,", "transparência", "meritocracia.", "“sentimento", "dono”"]);
 
   return (
-    <section ref={root} id="cultura" className="relative overflow-hidden bg-ink/85 py-24 md:py-36 grain">
+    <section ref={root} id="cultura" className="section relative overflow-hidden bg-ink/85 grain">
       <div className="wrap-wide grid gap-14 lg:grid-cols-12 lg:gap-8">
         <div className="relative lg:col-span-5">
           <div className="sticky top-28">
-            <div className="clip-slant-r relative aspect-[4/5] overflow-hidden rounded-lg">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-lg">
               <div data-parallax-img className="absolute inset-[-14%_0]">
-                <Photo photo={photos.culture} overlay={0.4} className="h-full w-full" />
+                <Photo photo={photos.culture} className="h-full w-full !rounded-none" />
               </div>
             </div>
-            <div data-reveal className="glass absolute -bottom-6 -right-4 max-w-[240px] rounded-lg p-5 md:-right-10">
+            <div data-reveal className="glass absolute -bottom-6 right-4 max-w-[240px] rounded-lg p-5 md:-right-10">
               <p className="font-anek text-4xl font-extrabold text-paper">Erre rápido.</p>
               <p className="font-anek text-4xl font-extrabold text-paper">Conserte rápido.</p>
             </div>

@@ -43,7 +43,7 @@ export function CTA({ reducedMotion }: { reducedMotion: boolean }) {
   }
 
   return (
-    <section ref={root} id="inscricao" className="relative overflow-hidden bg-ink/85 py-24 md:py-36 grain">
+    <section ref={root} id="inscricao" className="section relative overflow-hidden bg-ink/85 grain">
       <div aria-hidden className="pointer-events-none absolute left-1/2 top-0 h-[70vmax] w-[70vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,hsl(var(--forest)/0.7),transparent_60%)] blur-3xl" />
 
       <div className="wrap-wide relative grid items-center gap-14 lg:grid-cols-12">
@@ -52,8 +52,8 @@ export function CTA({ reducedMotion }: { reducedMotion: boolean }) {
           <p data-reveal className="mt-6 max-w-xl text-lg leading-relaxed text-paper/70">{cta.text}</p>
 
           <div data-reveal className="relative mt-10 hidden lg:block">
-            <div className="clip-blob w-[70%] rotate-[-2deg] overflow-hidden">
-              <Photo photo={photos.ctaSide} overlay={0.3} className="aspect-[4/3]" />
+            <div className="w-[70%]">
+              <Photo photo={photos.ctaSide} className="clip-arch aspect-[4/5]" />
             </div>
             <div className="glass absolute right-[10%] top-[35%] rounded-lg p-4">
               <p className="label text-paper/60">Sua trilha</p>
@@ -63,7 +63,7 @@ export function CTA({ reducedMotion }: { reducedMotion: boolean }) {
         </div>
 
         <div data-reveal className="lg:col-span-6">
-          <form onSubmit={onSubmit} className="glass relative rounded-2xl p-6 md:p-10" aria-describedby="form-help">
+          <form onSubmit={onSubmit} className="glass relative rounded-lg p-6 md:p-10" aria-describedby="form-help">
             {status === "done" ? (
               <div className="py-10 text-center">
                 <span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-lime text-lime-foreground">

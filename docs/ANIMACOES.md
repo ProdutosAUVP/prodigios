@@ -37,16 +37,17 @@ Desligado com `prefers-reduced-motion`.
 
 `src/components/three/Scene.tsx` é o wrapper: checa WebGL, espera `requestIdleCallback`, escolhe `compact` (< 900px) e pausa o render (`frameloop="never"`) quando alguma dobra `data-scene-off` cobre a viewport inteira ou a aba está oculta.
 
-`SceneCanvas.tsx` (chunk lazy) monta **apoios visuais ligados ao discurso**, não ilustrações soltas:
+`SceneCanvas.tsx` (chunk lazy) segue a linguagem do **traço da AUVP Analítica** (repositório `lp-etfs`, `QUOTE_WAVE`): linha fina que sobe para sempre, ponta acesa, rastro que esmaece até o fundo, e uma rede de pontos leve. Apoio visual, não ilustração; nada sólido.
 
-| Objeto | O que representa | Comportamento |
+| Objeto | O que representa | Como funciona |
 |---|---|---|
-| **Curva** (tubo ao longo de uma `CatmullRomCurve3`) | a curva da média/do mercado, o "fora da curva" do título | desenha-se em ~2 s na entrada (`setDrawRange`) e inclina levemente com o scroll e o mouse |
-| **Ponto** (esfera lime + fio + luz pontual) | o talento fora da curva — único acento de cor da cena | aparece depois da curva, flutua acima do fim dela; no desktop ocupa o vazio à direita do título, no mobile fica ao lado de "curva." |
-| **Degraus** (5 caixas, só desktop) | as cinco fases do processo seletivo | sobem um a um conforme o scroll avança do Hero até a dobra do processo |
-| **Grade** (`GridHelper` quase invisível) | papel milimetrado / contexto de gráfico | estática, no fundo, com fog |
+| **Traço** (`Line2` de `three/examples/jsm/lines`, 220 pontos) | a curva que o talento deixa para trás; a ponta é o "fora da curva" | ondulação em torno de uma reta ascendente; a **fase anda** (`sin(x·k − t)`), então a linha parece subir sem fim. Cor por vértice: fundo (transparente) → papel perto da ponta → lime só nos últimos 7%. Na entrada, `reveal` desenha a linha em ~2 s. `LineMaterial.resolution` acompanha o tamanho do canvas |
+| **Ponta** (dois `Sprite` aditivos com textura radial gerada em canvas) | o único acento de cor da cena | segue o último ponto do traço; halo lime pulsando + núcleo branco |
+| **Rede** (`Points` + `LineSegments` com cor por vértice) | contexto de dados/ecossistema, como o fundo do hero em `lp-etfs` | 70 pontos (34 no mobile) derivam num volume raso em z = −1…−3 (profundidade real → parallax), ligam-se quando a distância é menor que 1.45 e são atraídos pelo cursor. Buffer de links pré-alocado com `setDrawRange` |
 
-Enquadramento: câmera em `z = 10`, `fov 38` → meia-largura visível ≈ 5.5 no desktop (16:9) e ≈ 1.6 no mobile; meia-altura ≈ 3.4. As coordenadas da curva foram escolhidas para esse recorte (`compact` troca o traçado). O grupo raiz (`Rig`) faz parallax com o mouse e deriva verticalmente com um seno do progresso, com lerp independente do framerate (`damp`). Luzes: ambient + directional (papel) + directional (mint) + a luz do ponto. Sem HDR/Environment para não depender de rede nem do drei.
+Como em `lp-etfs`: **não é gráfico e não pode virar um** — sem eixo, ponto de dado ou rótulo, e sempre em movimento, o que impede a leitura como histórico.
+
+Enquadramento: câmera em `z = 10`, `fov 38` → meia-largura visível ≈ 5.5 no desktop (16:9) e ≈ 1.6 no mobile; meia-altura ≈ 3.4. O traço tem um traçado para cada caso (`compact`): no desktop termina no vazio à direita do título; no mobile, ao lado de "curva.". O grupo raiz (`Rig`) faz parallax com o mouse e deriva com um seno do progresso, com lerp independente do framerate (`damp`). Sem luzes de cena (materiais não iluminados), sem HDR, sem drei.
 
 Cores em hex fixo (`FOREST`, `MINT`, `LIME`, `PAPER`) porque materiais Three.js não leem variáveis CSS; se os tokens mudarem, atualize as constantes no topo do arquivo.
 

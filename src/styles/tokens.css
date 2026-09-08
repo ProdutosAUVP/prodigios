@@ -85,6 +85,11 @@
   --lime: 84 92% 62%;            /* acento elétrico exclusivo da LP */
   --lime-foreground: 110 78% 9%;
 
+  /* Ritmo vertical das dobras (mobile-first, cresce com a viewport) */
+  --section-y: clamp(4.5rem, 6vw + 2rem, 8.5rem);   /* padding-block de cada dobra */
+  --section-gap: clamp(2.5rem, 4vw + 1rem, 4.5rem); /* título → conteúdo */
+  --stack: clamp(1.25rem, 2vw, 1.5rem);              /* gap padrão entre cards */
+
   --ease-elastic: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }

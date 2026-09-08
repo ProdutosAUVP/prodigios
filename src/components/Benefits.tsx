@@ -17,11 +17,11 @@ export function Benefits({ reducedMotion }: { reducedMotion: boolean }) {
   const root = useReveal<HTMLElement>({ disabled: reducedMotion, stagger: 0.1 });
 
   return (
-    <section ref={root} id="beneficios" data-scene-off className="relative bg-mist py-24 text-foreground md:py-36">
+    <section ref={root} id="beneficios" data-scene-off className="section relative bg-mist text-foreground">
       <div className="wrap-wide">
-        <SectionHeader tone="light" title={benefits.title} align="center" />
+        <SectionHeader tone="light" title={benefits.title} align="center" className="section-head" />
 
-        <div className="mt-16 grid gap-5 md:grid-cols-6">
+        <div className="grid gap-[var(--stack)] md:grid-cols-6">
           {benefits.items.map((b, i) => (
             <article
               key={b.title}

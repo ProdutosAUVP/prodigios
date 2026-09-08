@@ -22,12 +22,12 @@ const TONES: Record<PhotoData["tone"], string> = {
  * Fotografia humanizada com fallback: se a imagem não carregar, mostra um
  * gradiente da marca no mesmo enquadramento — a página nunca "quebra".
  */
-export function Photo({ photo, className = "", imgClassName = "", overlay = 0.18, loading = "lazy", position = "center" }: Props) {
+export function Photo({ photo, className = "", imgClassName = "", overlay = 0.2, loading = "lazy", position = "center" }: Props) {
   const [failed, setFailed] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <figure className={`relative overflow-hidden bg-ink ${className}`} aria-label={photo.alt}>
+    <figure className={`photo relative overflow-hidden bg-ink ${className}`} aria-label={photo.alt}>
       <div
         aria-hidden
         className={`absolute inset-0 bg-gradient-to-br ${TONES[photo.tone]} transition-opacity duration-600 ${
@@ -43,7 +43,7 @@ export function Photo({ photo, className = "", imgClassName = "", overlay = 0.18
           onLoad={() => setLoaded(true)}
           onError={() => setFailed(true)}
           style={{ objectPosition: position }}
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-600 ${
+          className={`absolute inset-0 h-full w-full object-cover saturate-[0.85] contrast-[1.03] transition-opacity duration-600 ${
             loaded ? "opacity-100" : "opacity-0"
           } ${imgClassName}`}
         />

@@ -28,7 +28,7 @@ export function NotRequired({ reducedMotion }: { reducedMotion: boolean }) {
   }, [root, reducedMotion]);
 
   return (
-    <section ref={root} data-scene-off className="relative bg-white py-24 text-foreground md:py-36">
+    <section ref={root} data-scene-off className="section relative bg-white text-foreground">
       <div className="wrap grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <SectionHeader tone="light" title={notRequired.title} />

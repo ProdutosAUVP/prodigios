@@ -66,7 +66,7 @@ export function Hero({ ready, reducedMotion }: Props) {
     <section ref={root} id="top" className="relative isolate overflow-hidden pt-[72px] grain lg:min-h-[100svh]">
       <div aria-hidden className="pointer-events-none absolute -left-1/3 top-1/4 h-[70vmax] w-[70vmax] rounded-full bg-[radial-gradient(circle,hsl(var(--forest)/0.45),transparent_60%)] blur-3xl" />
 
-      <div className="wrap-wide relative flex flex-col gap-10 pb-16 pt-10 sm:pt-14 lg:min-h-[calc(100svh-72px)] lg:justify-center lg:gap-14 lg:pb-20">
+      <div className="wrap-wide relative flex flex-col gap-10 pb-[var(--section-y)] pt-10 sm:pt-14 lg:min-h-[calc(100svh-72px)] lg:justify-center lg:gap-14">
         {/* 1. Título */}
         <h1 data-hero-copy className="font-anek text-display-xl font-extrabold text-paper">
           {hero.title.map((line, i) => (
@@ -104,15 +104,15 @@ export function Hero({ ready, reducedMotion }: Props) {
           </div>
 
           {/* 3. Fotos — grade assimétrica, sem posicionamento absoluto */}
-          <div className="grid grid-cols-2 items-end gap-3 sm:grid-cols-3 sm:gap-4 lg:col-span-7">
+          <div className="grid grid-cols-2 items-end gap-[var(--stack)] sm:grid-cols-3 lg:col-span-7">
             <div data-hero-photo data-depth="0.5" className="will-change-transform">
-              <Photo photo={photos.heroA} loading="eager" overlay={0.15} className="aspect-[4/5] rounded-lg" />
+              <Photo photo={photos.heroA} loading="eager" className="aspect-[4/5]" />
             </div>
             <div data-hero-photo data-depth="1" className="mb-8 will-change-transform sm:mb-12">
-              <Photo photo={photos.heroB} loading="eager" overlay={0.25} className="clip-arch aspect-[3/4]" />
+              <Photo photo={photos.heroB} loading="eager" className="clip-arch aspect-[3/4]" />
             </div>
             <div data-hero-photo data-depth="0.8" className="hidden will-change-transform sm:block sm:mb-4">
-              <Photo photo={photos.heroC} loading="eager" overlay={0.1} className="aspect-[5/6] rounded-lg" />
+              <Photo photo={photos.heroC} loading="eager" className="aspect-[5/6]" />
             </div>
           </div>
         </div>

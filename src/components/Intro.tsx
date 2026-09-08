@@ -31,7 +31,7 @@ export function Intro({ reducedMotion }: { reducedMotion: boolean }) {
   const emphasis = new Set(["garra", "aprender,", "alta", "performance."]);
 
   return (
-    <section ref={root} className="relative bg-ink/80 py-24 md:py-36">
+    <section ref={root} className="section relative bg-ink/80">
       <div className="wrap">
         <h2 className="mb-8 max-w-4xl font-anek text-display-sm font-semibold text-paper/60">{intro.title}</h2>
         <p data-statement className="max-w-5xl font-anek text-display-md font-semibold leading-[1.08] text-paper">
@@ -43,7 +43,7 @@ export function Intro({ reducedMotion }: { reducedMotion: boolean }) {
         </p>
       </div>
 
-      <div className="mt-20 overflow-hidden border-y border-paper/10 py-5" aria-hidden>
+      <div className="mt-[var(--section-gap)] overflow-hidden border-y border-paper/10 py-5" aria-hidden>
         <div className="flex w-max animate-marquee gap-10 whitespace-nowrap font-anek text-2xl font-bold uppercase tracking-tight text-paper/25 md:text-4xl">
           {Array.from({ length: 2 }).map((_, k) => (
             <span key={k} className="flex gap-10">

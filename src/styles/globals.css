@@ -62,6 +62,14 @@
    Componentes reutilizáveis
    -------------------------------------------------------------------------- */
 @layer components {
+  /* Ritmo das dobras — uma escala só para o site inteiro (mobile → desktop) */
+  .section {
+    padding-block: var(--section-y);
+  }
+  .section-head {
+    margin-bottom: var(--section-gap);
+  }
+
   /* Container do DS: max 1200px, padding inline 24px */
   .wrap {
     width: 100%;
@@ -185,18 +193,12 @@
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
 
-  /* Recortes modernos para fotografia */
-  .clip-slant {
-    clip-path: polygon(0 6%, 100% 0, 100% 94%, 0 100%);
-  }
-  .clip-slant-r {
-    clip-path: polygon(0 0, 100% 6%, 100% 100%, 0 94%);
+  /* Fotografia: um raio (12px do DS) e uma forma-assinatura (arco), nada mais */
+  .photo {
+    border-radius: var(--radius);
   }
   .clip-arch {
     border-radius: 999px 999px var(--radius) var(--radius);
-  }
-  .clip-blob {
-    border-radius: 42% 58% 55% 45% / 50% 40% 60% 50%;
   }
 
   /* Texto com gradiente da marca */
