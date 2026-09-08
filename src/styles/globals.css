@@ -1,0 +1,255 @@
+@import "./tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ----------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: auto; /* Lenis cuida do smooth scroll */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  body {
+    @apply bg-ink text-paper font-roboto antialiased;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: hsl(var(--lime));
+    color: hsl(var(--lime-foreground));
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-anek font-bold;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--lime));
+    outline-offset: 3px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   Componentes reutilizáveis
+   -------------------------------------------------------------------------- */
+@layer components {
+  /* Container do DS: max 1200px, padding inline 24px */
+  .wrap {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+  }
+  .wrap-wide {
+    width: 100%;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: var(--container-pad);
+  }
+
+  /* Botão do DS: Sora Bold caixa alta, radius 5px, hover "vazado" */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap font-sora font-bold uppercase tracking-wider text-[13px] rounded-btn border select-none;
+    height: 48px;
+    padding-inline: 2rem;
+    transition:
+      background-color var(--dur-base) var(--ease-ds),
+      color var(--dur-base) var(--ease-ds),
+      border-color var(--dur-base) var(--ease-ds),
+      transform 420ms var(--ease-elastic),
+      box-shadow var(--dur-base) var(--ease-ds);
+    will-change: transform;
+  }
+  .btn:active {
+    transform: scale(0.97);
+  }
+  .btn-cta {
+    @apply bg-cta text-cta-foreground border-transparent;
+  }
+  .btn-cta:hover {
+    @apply bg-transparent text-cta-emphasis border-cta-emphasis;
+  }
+  /* Invertido para dobras escuras (DS: fundo #fafafa, hover #e0e0e0) */
+  .btn-inverted {
+    background: hsl(0 0% 98%);
+    color: hsl(var(--forest));
+    border-color: hsl(0 0% 98%);
+  }
+  .btn-inverted:hover {
+    background: hsl(0 0% 88%);
+    border-color: hsl(0 0% 88%);
+  }
+  /* Extensão LP: acento lime */
+  .btn-lime {
+    @apply bg-lime text-lime-foreground border-lime;
+  }
+  .btn-lime:hover {
+    @apply bg-transparent text-lime border-lime;
+    box-shadow: 0 0 0 1px hsl(var(--lime) / 0.3), 0 12px 40px -12px hsl(var(--lime) / 0.6);
+  }
+  .btn-ghost {
+    @apply bg-transparent text-paper border-paper/25;
+  }
+  .btn-ghost:hover {
+    @apply border-paper bg-paper text-ink;
+  }
+
+  /* Label do DS: Roboto Bold 12px uppercase */
+  .label {
+    @apply font-roboto text-xs font-bold uppercase tracking-[0.18em];
+  }
+
+  /* Card do DS: radius 12px; hover oficial = shadow + translateY(-2px) em 240ms */
+  .card {
+    @apply rounded-lg border border-border bg-card text-card-foreground;
+    transition:
+      transform var(--dur-base) var(--ease-ds),
+      box-shadow var(--dur-base) var(--ease-ds),
+      border-color var(--dur-base) var(--ease-ds);
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* Card elástico — extensão da LP (usa o overshoot do DS como base) */
+  .card-elastic {
+    transition:
+      transform 520ms var(--ease-elastic),
+      box-shadow 320ms var(--ease-ds),
+      border-color 320ms var(--ease-ds),
+      background-color 320ms var(--ease-ds);
+    will-change: transform;
+  }
+  .card-elastic:hover {
+    transform: translateY(-8px) scale(1.015);
+  }
+
+  /* Vidro para dobras pretas */
+  .glass {
+    background: hsl(0 0% 100% / 0.04);
+    border: 1px solid hsl(0 0% 100% / 0.1);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  /* Máscara para reveal de linhas de texto */
+  .line-mask {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.08em;
+    margin-bottom: -0.08em;
+  }
+  .line-mask > span {
+    display: block;
+    will-change: transform;
+  }
+
+  /* Grão sutil por cima das dobras escuras */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  /* Recortes modernos para fotografia */
+  .clip-slant {
+    clip-path: polygon(0 6%, 100% 0, 100% 94%, 0 100%);
+  }
+  .clip-slant-r {
+    clip-path: polygon(0 0, 100% 6%, 100% 100%, 0 94%);
+  }
+  .clip-arch {
+    border-radius: 999px 999px var(--radius) var(--radius);
+  }
+  .clip-blob {
+    border-radius: 42% 58% 55% 45% / 50% 40% 60% 50%;
+  }
+
+  /* Texto com gradiente da marca */
+  .text-gradient-brand {
+    background: linear-gradient(120deg, hsl(var(--lime)) 0%, hsl(var(--mint)) 55%, hsl(0 0% 98%) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Risco progressivo que respeita quebra de linha (animado via background-size) */
+  .strike {
+    background-image: linear-gradient(hsl(var(--primary)), hsl(var(--primary)));
+    background-repeat: no-repeat;
+    background-position: 0 58%;
+    background-size: 0% 3px;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .stroke-text {
+    -webkit-text-stroke: 1px hsl(0 0% 100% / 0.35);
+    color: transparent;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   Utilitários
+   -------------------------------------------------------------------------- */
+@layer utilities {
+  .pause-anim {
+    animation-play-state: paused;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   Acessibilidade: prefers-reduced-motion neutraliza animações CSS globalmente
+   (mesma regra do DS). As animações JS checam useReducedMotion().
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
