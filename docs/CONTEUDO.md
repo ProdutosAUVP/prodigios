@@ -37,10 +37,10 @@ Cada entrada tem:
 |---|---|
 | `src` | import de `src/assets/photos/` |
 | `alt` | texto alternativo — obrigatório |
-| `tone` | `forest` \| `mint` \| `lime` — gradiente de fallback se a imagem não carregar |
+| `tone` | `forest` \| `mint` \| `lime` — escolhe uma das três variações de gradiente **cinza** de fallback (nomes históricos) |
 | `position` | `object-position` do recorte (ex.: `center 30%` para preservar rostos) |
 
-O componente `<Photo>` aplica: recorte (`clip-slant`, `clip-arch`, `clip-blob` ou radius), sobreposição com a cor da marca (`overlay`, 0–1), degradê inferior e fade-in no `onLoad`. Se o `src` falhar, o gradiente do `tone` fica no lugar e a composição não quebra.
+O componente `<Photo>` aplica: raio de 12px (ou o arco `.clip-arch`), véu neutro (`overlay`, 0–1, em `--ink`), degradê inferior e fade-in no `onLoad`. Se o `src` falhar, um gradiente de cinza (`tone`) fica no lugar e a composição não quebra.
 
 ### Trocando uma foto
 

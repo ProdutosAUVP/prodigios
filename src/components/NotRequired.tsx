@@ -47,7 +47,7 @@ export function NotRequired({ reducedMotion }: { reducedMotion: boolean }) {
                   </p>
                   <p className="mt-2 text-muted-foreground">{item.text}</p>
                 </div>
-                <span data-stamp className="label rotate-[-6deg] rounded-btn border-2 border-primary px-3 py-1.5 text-primary transition-transform duration-320 ease-elastic group-hover:rotate-0 group-hover:scale-110">
+                <span data-stamp className="label rotate-[-6deg] rounded-btn border-2 border-ink px-3 py-1.5 text-ink transition-transform duration-320 ease-elastic group-hover:rotate-0 group-hover:scale-110">
                   Opcional
                 </span>
               </div>

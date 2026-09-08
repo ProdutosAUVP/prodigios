@@ -58,7 +58,7 @@ export function Trails({ reducedMotion }: { reducedMotion: boolean }) {
 
   return (
     <section ref={root} id="trilhas" className="section relative bg-ink grain">
-      <div aria-hidden className="pointer-events-none absolute right-0 top-0 h-[50vmax] w-[50vmax] translate-x-1/3 -translate-y-1/3 rounded-full bg-[radial-gradient(circle,hsl(var(--forest)/0.6),transparent_60%)] blur-3xl" />
+      <div aria-hidden className="pointer-events-none absolute right-0 top-0 h-[50vmax] w-[50vmax] translate-x-1/3 -translate-y-1/3 rounded-full bg-[radial-gradient(circle,hsl(var(--paper)/0.06),transparent_60%)] blur-3xl" />
 
       <div className="wrap-wide relative">
         <SectionHeader title={trails.title} subtitle={trails.subtitle} className="section-head" />
@@ -74,7 +74,7 @@ export function Trails({ reducedMotion }: { reducedMotion: boolean }) {
               style={{ transformStyle: "preserve-3d" }}
             >
               {/* brilho que segue o mouse */}
-              <div aria-hidden className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-320 group-hover:opacity-100" style={{ background: "radial-gradient(400px circle at var(--mx,50%) var(--my,50%), hsl(var(--mint)/0.18), transparent 45%)" }} />
+              <div aria-hidden className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-320 group-hover:opacity-100" style={{ background: "radial-gradient(400px circle at var(--mx,50%) var(--my,50%), hsl(var(--paper)/0.08), transparent 45%)" }} />
 
               <Photo photo={PHOTO[t.id]} className="aspect-[4/3] w-full !rounded-none" imgClassName="transition-transform duration-[1200ms] ease-expo group-hover:scale-105" />
 

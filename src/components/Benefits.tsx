@@ -28,13 +28,13 @@ export function Benefits({ reducedMotion }: { reducedMotion: boolean }) {
               data-reveal
               className={`card card-elastic group relative overflow-hidden bg-white p-8 ${i === 0 || i === 3 ? "md:col-span-4" : "md:col-span-2"}`}
             >
-              <div aria-hidden className="absolute -bottom-16 -right-16 h-48 w-48 rounded-full bg-primary/[0.06] transition-transform duration-600 ease-expo group-hover:scale-[2.4]" />
-              <span className="relative grid h-12 w-12 place-items-center rounded-md bg-primary text-primary-foreground transition-transform duration-600 ease-elastic group-hover:-translate-y-1.5 group-hover:rotate-[-10deg]">
+              <div aria-hidden className="absolute -bottom-16 -right-16 h-48 w-48 rounded-full bg-ink/[0.05] transition-transform duration-600 ease-expo group-hover:scale-[2.4]" />
+              <span className="relative grid h-12 w-12 place-items-center rounded-md bg-ink text-paper transition-transform duration-600 ease-elastic group-hover:-translate-y-1.5 group-hover:rotate-[-10deg]">
                 <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>{ICONS[i]}</svg>
               </span>
               <h3 className="relative mt-8 font-anek text-2xl font-bold md:text-3xl">{b.title}</h3>
               <p className="relative mt-2 text-muted-foreground">{b.text}</p>
-              <span aria-hidden className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-primary transition-transform duration-600 ease-expo group-hover:scale-x-100" />
+              <span aria-hidden className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-ink transition-transform duration-600 ease-expo group-hover:scale-x-100" />
             </article>
           ))}
         </div>

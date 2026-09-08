@@ -48,15 +48,16 @@ Estão marcadas no final de `src/styles/tokens.css` e em `tailwind.config.ts`:
 |---|---|---|
 | `--ink` | `0 0% 4%` | preto quase absoluto das dobras imersivas (o DS usa `0 0% 0%`; o 4% dá profundidade ao vidro e ao grão) |
 | `--paper` | `40 20% 98%` | branco quente para texto sobre preto |
-| `--mist` | `120 8% 94%` | cinza-esverdeado das dobras claras (equivalente ao `#F2F2F2` do DS com um toque da marca) |
-| `--mint` | `145 20% 44%` | alias do verde de acento dark do DS para usar em qualquer tema |
-| `--lime` | `84 92% 62%` | acento elétrico exclusivo da LP: CTAs em dobra escura, marcadores, seleção |
+| `--graphite` | `0 0% 10%` | cinza escuro das dobras e superfícies que se destacam do preto (Intro, coluna "Aprender", cortinas do loader) |
+| `--mist` | `0 0% 95%` | cinza das dobras claras (o `#F2F2F2` do DS) |
+| `--lime` | `84 92% 62%` | acento elétrico exclusivo da LP: só botões de CTA, check de sucesso, seleção e foco |
+| `--forest`, `--mint` | verdes do DS | definidos por compatibilidade, **não usados** na LP |
 | `text-display-*` | `clamp()` de 2rem a 9rem, leading 0.92–1.05, tracking negativo | escala display que o DS não tem (para no `text-5xl`) |
 | `--ease-elastic`, `--ease-expo` | `cubic-bezier(0.34, 1.56, 0.64, 1)`, `cubic-bezier(0.16, 1, 0.3, 1)` | hovers elásticos e reveals |
 | `.glass`, `.grain`, `.clip-*`, `.text-gradient-brand`, `.stroke-text`, `.strike` | — | vidro, grão, recortes de foto, texto gradiente/outline, risco progressivo |
 | `.card-elastic`, `.btn-lime`, `.btn-ghost` | — | variantes de hover e botão para as dobras escuras |
 
-Critério: **a extensão nunca substitui um token do DS onde o DS já responde**. O verde `#023619` continua sendo o CTA nas dobras claras; o lime só aparece sobre preto, onde o DS já prescreve "cor clara + texto quase-preto".
+Critério: **a extensão nunca substitui um token do DS onde o DS já responde** — com uma exceção deliberada: a LP não usa o verde-escuro do DS em lugar nenhum (decisão de 09/2026, ver "Uso pontual de cor"), então `--foreground`, `--muted-foreground` e `--border` são sobrescritos com neutros no bloco "LP extensions".
 
 ### Padrões de espaçamento, curvatura e imagem
 
@@ -66,13 +67,26 @@ Três decisões valem para o site inteiro (tokens em `tokens.css`, classes em `g
 |---|---|---|
 | **Ritmo das dobras** | toda dobra usa o mesmo `padding-block`, que cresce com a viewport; o espaço entre o título da dobra e o conteúdo é sempre o mesmo | `--section-y: clamp(4.5rem, 6vw + 2rem, 8.5rem)` → `.section`; `--section-gap: clamp(2.5rem, 4vw + 1rem, 4.5rem)` → `.section-head`; `--stack: clamp(1.25rem, 2vw, 1.5rem)` para o gap entre cards |
 | **Curvatura** | um raio só: 12px do DS (`--radius`) em cards, fotos, formulário e caixas de vidro; 5px em botões (DS); pílula em chips e carimbo. A única exceção é a **forma-assinatura** — o arco (`.clip-arch`) — usada com parcimônia: a foto grande do Hero e a foto da Inscrição | `rounded-lg`, `.photo`, `.clip-arch`, `rounded-btn`, `rounded-full` |
-| **Tratamento de imagem** | toda foto passa por `<Photo>`: `object-cover`, dessaturação leve (`saturate 0.85`, `contrast 1.03`), véu verde AUVP a 20% em `multiply`, degradê inferior para o preto e fade-in no carregamento; fallback em gradiente da marca. Sem recortes irregulares (blob, diagonal). A foto-âncora do Hero ganha ainda o **meio-tom** (`.halftone-edge`): a base dissolve numa trama de pontos da cor do fundo, referência à linguagem de matriz de pontos | `src/components/Photo.tsx`, `globals.css` |
+| **Tratamento de imagem** | toda foto passa por `<Photo>`: `object-cover`, dessaturação leve (`saturate 0.85`, `contrast 1.03`), véu neutro (`--ink` a 20%), degradê inferior para o preto e fade-in no carregamento; fallback em gradiente de cinza. Sem recortes irregulares (blob, diagonal). A foto-âncora do Hero ganha ainda o **meio-tom** (`.halftone-edge`): a base dissolve numa trama de pontos da cor do fundo, referência à linguagem de matriz de pontos | `src/components/Photo.tsx`, `globals.css` |
 
-**Texturas de fundo** (só em dobra escura, sempre estáticas): `.grain` (ruído SVG a 6%) e `.dots` (grade de pontos de 26px em papel a 16%, mascarada em elipse — usada apenas no Hero).
+**Texturas de fundo** (só em dobra escura, sempre estáticas): `.grain` (ruído SVG a 6%), `.dots` (grade de pontos de 26px em papel a 16%, mascarada em elipse — usada apenas no Hero) e halos radiais em papel a 6–7%.
 
 ### Uso pontual de cor
 
-A página é essencialmente preto, branco quente (`--paper`) e verde AUVP. O **lime** é reservado a quatro lugares: o botão de CTA (navegação, Hero, inscrição), a última linha do título do Hero ("fora da curva.", esmaecendo em degradê — `.text-fade-lime`), o adesivo circular do Hero e **uma dobra inteira** — a Intro, logo abaixo do Hero, em lime com texto preto (referência NG.CASH: uma dobra-bloco de cor entre dobras pretas) — mais o check de sucesso do formulário — mais o ponto final das palavras do loader. Nada de lime em ícones, hovers, números, marcadores ou palavras de ênfase: ênfase em dobra escura é `text-paper` cheio contra `text-paper/70`, e o único acento secundário é o **mint** (`#5A8770`, o verde de acento do DS dark) nas palavras-chave da Cultura. Hovers em dobra escura viram papel (fundo `paper`, texto `ink`); em dobra clara, o verde `--primary`.
+Regra da página (decisão de 09/2026): **preto, grafite e papel; sem verde escuro; lime em pontos raros.**
+
+| Papel | Token | Onde |
+|---|---|---|
+| Fundo das dobras escuras | `--ink` (`0 0% 4%`) | Hero, Trilhas, Cultura, coluna "Não é" do Fit, Inscrição, rodapé |
+| Dobras e superfícies que precisam se destacar do preto | `--graphite` (`0 0% 10%`) | Intro, coluna "Aprender" do Fit, cortinas do loader; cards sobre preto usam `--card-on-preta` (`0 0% 11%`, do DS) |
+| Dobras claras | `#FFF` e `--mist` (`0 0% 95%`, o `#F2F2F2` do DS) | Processo, Sem barreiras, Benefícios |
+| Texto e ícones em dobra clara | `--ink` (títulos, ícones, linhas de progresso, carimbo) e `--muted-foreground` neutro | — |
+| Texto em dobra escura | `--paper` cheio para ênfase, `paper/55–70` para o resto | ênfase é opacidade, nunca cor |
+| **Lime** | `--lime` | **só** nos botões de CTA (navegação, Hero, envio do formulário), no check de sucesso do formulário e no ponto final das palavras do loader |
+
+O que **não** entra: o verde-escuro do DS (`--primary`/`--forest`, `#023619`) e o mint (`#5A8770`) — ficam definidos em `tokens.css` por compatibilidade, mas nenhuma classe da LP os usa. Halos de fundo são papel a 6–7% (cinza), o véu das fotos é `--ink` (neutro) e os fallbacks das fotos são gradientes de cinza. Por isso `--foreground`, `--muted-foreground` e `--border` são sobrescritos no bloco "LP extensions" com valores neutros: o DS usa um verde-escuro `110 78% 9%` como texto padrão, e aqui a regra é preto.
+
+A última linha do título do Hero esmaece em **papel** (`.text-fade`, referência NG.CASH), não em lime; o adesivo circular é papel; a Intro é grafite.
 
 ## Sincronizando com o central
 
