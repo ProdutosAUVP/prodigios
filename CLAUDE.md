@@ -24,7 +24,7 @@ Landing page única (sem rotas) do programa AUVP Prodígios. Vite + React 18 + T
 - Usar `rotation`, não `rotate`, nos tweens.
 - Toda animação JS recebe `reducedMotion` e desliga quando `true`.
 - Dobras claras: `tone="light"` no `SectionHeader`, texto em `ink`. Dobras escuras: `bg-ink` ou `bg-graphite` sólidos.
-- Cor: preto (`ink`), grafite (`graphite`) e papel. **Sem verde escuro** (`forest`/`mint`/`primary` não se usam). Lime **só** em botão CTA, check de sucesso, ponto do loader e destaques pontuais (números da lista "O que você vai aprender"). Ênfase de texto é opacidade.
+- Cor: preto (`ink`), grafite (`graphite`) e papel. **Sem verde escuro** (`forest`/`mint`/`primary` não se usam). Lime **só** em botão CTA, check de sucesso, ponto do loader e destaques pontuais (palavras-chave da Intro e números da lista "O que você vai aprender"). Ênfase de texto é opacidade.
 - Cores novas: HSL sem `hsl()` em `tokens.css`, expostas no `tailwind.config.ts`. Não substituir tokens do DS onde o DS já responde — extensões vão no bloco "LP extensions".
 
 ## Comandos
