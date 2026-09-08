@@ -48,20 +48,21 @@ export function CTA({ reducedMotion }: { reducedMotion: boolean }) {
 
       {/*
         Grid de 12 colunas com as duas colunas esticadas na mesma altura:
-        à esquerda, título + texto no topo e a foto (arco) preenchendo o que
-        sobra até a base do formulário; à direita, o formulário. No mobile a
-        foto some e a ordem é título, texto, formulário.
+        à esquerda, título + texto e a foto em arco (3:2, enquadrando rosto e
+        troféu); à direita, o formulário, que estica até a base da foto com o
+        botão ancorado embaixo. No mobile a foto some e a ordem é título,
+        texto, formulário.
       */}
       <div className="wrap-wide relative grid gap-12 lg:grid-cols-12 lg:items-stretch lg:gap-8">
         <div className="flex flex-col lg:col-span-5">
           <h2 className="max-w-md text-display-md text-paper">{splitWords(cta.title)}</h2>
           <p data-reveal className="mt-6 max-w-lg text-lg leading-relaxed text-paper/70">{cta.text}</p>
 
-          <div data-reveal className="relative mt-10 hidden min-h-[220px] flex-1 lg:block">
+          <div data-reveal className="relative mt-10 hidden aspect-[3/2] lg:block">
             <div className="clip-arch absolute inset-0 overflow-hidden">
-              <Photo photo={photos.ctaSide} className="h-full w-full !rounded-none" />
+              <Photo photo={photos.ctaSide} position="center 42%" className="h-full w-full !rounded-none" />
             </div>
-            <div className="glass absolute bottom-6 left-6 rounded-lg px-5 py-4">
+            <div className="glass absolute right-6 top-6 rounded-lg px-5 py-4">
               <p className="label text-paper/60">Sua trilha</p>
               <p className="font-anek text-2xl font-bold text-paper">Começa aqui.</p>
             </div>
@@ -69,7 +70,8 @@ export function CTA({ reducedMotion }: { reducedMotion: boolean }) {
         </div>
 
         <div data-reveal className="lg:col-span-7">
-          <form onSubmit={onSubmit} className="glass relative rounded-lg p-6 md:p-10" aria-describedby="form-help">
+          {/* h-full + flex-col: o cartão estica até a base da foto e o botão fica ancorado embaixo */}
+          <form onSubmit={onSubmit} className="glass relative flex h-full flex-col rounded-lg p-6 md:p-10" aria-describedby="form-help">
             {status === "done" ? (
               <div className="py-10 text-center">
                 <span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-lime text-lime-foreground">
@@ -100,7 +102,8 @@ export function CTA({ reducedMotion }: { reducedMotion: boolean }) {
                   </label>
                 </div>
 
-                <Button type="submit" variant="lime" magnetic={false} className="group mt-8 w-full" disabled={status === "sending"}>
+                <div className="mt-auto pt-8">
+                <Button type="submit" variant="lime" magnetic={false} className="group w-full" disabled={status === "sending"}>
                   {status === "sending" ? "Enviando…" : cta.button}
                   <ArrowIcon />
                 </Button>
@@ -111,6 +114,7 @@ export function CTA({ reducedMotion }: { reducedMotion: boolean }) {
                 {!site.formEndpoint && (
                   <p className="mt-4 text-center text-xs text-paper/40">Modo demonstração — configure VITE_FORM_ENDPOINT para receber inscrições.</p>
                 )}
+                </div>
               </>
             )}
           </form>
