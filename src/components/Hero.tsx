@@ -8,7 +8,7 @@ import { Button, ArrowIcon } from "./Button";
 type Props = { ready: boolean; reducedMotion: boolean };
 
 /** Adesivos: posição na composição e inclinação de cada um (index = hero.facts). */
-const STICKER_POS = ["left-0 top-[12%] sm:-left-2", "-right-2 top-[30%]", "right-[4%] bottom-[-3%]"];
+const STICKER_POS = ["left-0 top-[12%] sm:-left-2", "-right-2 top-[30%]", "left-[46%] bottom-[-3%] sm:left-[48%]"];
 const STICKER_TILT = [-8, 6, -4];
 
 /**
@@ -163,7 +163,7 @@ export function Hero({ ready, reducedMotion }: Props) {
             </svg>
           </div>
 
-          <div className="glass absolute right-4 top-[46%] flex items-center gap-3 rounded-lg px-4 py-3 sm:right-6">
+          <div className="glass absolute bottom-[42%] right-4 flex items-center gap-3 rounded-lg px-4 py-3 sm:right-6 lg:bottom-[9%]">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-pulse-ring rounded-full bg-paper" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-paper" />
