@@ -1,0 +1,198 @@
+/* Snapshot de ProdutosAUVP/central src/index.css (marca Capital: :root + .dark).
+   Regerar com: npm run tokens:sync — não edite à mão. */
+
+:root {
+    /* === AUVP Capital (Verde) === */
+    --font-display: 'Anek Latin', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+    --font-ui: 'Sora', sans-serif;
+
+    --background: 0 0% 100%;
+    --foreground: 110 78% 9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 110 78% 9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 110 78% 9%;
+
+    --primary: 155 93% 11%;
+    --primary-foreground: 0 0% 100%;
+    /* *-emphasis: versão da cor segura como TEXTO sobre --background (≥4.5:1).
+       No Capital claro a própria cor já passa; na Escola clara o dourado
+       precisa escurecer. Usada em links e no hover "vazado" dos botões. */
+    --primary-emphasis: 155 93% 11%;
+
+    --secondary: 160 55% 18%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-emphasis: 160 55% 18%;
+
+    --muted: 120 10% 95%;
+    --muted-foreground: 110 10% 40%;
+
+    --accent: 155 93% 11%;
+    --accent-foreground: 0 0% 100%;
+
+    /* Vermelho escurecido: branco sobre 0 84% 60% dava 3.78:1 (< 4.5:1). */
+    --destructive: 0 84% 48%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* === Status semânticos (Capital) ===
+       Valores escurecidos para passarem AA (4.5:1) tanto como fundo com
+       texto branco quanto como texto/ícone sobre --background.
+       Exceção: --warning mantém texto escuro; como texto/ícone sobre fundo
+       claro mira 3:1 (mínimo WCAG para elementos gráficos). */
+    --success: 142 72% 29%;
+    --success-foreground: 0 0% 100%;
+    --warning: 35 95% 42%;
+    --warning-foreground: 220 15% 15%;
+    --info: 210 90% 42%;
+    --info-foreground: 0 0% 100%;
+    --error: 0 84% 48%;
+    --error-foreground: 0 0% 100%;
+
+    --border: 120 10% 88%;
+    --input: 120 10% 88%;
+    --ring: 155 93% 11%;
+
+    --radius: 0.75rem;
+
+    /* Brand-specific tokens */
+    --brand: 155 93% 11%;
+    --brand-foreground: 0 0% 100%;
+    --brand-dark: 110 78% 9%;
+    --brand-hover: 155 80% 15%;
+    --brand-gradient-from: 155 93% 11%;
+    --brand-gradient-to: 140 70% 20%;
+
+    /* CTA (sites/LPs) — always green */
+    --cta: 155 93% 11%;
+    --cta-foreground: 0 0% 100%;
+    --cta-emphasis: 155 93% 11%;
+
+    --sidebar-background: 110 78% 9%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 155 93% 11%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 155 50% 16%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 120 20% 15%;
+    --sidebar-ring: 155 93% 11%;
+
+    /* === Data Visualization Palette (Capital) ===
+       Paleta categórica de 8 cores derivadas da identidade verde,
+       balanceada para tabelas, gráficos de pizza, barras e linhas.
+       Ordem otimizada para distinção máxima em séries categóricas. */
+    --chart-1: 152 80% 30%;   /* Verde AUVP */
+    --chart-2: 270 60% 55%;   /* Violeta */
+    --chart-3: 38 92% 55%;    /* Âmbar */
+    --chart-4: 199 89% 48%;   /* Azul */
+    --chart-5: 340 75% 55%;   /* Magenta */
+    --chart-6: 15 80% 50%;    /* Vermelho-tijolo */
+    --chart-7: 90 55% 40%;    /* Oliva */
+    --chart-8: 220 30% 35%;   /* Grafite azulado */
+
+    /* Escala sequencial — para mapas de calor, intensidade, progressão */
+    --chart-seq-1: 145 40% 92%;
+    --chart-seq-2: 150 50% 78%;
+    --chart-seq-3: 152 60% 60%;
+    --chart-seq-4: 154 75% 40%;
+    --chart-seq-5: 155 93% 11%;
+
+    /* Escala divergente — para variação positivo/negativo */
+    --chart-div-neg: 0 72% 51%;
+    --chart-div-mid: 40 30% 92%;
+    --chart-div-pos: 155 93% 25%;
+  }
+
+.dark {
+    /* === AUVP Capital — Dark (fundo preto) === */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Base preto/branco/cinza. Verde #5A8770 reservado para acentos
+       pontuais em ícones e textos (ex: numeração da grade curricular). */
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 8%;
+    --primary-emphasis: 0 0% 98%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 98%;
+    --secondary-emphasis: 0 0% 98%;
+
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 70%;
+
+    /* Verde acento canônico #5A8770; texto 0 0% 5% dá 4.73:1
+       (0 0% 8% ficava em 4.46:1). */
+    --accent: 145 20% 44%;
+    --accent-foreground: 0 0% 5%;
+
+    /* No escuro os status seguem o padrão "cor clara + texto quase-preto";
+       branco sobre 0 75% 55% dava 4.35:1. */
+    --destructive: 0 80% 63%;
+    --destructive-foreground: 0 0% 5%;
+
+    --success: 142 60% 48%;
+    --success-foreground: 0 0% 5%;
+    --warning: 38 95% 60%;
+    --warning-foreground: 0 0% 5%;
+    --info: 210 90% 65%;
+    --info-foreground: 0 0% 5%;
+    --error: 0 80% 65%;
+    --error-foreground: 0 0% 5%;
+
+    --border: 0 0% 16%;
+    --input: 0 0% 14%;
+    --ring: 145 20% 50%;
+
+    /* Brand verde — acento pontual (#5A8770). Texto quase-preto (0 0% 5%),
+       pois branco sobre o verde médio não alcança 4.5:1. */
+    --brand: 145 20% 44%;
+    --brand-foreground: 0 0% 5%;
+    --brand-dark: 0 0% 0%;
+    --brand-hover: 145 20% 54%;
+    --brand-gradient-from: 145 25% 54%;
+    --brand-gradient-to: 145 30% 38%;
+
+    --cta: 0 0% 98%;
+    --cta-foreground: 0 0% 8%;
+    --cta-emphasis: 0 0% 98%;
+
+    --sidebar-background: 0 0% 3%;
+    --sidebar-foreground: 0 0% 92%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 0 0% 8%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 16%;
+    --sidebar-ring: 145 20% 50%;
+
+    /* Data Viz — Dark Capital (paleta colorida para gráficos) */
+    --chart-1: 135 50% 55%;   /* Verde AUVP */
+    --chart-2: 270 65% 70%;   /* Violeta */
+    --chart-3: 38 90% 65%;    /* Âmbar */
+    --chart-4: 199 85% 65%;   /* Azul */
+    --chart-5: 340 75% 70%;   /* Magenta */
+    --chart-6: 15 80% 65%;    /* Vermelho-tijolo claro */
+    --chart-7: 90 55% 60%;    /* Oliva claro */
+    --chart-8: 220 30% 70%;   /* Grafite azulado */
+
+    --chart-seq-1: 135 25% 18%;
+    --chart-seq-2: 135 35% 30%;
+    --chart-seq-3: 135 45% 45%;
+    --chart-seq-4: 135 55% 58%;
+    --chart-seq-5: 130 60% 72%;
+
+    --chart-div-neg: 0 70% 60%;
+    --chart-div-mid: 0 0% 25%;
+    --chart-div-pos: 135 50% 55%;
+
+    --spotlight: hsl(var(--primary) / 0.07);
+  }

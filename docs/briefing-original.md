@@ -1,3 +1,7 @@
+# Briefing original
+
+> Prompt recebido para a construção da página. O programa foi renomeado para **AUVP Prodígios** durante o desenvolvimento; o restante do conteúdo segue este texto.
+
 Atue como um Engenheiro de Front-end Sênior e Especialista em UI/UX. Sua tarefa é desenvolver a Landing Page para o programa "AUVP Jovens Talentos", criando uma experiência imersiva, séria, mas com interações divertidas.
 
 **1. Base de Conteúdo (Copy da Página)**
