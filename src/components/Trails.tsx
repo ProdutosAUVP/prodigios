@@ -57,26 +57,26 @@ export function Trails({ reducedMotion }: { reducedMotion: boolean }) {
   };
 
   return (
-    <section ref={root} id="trilhas" className="relative bg-ink/85 py-24 md:py-36 grain">
+    <section ref={root} id="trilhas" className="section relative bg-ink/85 grain">
       <div aria-hidden className="pointer-events-none absolute right-0 top-0 h-[50vmax] w-[50vmax] translate-x-1/3 -translate-y-1/3 rounded-full bg-[radial-gradient(circle,hsl(var(--forest)/0.6),transparent_60%)] blur-3xl" />
 
       <div className="wrap-wide relative">
-        <SectionHeader title={trails.title} subtitle={trails.subtitle} />
+        <SectionHeader title={trails.title} subtitle={trails.subtitle} className="section-head" />
 
-        <div ref={grid} className="mt-16 grid gap-6 md:grid-cols-3" style={{ perspective: "1200px" }}>
+        <div ref={grid} className="grid gap-[var(--stack)] md:grid-cols-3" style={{ perspective: "1200px" }}>
           {trails.items.map((t, i) => (
             <article
               key={t.id}
               data-trail
               onMouseMove={onMove}
               onMouseLeave={onLeave}
-              className={`group relative flex flex-col overflow-hidden rounded-2xl border border-paper/10 bg-[hsl(var(--card-on-preta))] will-change-transform ${i === 1 ? "md:-translate-y-8" : ""}`}
+              className={`group relative flex flex-col overflow-hidden rounded-lg border border-paper/10 bg-[hsl(var(--card-on-preta))] will-change-transform ${i === 1 ? "md:-translate-y-8" : ""}`}
               style={{ transformStyle: "preserve-3d" }}
             >
               {/* brilho que segue o mouse */}
               <div aria-hidden className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-320 group-hover:opacity-100" style={{ background: "radial-gradient(400px circle at var(--mx,50%) var(--my,50%), hsl(var(--mint)/0.18), transparent 45%)" }} />
 
-              <Photo photo={PHOTO[t.id]} overlay={0.35} className="aspect-[4/3] w-full" imgClassName="transition-transform duration-[1200ms] ease-expo group-hover:scale-110" />
+              <Photo photo={PHOTO[t.id]} className="aspect-[4/3] w-full !rounded-none" imgClassName="transition-transform duration-[1200ms] ease-expo group-hover:scale-105" />
 
               <div className="relative flex flex-1 flex-col p-7">
                 <div className="mb-5 flex items-center justify-between">

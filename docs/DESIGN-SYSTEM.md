@@ -58,6 +58,16 @@ Estão marcadas no final de `src/styles/tokens.css` e em `tailwind.config.ts`:
 
 Critério: **a extensão nunca substitui um token do DS onde o DS já responde**. O verde `#023619` continua sendo o CTA nas dobras claras; o lime só aparece sobre preto, onde o DS já prescreve "cor clara + texto quase-preto".
 
+### Padrões de espaçamento, curvatura e imagem
+
+Três decisões valem para o site inteiro (tokens em `tokens.css`, classes em `globals.css`):
+
+| Padrão | Regra | Token / classe |
+|---|---|---|
+| **Ritmo das dobras** | toda dobra usa o mesmo `padding-block`, que cresce com a viewport; o espaço entre o título da dobra e o conteúdo é sempre o mesmo | `--section-y: clamp(4.5rem, 6vw + 2rem, 8.5rem)` → `.section`; `--section-gap: clamp(2.5rem, 4vw + 1rem, 4.5rem)` → `.section-head`; `--stack: clamp(1.25rem, 2vw, 1.5rem)` para o gap entre cards |
+| **Curvatura** | um raio só: 12px do DS (`--radius`) em cards, fotos, formulário e caixas de vidro; 5px em botões (DS); pílula em chips e carimbo. A única exceção é a **forma-assinatura** — o arco (`.clip-arch`) — usada com parcimônia: uma foto do Hero e a foto da Inscrição | `rounded-lg`, `.photo`, `.clip-arch`, `rounded-btn`, `rounded-full` |
+| **Tratamento de imagem** | toda foto passa por `<Photo>`: `object-cover`, dessaturação leve (`saturate 0.85`, `contrast 1.03`), véu verde AUVP a 20% em `multiply`, degradê inferior para o preto e fade-in no carregamento; fallback em gradiente da marca. Sem recortes irregulares (blob, diagonal) | `src/components/Photo.tsx` |
+
 ### Uso pontual de cor
 
 A página é essencialmente preto, branco quente (`--paper`) e verde AUVP. O **lime** é reservado a três lugares: o botão de CTA (navegação, Hero, inscrição), o ponto "fora da curva" da cena 3D e o check de sucesso do formulário — mais o ponto final das palavras do loader. Nada de lime em ícones, hovers, números, marcadores ou palavras de ênfase: ênfase em dobra escura é `text-paper` cheio contra `text-paper/70`, e o único acento secundário é o **mint** (`#5A8770`, o verde de acento do DS dark) nas palavras-chave da Cultura. Hovers em dobra escura viram papel (fundo `paper`, texto `ink`); em dobra clara, o verde `--primary`.

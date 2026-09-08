@@ -78,8 +78,8 @@ export function Process({ reducedMotion }: { reducedMotion: boolean }) {
 
   return (
     <section ref={root} id="processo" data-scene-off className="relative overflow-hidden bg-mist text-foreground">
-      <div className="min-[900px]:h-screen flex flex-col justify-center py-20 min-[900px]:py-0">
-        <div ref={header} className="wrap-wide mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div className="section flex flex-col justify-center min-[900px]:h-screen min-[900px]:py-0">
+        <div ref={header} className="wrap-wide section-head flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <SectionHeader tone="light" title={process.title} />
           <div data-reveal className="hidden items-center gap-3 text-sm text-muted-foreground min-[900px]:flex">
             <span className="label">Role</span>
@@ -90,7 +90,7 @@ export function Process({ reducedMotion }: { reducedMotion: boolean }) {
           </div>
         </div>
 
-        <div ref={track} className="flex flex-col gap-6 px-6 min-[900px]:w-max min-[900px]:flex-row min-[900px]:gap-8 min-[900px]:pl-[max(24px,calc((100vw-1400px)/2+24px))] min-[900px]:pr-[10vw]">
+        <div ref={track} className="flex flex-col gap-[var(--stack)] px-6 min-[900px]:w-max min-[900px]:flex-row min-[900px]:gap-8 min-[900px]:pl-[max(24px,calc((100vw-1400px)/2+24px))] min-[900px]:pr-[10vw]">
           {process.steps.map((s, i) => (
             <article
               key={s.n}

@@ -12,10 +12,10 @@ export function Fit({ reducedMotion }: { reducedMotion: boolean }) {
   return (
     <section ref={root} className="relative grid lg:grid-cols-2">
       {/* Aprender — verde AUVP */}
-      <div className="relative overflow-hidden bg-forest px-6 py-24 text-paper md:px-12 md:py-32 lg:pl-[max(24px,calc((100vw-1400px)/2+24px))] lg:pr-16">
+      <div className="section relative overflow-hidden bg-forest px-6 text-paper md:px-12 lg:pl-[max(24px,calc((100vw-1400px)/2+24px))] lg:pr-16">
         <div aria-hidden className="pointer-events-none absolute -left-20 -top-20 h-80 w-80 rounded-full bg-mint/25 blur-3xl" />
         <h2 className="text-display-sm text-paper md:text-display-md">{splitWords(learn.title)}</h2>
-        <ul className="mt-12 space-y-4">
+        <ul className="mt-[var(--section-gap)] space-y-[var(--stack)]">
           {learn.items.map((t, i) => (
             <li key={t} data-reveal className="group flex items-start gap-4 rounded-lg border border-paper/10 bg-paper/5 p-5 transition-all duration-320 ease-elastic hover:translate-x-2 hover:border-paper/50 hover:bg-paper/10">
               <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-paper text-forest font-anek text-sm font-extrabold transition-transform duration-320 ease-elastic group-hover:scale-110">
@@ -28,9 +28,9 @@ export function Fit({ reducedMotion }: { reducedMotion: boolean }) {
       </div>
 
       {/* Não é para — preto */}
-      <div className="relative overflow-hidden bg-ink px-6 py-24 text-paper md:px-12 md:py-32 lg:pl-16 lg:pr-[max(24px,calc((100vw-1400px)/2+24px))] grain">
+      <div className="section relative overflow-hidden bg-ink px-6 text-paper md:px-12 lg:pl-16 lg:pr-[max(24px,calc((100vw-1400px)/2+24px))] grain">
         <h2 className="text-display-sm text-paper md:text-display-md">{splitWords(notFor.title)}</h2>
-        <ul className="mt-12 space-y-4">
+        <ul className="mt-[var(--section-gap)] space-y-[var(--stack)]">
           {notFor.items.map((t) => (
             <li key={t} data-reveal className="group flex items-start gap-4 rounded-lg border border-paper/10 p-5 transition-all duration-320 ease-elastic hover:-translate-x-2 hover:border-paper/40">
               <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md border border-paper/20 text-paper/60 transition-all duration-320 ease-elastic group-hover:rotate-90 group-hover:border-paper group-hover:text-paper">

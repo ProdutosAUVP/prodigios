@@ -86,6 +86,7 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 
 - `prefers-reduced-motion`: animações CSS neutralizadas globalmente (regra do DS); as de JS checam `useReducedMotion()` — sem loader, sem Lenis, sem 3D, conteúdo visível de imediato.
 - Three.js e React Three Fiber ficam num chunk próprio, carregado por `React.lazy` só depois do loader e quando o navegador está ocioso; o render pausa quando uma dobra clara cobre a viewport.
+- Padrões únicos de espaçamento (`--section-y`, `--section-gap`, `--stack`), curvatura (12px do DS + arco como forma-assinatura) e tratamento de foto (`<Photo>`), documentados em `docs/DESIGN-SYSTEM.md`.
 - Mobile-first: classes base para 360px, `sm`/`lg` só adicionam colunas. Título do Hero em 3 linhas curtas que cabem em 360px (`text-display-xl` = `clamp(2.75rem, 8.4vw, 8.5rem)`).
 - Cor pontual: lime só nos CTAs, no ponto "fora da curva" da cena 3D e no check do formulário (ver `docs/DESIGN-SYSTEM.md`).
 - Fotos com `loading="lazy"` (exceto o Hero) e fallback em gradiente da marca se a imagem não carregar.
