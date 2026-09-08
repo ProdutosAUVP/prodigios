@@ -63,7 +63,7 @@ export function Culture({ reducedMotion }: { reducedMotion: boolean }) {
 
           <p data-manifesto className="mt-10 max-w-2xl font-anek text-2xl font-medium leading-snug text-paper md:text-[2rem]">
             {words.map((w, i) => (
-              <span key={i} data-cw className={`mr-[0.26em] inline-block ${hot.has(w.toLowerCase()) ? "text-mint" : ""}`}>
+              <span key={i} data-cw className={`mr-[0.26em] inline-block ${hot.has(w.toLowerCase()) ? "text-paper" : "text-paper/70"}`}>
                 {w}
               </span>
             ))}

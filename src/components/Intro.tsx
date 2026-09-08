@@ -3,8 +3,8 @@ import { gsap } from "@/lib/gsap";
 import { intro } from "@/data/content";
 
 /**
- * Declaração de abertura em dobra lime inteira (única da página — referência
- * NG.CASH): palavra a palavra "acende" conforme o scroll (scrub).
+ * Declaração de abertura em dobra grafite (contraste com o preto do Hero):
+ * palavra a palavra "acende" conforme o scroll (scrub).
  */
 export function Intro({ reducedMotion }: { reducedMotion: boolean }) {
   const root = useRef<HTMLElement>(null);
@@ -31,12 +31,12 @@ export function Intro({ reducedMotion }: { reducedMotion: boolean }) {
   const emphasis = new Set(["garra", "aprender,", "alta", "performance."]);
 
   return (
-    <section ref={root} className="section relative bg-lime text-lime-foreground">
+    <section ref={root} className="section relative bg-graphite text-paper">
       <div className="wrap">
-        <h2 className="mb-8 max-w-4xl font-anek text-display-sm font-semibold text-ink/60">{intro.title}</h2>
-        <p data-statement className="max-w-5xl font-anek text-display-md font-semibold leading-[1.08] text-ink">
+        <h2 className="mb-8 max-w-4xl font-anek text-display-sm font-semibold text-paper/55">{intro.title}</h2>
+        <p data-statement className="max-w-5xl font-anek text-display-md font-semibold leading-[1.08] text-paper">
           {words.map((w, i) => (
-            <span key={i} data-w className={`mr-[0.28em] inline-block ${emphasis.has(w.toLowerCase()) ? "text-ink" : "text-ink/65"}`}>
+            <span key={i} data-w className={`mr-[0.28em] inline-block ${emphasis.has(w.toLowerCase()) ? "text-paper" : "text-paper/60"}`}>
               {w}
             </span>
           ))}

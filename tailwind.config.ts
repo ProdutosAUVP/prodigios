@@ -70,6 +70,7 @@ export default {
         },
         // Extensões da LP — não existem no DS.
         ink: "hsl(var(--ink))",
+        graphite: "hsl(var(--graphite))",
         paper: "hsl(var(--paper))",
         mist: "hsl(var(--mist))",
         lime: {

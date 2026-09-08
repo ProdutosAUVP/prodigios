@@ -109,7 +109,7 @@
   /* Invertido para dobras escuras (DS: fundo #fafafa, hover #e0e0e0) */
   .btn-inverted {
     background: hsl(0 0% 98%);
-    color: hsl(var(--forest));
+    color: hsl(var(--ink));
     border-color: hsl(0 0% 98%);
   }
   .btn-inverted:hover {
@@ -245,17 +245,9 @@
     border-radius: 999px 999px var(--radius) var(--radius);
   }
 
-  /* Última linha do título do Hero: lime esmaecendo para a direita (referência NG.CASH) */
-  .text-fade-lime {
-    background: linear-gradient(90deg, hsl(var(--lime)) 0%, hsl(var(--lime)) 45%, hsl(var(--lime) / 0.35) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  /* Texto com gradiente da marca */
-  .text-gradient-brand {
-    background: linear-gradient(120deg, hsl(var(--lime)) 0%, hsl(var(--mint)) 55%, hsl(0 0% 98%) 100%);
+  /* Última linha do título do Hero: papel esmaecendo para a direita (referência NG.CASH) */
+  .text-fade {
+    background: linear-gradient(90deg, hsl(var(--paper)) 0%, hsl(var(--paper)) 40%, hsl(var(--paper) / 0.3) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -263,7 +255,7 @@
 
   /* Risco progressivo que respeita quebra de linha (animado via background-size) */
   .strike {
-    background-image: linear-gradient(hsl(var(--primary)), hsl(var(--primary)));
+    background-image: linear-gradient(hsl(var(--ink)), hsl(var(--ink)));
     background-repeat: no-repeat;
     background-position: 0 58%;
     background-size: 0% 3px;

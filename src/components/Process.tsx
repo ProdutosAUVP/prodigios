@@ -84,7 +84,7 @@ export function Process({ reducedMotion }: { reducedMotion: boolean }) {
           <div data-reveal className="hidden items-center gap-3 text-sm text-muted-foreground min-[900px]:flex">
             <span className="label">Role</span>
             <span className="relative h-px w-40 bg-border">
-              <span data-progress className="absolute inset-0 origin-left scale-x-0 bg-primary" />
+              <span data-progress className="absolute inset-0 origin-left scale-x-0 bg-ink" />
             </span>
             <span className="label">5 fases</span>
           </div>
@@ -97,9 +97,9 @@ export function Process({ reducedMotion }: { reducedMotion: boolean }) {
               data-step
               className="card card-elastic group relative flex min-h-[320px] flex-col justify-between overflow-hidden bg-white p-7 min-[900px]:w-[min(520px,42vw)] min-[900px]:min-h-[440px] min-[900px]:p-10"
             >
-              <div aria-hidden className="absolute -right-10 -top-10 h-44 w-44 rounded-full bg-primary/5 transition-transform duration-600 ease-expo group-hover:scale-[2.2]" />
+              <div aria-hidden className="absolute -right-10 -top-10 h-44 w-44 rounded-full bg-ink/5 transition-transform duration-600 ease-expo group-hover:scale-[2.2]" />
               <div className="relative flex items-start justify-between">
-                <span data-step-part className="font-anek text-7xl font-extrabold leading-none text-primary/15 transition-colors duration-320 group-hover:text-primary md:text-8xl">
+                <span data-step-part className="font-anek text-7xl font-extrabold leading-none text-ink/10 transition-colors duration-320 group-hover:text-ink md:text-8xl">
                   {s.n}
                 </span>
                 <span data-step-part className="label rounded-full border border-border px-3 py-1 text-muted-foreground">
@@ -114,13 +114,13 @@ export function Process({ reducedMotion }: { reducedMotion: boolean }) {
                   {s.text}
                 </p>
               </div>
-              <span aria-hidden className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-primary transition-transform duration-600 ease-expo group-hover:scale-x-100" />
+              <span aria-hidden className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-ink transition-transform duration-600 ease-expo group-hover:scale-x-100" />
             </article>
           ))}
 
           <div data-step className="flex items-center min-[900px]:w-[38vw]">
             <p className="font-anek text-display-md font-bold text-foreground">
-              Do <span className="text-primary">clique</span> ao <span className="text-primary">contrato</span>.
+              Do <span className="text-ink/40">clique</span> ao <span className="text-ink/40">contrato</span>.
             </p>
           </div>
         </div>

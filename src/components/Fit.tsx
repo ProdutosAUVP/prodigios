@@ -3,7 +3,7 @@ import { useReveal } from "@/hooks/useReveal";
 import { splitWords } from "@/lib/text";
 
 /**
- * Duas colunas em contraste: o que você vai aprender (verde) × para quem
+ * Duas colunas em contraste: o que você vai aprender (grafite) × para quem
  * NÃO é (preto). Itens entram em cascata; hover desloca com elasticidade.
  */
 export function Fit({ reducedMotion }: { reducedMotion: boolean }) {
@@ -12,13 +12,13 @@ export function Fit({ reducedMotion }: { reducedMotion: boolean }) {
   return (
     <section ref={root} className="relative grid lg:grid-cols-2">
       {/* Aprender — verde AUVP */}
-      <div className="section relative overflow-hidden bg-forest px-6 text-paper md:px-12 lg:pl-[max(24px,calc((100vw-1400px)/2+24px))] lg:pr-16">
-        <div aria-hidden className="pointer-events-none absolute -left-20 -top-20 h-80 w-80 rounded-full bg-mint/25 blur-3xl" />
+      <div className="section relative overflow-hidden bg-graphite px-6 text-paper md:px-12 lg:pl-[max(24px,calc((100vw-1400px)/2+24px))] lg:pr-16">
+        <div aria-hidden className="pointer-events-none absolute -left-20 -top-20 h-80 w-80 rounded-full bg-paper/5 blur-3xl" />
         <h2 className="text-display-sm text-paper md:text-display-md">{splitWords(learn.title)}</h2>
         <ul className="mt-[var(--section-gap)] space-y-[var(--stack)]">
           {learn.items.map((t, i) => (
             <li key={t} data-reveal className="group flex items-start gap-4 rounded-lg border border-paper/10 bg-paper/5 p-5 transition-all duration-320 ease-elastic hover:translate-x-2 hover:border-paper/50 hover:bg-paper/10">
-              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-paper text-forest font-anek text-sm font-extrabold transition-transform duration-320 ease-elastic group-hover:scale-110">
+              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-paper text-ink font-anek text-sm font-extrabold transition-transform duration-320 ease-elastic group-hover:scale-110">
                 {i + 1}
               </span>
               <span className="font-anek text-xl font-semibold leading-snug md:text-2xl">{t}</span>

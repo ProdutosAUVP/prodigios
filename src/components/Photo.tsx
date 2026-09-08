@@ -12,10 +12,11 @@ type Props = {
   position?: string;
 };
 
+/* Fallbacks em cinza (sem verde): variações leves de grafite para o preto. */
 const TONES: Record<PhotoData["tone"], string> = {
-  forest: "from-forest via-[hsl(150_60%_16%)] to-ink",
-  mint: "from-mint via-forest to-ink",
-  lime: "from-mint via-forest to-ink",
+  forest: "from-[hsl(0_0%_22%)] via-graphite to-ink",
+  mint: "from-[hsl(0_0%_28%)] via-[hsl(0_0%_14%)] to-ink",
+  lime: "from-[hsl(0_0%_18%)] via-graphite to-ink",
 };
 
 /**
@@ -48,11 +49,11 @@ export function Photo({ photo, className = "", imgClassName = "", overlay = 0.2,
           } ${imgClassName}`}
         />
       )}
-      {/* Sobreposição sutil com a cor da marca */}
+      {/* Véu neutro: escurece levemente para o texto e os adesivos assentarem */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 mix-blend-multiply"
-        style={{ background: `hsl(var(--forest) / ${overlay})` }}
+        className="pointer-events-none absolute inset-0"
+        style={{ background: `hsl(var(--ink) / ${overlay})` }}
       />
       <div
         aria-hidden

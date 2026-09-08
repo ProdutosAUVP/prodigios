@@ -14,15 +14,14 @@ const STICKER_TILT = [-8, 6, -4];
 /**
  * Hero editorial, mobile-first:
  *   1. título display (3 linhas curtas que cabem em 360px; a última, "fora da
- *      curva.", é a única palavra em lime da página fora dos CTAs);
+ *      curva.", esmaece em papel para a direita);
  *   2. subtítulo, ações e fatos;
  *   3. composição fotográfica: foto grande em arco (forma-assinatura) com
  *      uma foto menor sobreposta, um selo de vidro e os fatos do programa
  *      como adesivos inclinados (referência NG.CASH);
  *   4. marquee de texto grande e discreto fechando a dobra.
  * Referência NG.CASH: título em caixa baixa com a última linha esmaecendo em
- * degradê, adesivo circular girando, marquee cinza; o lime como dobra
- * inteira fica para a Intro, logo abaixo.
+ * degradê, adesivo circular girando, marquee cinza. Cor: só o CTA leva lime.
  * No desktop, texto e composição dividem a linha (7/5 colunas).
  * Entrada: linhas sobem da máscara, o arco se revela de baixo para cima
  * (clip-path) enquanto a foto "assenta" (Ken Burns), a foto menor e o selo
@@ -91,7 +90,7 @@ export function Hero({ ready, reducedMotion }: Props) {
     <section ref={root} id="top" className="relative isolate overflow-hidden pb-2 pt-[72px] grain lg:min-h-[100svh]">
       {/* fundo: grade de pontos + halo da marca atrás da composição */}
       <div aria-hidden className="dots pointer-events-none absolute inset-0" />
-      <div aria-hidden className="pointer-events-none absolute right-[-20%] top-[10%] h-[80vmin] w-[80vmin] rounded-full bg-[radial-gradient(circle,hsl(var(--forest)/0.5),transparent_62%)] blur-3xl" />
+      <div aria-hidden className="pointer-events-none absolute right-[-20%] top-[10%] h-[80vmin] w-[80vmin] rounded-full bg-[radial-gradient(circle,hsl(var(--paper)/0.07),transparent_62%)] blur-3xl" />
 
       <div className="wrap-wide relative grid gap-14 pb-[var(--section-y)] pt-10 sm:pt-14 lg:min-h-[calc(100svh-72px-64px)] lg:grid-cols-12 lg:items-center lg:gap-8 lg:py-16">
         {/* Texto */}
@@ -99,7 +98,7 @@ export function Hero({ ready, reducedMotion }: Props) {
           <h1 className="font-anek text-display-xl font-bold text-paper">
             {hero.title.map((line, i) => (
               <span key={line} className="line-mask">
-                <span data-hero-line className={i === last ? "text-fade-lime" : ""}>
+                <span data-hero-line className={i === last ? "text-fade" : ""}>
                   {line}
                 </span>
               </span>
@@ -152,7 +151,7 @@ export function Hero({ ready, reducedMotion }: Props) {
 
           {/* adesivo circular girando (referência NG.CASH) */}
           <div data-hero-badge className="absolute -top-8 right-[6%] h-[104px] w-[104px] sm:h-[128px] sm:w-[128px]" aria-hidden>
-            <svg viewBox="0 0 100 100" className="h-full w-full animate-[spin_18s_linear_infinite] text-lime">
+            <svg viewBox="0 0 100 100" className="h-full w-full animate-[spin_18s_linear_infinite] text-paper">
               <defs>
                 <path id="ring" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />
               </defs>

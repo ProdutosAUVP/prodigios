@@ -68,15 +68,15 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 
 | Ordem | Componente | Fundo (DS) | Destaque de interação |
 |---|---|---|---|
-| 0 | `Loader` | verde | Olho AUVP abre, contador 0→100, palavras da cultura, cortinas abrem em sincronia com a entrada do Hero |
+| 0 | `Loader` | grafite | Olho AUVP abre, contador 0→100, palavras da cultura, cortinas abrem em sincronia com a entrada do Hero |
 | 1 | `Hero` | preta | Editorial, mobile-first: título em 3 linhas (a última em papel cheio), subtítulo + ações, e composição fotográfica — foto grande em arco revelada por `clip-path` com Ken Burns e base em meio-tom, foto menor sobreposta, adesivos com os fatos, adesivo circular girando e selo de vidro; grade de pontos no fundo; marquee cinza fechando a dobra; parallax em duas profundidades |
-| 2 | `Intro` | **lime** | Dobra-bloco de cor (única da página): declaração que "acende" palavra a palavra com o scroll |
+| 2 | `Intro` | grafite | Declaração que "acende" palavra a palavra com o scroll |
 | 3 | `Process` | cinza | **Scroll horizontal pinado** com as 5 fases (empilha no mobile) |
 | 4 | `Trails` | preta | Cards que se montam com elasticidade e inclinam em perspectiva no hover |
 | 5 | `NotRequired` | branca | Requisitos riscados ao vivo + carimbo "Opcional" |
 | 6 | `Culture` | preta | Foto sticky com parallax e recorte; manifesto revela palavra a palavra |
 | 7 | `Benefits` | cinza | Grade assimétrica com hover oficial do DS + ícones que pulam |
-| 8 | `Fit` | verde/preta | "O que você vai aprender" × "Para quem NÃO é" |
+| 8 | `Fit` | grafite/preta | "O que você vai aprender" × "Para quem NÃO é" |
 | 9 | `CTA` | preta | Formulário de inscrição (nome, e-mail, trilha) |
 | 10 | `Footer` | preta | — |
 
@@ -86,7 +86,7 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 - Sem WebGL: o fundo das dobras escuras é o preto sólido da marca com halo e grão em CSS. Bundle inicial ≈ 110 KB gzip (React + GSAP/Lenis + app).
 - Padrões únicos de espaçamento (`--section-y`, `--section-gap`, `--stack`), curvatura (12px do DS + arco como forma-assinatura) e tratamento de foto (`<Photo>`), documentados em `docs/DESIGN-SYSTEM.md`.
 - Mobile-first: classes base para 360px, `sm`/`lg` só adicionam colunas. Título do Hero em 3 linhas curtas que cabem em 360px (`text-display-xl` = `clamp(2.75rem, 8.4vw, 8.5rem)`).
-- Cor pontual: lime nos CTAs, na última linha do título do Hero, no adesivo circular, na dobra da Intro e no check do formulário (ver `docs/DESIGN-SYSTEM.md`).
+- Cor: preto, grafite e papel, sem verde escuro; lime só nos botões de CTA e no check do formulário (ver `docs/DESIGN-SYSTEM.md`).
 - Fotos oficiais da AUVP (repositório `etica`) em WebP local, `loading="lazy"` (exceto o Hero) e fallback em gradiente da marca se a imagem não carregar.
 - Navegação por teclado com `:focus-visible` em lime; formulário com labels e `aria-live` no loader.
 - Contraste seguindo os tokens `*-emphasis` do DS nas dobras claras.
