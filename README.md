@@ -71,7 +71,7 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 | 0 | `Loader` | grafite | Olho AUVP abre, contador 0→100, palavras da cultura, cortinas abrem em sincronia com a entrada do Hero |
 | 1 | `Hero` | preta | Editorial, mobile-first: título em 3 linhas (a última em papel cheio), subtítulo + ações, e composição fotográfica — foto grande em arco revelada por `clip-path` com Ken Burns e base em meio-tom, foto menor sobreposta, adesivos com os fatos, adesivo circular girando e selo de vidro; grade de pontos no fundo; marquee cinza fechando a dobra; parallax em duas profundidades |
 | 2 | `Intro` | grafite | Declaração que "acende" palavra a palavra com o scroll |
-| 3 | `Process` | cinza | **Scroll horizontal pinado** com as 5 fases (empilha no mobile) |
+| 3 | `Process` | cinza | Lista vertical das 5 fases com painel fixo (número grande, "Fase N de 5", progresso); a fase que cruza o meio da tela acende |
 | 4 | `Trails` | preta | Cards que se montam com elasticidade e inclinam em perspectiva no hover |
 | 5 | `NotRequired` | branca | Requisitos riscados ao vivo + carimbo "Opcional" |
 | 6 | `Culture` | preta | Foto sticky com parallax e recorte; manifesto revela palavra a palavra |

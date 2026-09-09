@@ -226,6 +226,24 @@
     mask-image: linear-gradient(to top, #000 8%, rgba(0, 0, 0, 0.6) 26%, transparent 48%);
   }
 
+  /* Fases do processo: a fase que cruza o meio da tela acende, as outras esmaecem */
+  .step {
+    transition: opacity 320ms var(--ease-ds);
+  }
+  .step .step-n,
+  .step .step-bar {
+    transition: color 320ms var(--ease-ds), transform 520ms var(--ease-expo);
+  }
+  .step:not(.is-active) {
+    opacity: 0.45;
+  }
+  .step.is-active .step-n {
+    color: hsl(var(--ink));
+  }
+  .step.is-active .step-bar {
+    transform: scaleY(1);
+  }
+
   /* Grão sutil por cima das dobras escuras */
   .grain::after {
     content: "";

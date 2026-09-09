@@ -28,7 +28,7 @@ export function Intro({ reducedMotion }: { reducedMotion: boolean }) {
   }, [reducedMotion]);
 
   const words = intro.statement.split(" ");
-  const emphasis = new Set(["garra", "aprender,", "alta", "performance."]);
+  const emphasis = new Set<string>(intro.emphasis);
 
   return (
     <section ref={root} className="section relative bg-graphite text-paper">
