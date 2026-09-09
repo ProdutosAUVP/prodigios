@@ -5,125 +5,110 @@ import { SectionHeader } from "./SectionHeader";
 import { useReveal } from "@/hooks/useReveal";
 
 /**
- * Fases do processo seletivo em scroll horizontal "pinado" (desktop).
- * No mobile (< 900px) as fases empilham verticalmente com reveal comum.
- * O progresso da trilha (linha) acompanha o scrub.
+ * Fases do processo seletivo, em leitura vertical (sem scroll lateral):
+ *
+ *  - Desktop: painel fixo à esquerda (título, número grande da fase ativa,
+ *    "Fase N de 5" e barra de progresso) + lista das cinco fases à direita.
+ *  - Mobile: título, depois a lista.
+ *
+ * A fase "ativa" é a que cruza o meio da viewport: um ScrollTrigger por
+ * fase liga/desliga a classe `is-active` (a linha acende, as outras
+ * esmaecem) e atualiza número e progresso do painel — sem estado React.
  */
 export function Process({ reducedMotion }: { reducedMotion: boolean }) {
   const root = useRef<HTMLElement>(null);
-  const track = useRef<HTMLDivElement>(null);
   const header = useReveal<HTMLDivElement>({ disabled: reducedMotion });
+  const total = process.steps.length;
 
   useLayoutEffect(() => {
-    if (!root.current || !track.current || reducedMotion) return;
+    if (!root.current) return;
+    const ctx = gsap.context(() => {
+      const rows = gsap.utils.toArray<HTMLElement>("[data-step]");
+      const big = root.current!.querySelector<HTMLElement>("[data-big]");
+      const count = root.current!.querySelector<HTMLElement>("[data-count]");
+      const bar = root.current!.querySelector<HTMLElement>("[data-bar]");
 
-    const mm = gsap.matchMedia();
-    mm.add("(min-width: 900px)", () => {
-      const t = track.current!;
-      const getX = () => -(t.scrollWidth - window.innerWidth);
+      const activate = (i: number) => {
+        rows.forEach((r, k) => r.classList.toggle("is-active", k === i));
+        if (big) big.textContent = process.steps[i].n;
+        if (count) count.textContent = String(i + 1);
+        if (bar) bar.style.transform = `scaleX(${(i + 1) / total})`;
+      };
+      activate(0);
 
-      const tween = gsap.to(t, {
-        x: getX,
-        ease: "none",
-        scrollTrigger: {
-          trigger: root.current,
-          start: "top top",
-          end: () => `+=${t.scrollWidth - window.innerWidth + 200}`,
-          pin: true,
-          scrub: 0.8,
-          invalidateOnRefresh: true,
-          anticipatePin: 1,
-        },
-      });
-
-      // Cada card "monta" ao entrar na viewport horizontal
-      gsap.utils.toArray<HTMLElement>("[data-step]").forEach((card) => {
-        gsap.from(card.querySelectorAll("[data-step-part]"), {
-          y: 60,
-          opacity: 0,
-          rotation: 2,
-          stagger: 0.08,
-          duration: 0.9,
-          ease: "expo.out",
-          scrollTrigger: { trigger: card, containerAnimation: tween, start: "left 85%", once: true },
+      rows.forEach((row, i) => {
+        ScrollTrigger.create({
+          trigger: row,
+          start: "top 55%",
+          end: "bottom 55%",
+          onEnter: () => activate(i),
+          onEnterBack: () => activate(i),
         });
-      });
-
-      gsap.to("[data-progress]", {
-        scaleX: 1,
-        ease: "none",
-        scrollTrigger: { trigger: root.current, start: "top top", end: () => `+=${t.scrollWidth - window.innerWidth + 200}`, scrub: true },
-      });
-    });
-
-    mm.add("(max-width: 899px)", () => {
-      gsap.utils.toArray<HTMLElement>("[data-step]").forEach((card) => {
-        const restore = freezeTransitions(card);
-        gsap.from(card, {
-          y: 50,
+        if (reducedMotion) return;
+        const restore = freezeTransitions(row);
+        gsap.from(row, {
+          y: 40,
           opacity: 0,
           duration: 0.9,
           ease: "expo.out",
           onComplete: restore,
-          scrollTrigger: { trigger: card, start: "top 85%", once: true },
+          scrollTrigger: { trigger: row, start: "top 88%", once: true },
         });
       });
-    });
-
-    return () => {
-      mm.revert();
-      ScrollTrigger.refresh();
-    };
-  }, [reducedMotion]);
+    }, root);
+    return () => ctx.revert();
+  }, [reducedMotion, total]);
 
   return (
-    <section ref={root} id="processo" className="relative overflow-hidden bg-mist text-foreground">
-      <div className="section flex flex-col justify-center min-[900px]:h-screen min-[900px]:py-0">
-        <div ref={header} className="wrap-wide section-head flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <SectionHeader tone="light" title={process.title} />
-          <div data-reveal className="hidden items-center gap-3 text-sm text-muted-foreground min-[900px]:flex">
-            <span className="label">Role</span>
-            <span className="relative h-px w-40 bg-border">
-              <span data-progress className="absolute inset-0 origin-left scale-x-0 bg-ink" />
-            </span>
-            <span className="label">5 fases</span>
+    <section ref={root} id="processo" className="section relative bg-mist text-ink">
+      <div className="wrap-wide grid gap-12 lg:grid-cols-12 lg:gap-8">
+        {/* Painel: fixo no desktop enquanto a lista rola */}
+        <div className="lg:col-span-5">
+          <div ref={header} className="lg:sticky lg:top-28">
+            <SectionHeader tone="light" title={process.title} subtitle={process.lead} />
+
+            <div data-reveal className="mt-10 hidden items-end gap-6 lg:flex">
+              <span data-big className="font-anek text-[7rem] font-extrabold leading-[0.85] tracking-tight text-ink" aria-hidden>
+                01
+              </span>
+              <div className="mb-2 flex-1">
+                <p className="label text-muted-foreground">
+                  Fase <span data-count>1</span> de {total}
+                </p>
+                <div className="mt-3 h-px w-full bg-border">
+                  <div data-bar className="h-full origin-left bg-ink transition-transform duration-600 ease-expo" style={{ transform: `scaleX(${1 / total})` }} />
+                </div>
+              </div>
+            </div>
+
+            <p data-reveal className="mt-10 hidden font-anek text-2xl font-semibold text-ink/40 lg:block">{process.closing}</p>
           </div>
         </div>
 
-        <div ref={track} className="flex flex-col gap-[var(--stack)] px-6 min-[900px]:w-max min-[900px]:flex-row min-[900px]:gap-8 min-[900px]:pl-[max(24px,calc((100vw-1400px)/2+24px))] min-[900px]:pr-[10vw]">
+        {/* Lista de fases */}
+        <ol className="lg:col-span-7">
           {process.steps.map((s, i) => (
-            <article
+            <li
               key={s.n}
               data-step
-              className="card card-elastic group relative flex min-h-[320px] flex-col justify-between overflow-hidden bg-white p-7 min-[900px]:w-[min(520px,42vw)] min-[900px]:min-h-[440px] min-[900px]:p-10"
+              className="step group relative grid grid-cols-[3.5rem_1fr] gap-4 border-t border-ink/10 py-7 last:border-b sm:grid-cols-[5rem_1fr] sm:gap-8 sm:py-9"
             >
-              <div aria-hidden className="absolute -right-10 -top-10 h-44 w-44 rounded-full bg-ink/5 transition-transform duration-600 ease-expo group-hover:scale-[2.2]" />
-              <div className="relative flex items-start justify-between">
-                <span data-step-part className="font-anek text-7xl font-extrabold leading-none text-ink/10 transition-colors duration-320 group-hover:text-ink md:text-8xl">
-                  {s.n}
-                </span>
-                <span data-step-part className="label rounded-full border border-border px-3 py-1 text-muted-foreground">
-                  Fase {i + 1} de {process.steps.length}
-                </span>
-              </div>
-              <div className="relative">
-                <h3 data-step-part className="font-anek text-display-sm font-bold text-foreground">
+              <span className="step-n font-anek text-3xl font-extrabold leading-none tabular-nums text-ink/25 sm:text-4xl" aria-hidden>
+                {s.n}
+              </span>
+              <div>
+                <h3 className="font-anek text-2xl font-bold leading-tight text-ink sm:text-3xl">
+                  <span className="sr-only">Fase {i + 1}: </span>
                   {s.title}
                 </h3>
-                <p data-step-part className="mt-3 max-w-sm text-base leading-relaxed text-muted-foreground md:text-lg">
-                  {s.text}
-                </p>
+                <p className="step-text mt-2 max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">{s.text}</p>
               </div>
-              <span aria-hidden className="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-ink transition-transform duration-600 ease-expo group-hover:scale-x-100" />
-            </article>
+              <span aria-hidden className="step-bar absolute -left-6 top-0 h-full w-[3px] origin-top scale-y-0 bg-lime sm:-left-8" />
+            </li>
           ))}
+        </ol>
 
-          <div data-step className="flex items-center min-[900px]:w-[38vw]">
-            <p className="font-anek text-display-md font-bold text-foreground">
-              Do <span className="text-ink/40">clique</span> ao <span className="text-ink/40">contrato</span>.
-            </p>
-          </div>
-        </div>
+        <p className="font-anek text-2xl font-semibold text-ink/40 lg:hidden">{process.closing}</p>
       </div>
     </section>
   );

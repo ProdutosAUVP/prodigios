@@ -17,19 +17,23 @@ export const hero = {
   band: ["Um programa para talentos fora da curva", "Tecnologia", "Growth & Marketing", "Negócios & Finanças"],
   ring: "Talentos fora da curva • AUVP Prodígios • ",
   subtitle:
-    "Para estudantes de qualquer curso e qualquer idade que querem entrar no mercado com garra, vontade de aprender e foco em alta performance.",
+    "Para estudantes de qualquer curso e qualquer idade que querem entrar no mercado aprendendo rápido, entregando de verdade e jogando em alta performance.",
   primaryCta: "Quero me inscrever",
   secondaryCta: "Conhecer as trilhas",
 } as const;
 
 export const intro = {
-  title: "Para estudantes de qualquer curso e qualquer idade",
+  title: "Isso não é um programa de estágio.",
   statement:
-    "O programa é voltado para talentos que desejam ingressar no mercado de trabalho com garra e vontade de aprender, focado em alta performance.",
+    "É a porta de entrada para quem quer assumir responsabilidade de verdade, cedo. Sem curso certo, sem idade certa, sem currículo perfeito: aqui o que pesa é a entrega, e a régua é alta.",
+  /** palavras da declaração que ficam em lime (comparação exata, com pontuação) */
+  emphasis: ["responsabilidade", "entrega,", "alta."],
 } as const;
 
 export const process = {
   title: "As fases do nosso processo seletivo",
+  lead: "Cinco etapas, sem atalho. Cada uma filtra de verdade.",
+  closing: "Cinco fases. Nenhum atalho.",
   steps: [
     { n: "01", title: "Inscrição", text: "Preenchimento de dados e envio de informações." },
     { n: "02", title: "Testes", text: "Avaliações de perfil, lógica e nivelamento." },
@@ -79,8 +83,10 @@ export const notRequired = {
 export const culture = {
   title: "A nossa cultura, a verdade nua e crua",
   statement:
-    "Foco extremo em resultados, transparência e meritocracia. Aqui valorizamos quem tem proatividade, “sentimento de dono” e assume responsabilidades sem medo de errar rápido e consertar rápido.",
-  pillars: ["Resultados", "Transparência", "Meritocracia", "Sentimento de dono"],
+    "Foco extremo em resultados, transparência e meritocracia. Aqui valorizamos quem tem proatividade, puxa a responsabilidade para si e não tem medo de errar rápido e consertar rápido.",
+  /** palavras do manifesto que ficam em destaque (comparação exata, com pontuação) */
+  emphasis: ["resultados,", "transparência", "meritocracia.", "responsabilidade"],
+  pillars: ["Resultados", "Transparência", "Meritocracia", "Responsabilidade"],
 } as const;
 
 export const benefits = {

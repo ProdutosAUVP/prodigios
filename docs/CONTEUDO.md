@@ -4,7 +4,7 @@
 
 Toda a copy da página vive em `src/data/content.ts`, seção por seção, e é a única fonte de verdade — os componentes não têm texto hardcoded. O texto reproduz o briefing ([briefing-original.md](briefing-original.md)) com o nome atualizado para **AUVP Prodígios**.
 
-Para alterar um texto, edite o objeto correspondente (`hero`, `process`, `trails`, `notRequired`, `culture`, `benefits`, `learn`, `notFor`, `cta`, `nav`). Alguns componentes destacam palavras específicas (por exemplo `garra`, `aprender,`, `alta`, `performance.` na `Intro`; `resultados,`, `transparência`, `meritocracia.` na `Culture`) via um `Set` no próprio componente — ajuste-o se a frase mudar.
+Para alterar um texto, edite o objeto correspondente (`hero`, `process`, `trails`, `notRequired`, `culture`, `benefits`, `learn`, `notFor`, `cta`, `nav`). As palavras destacadas da `Intro` e da `Culture` ficam nos campos `emphasis` de cada objeto (comparação exata com a palavra, incluindo pontuação) — ajuste-os junto com a frase. Copy revisada pela diretoria em 09/2026: a Intro ganhou título próprio ("Isso não é um programa de estágio."), "garra" saiu do Hero e da Intro, "sentimento de dono" virou "puxa a responsabilidade para si" (pilar "Responsabilidade"), e o processo ganhou `lead` e `closing` ("Cinco fases. Nenhum atalho.").
 
 ## Sem eyebrows
 

@@ -39,7 +39,7 @@ export function Culture({ reducedMotion }: { reducedMotion: boolean }) {
   }, [root, reducedMotion]);
 
   const words = culture.statement.split(" ");
-  const hot = new Set(["resultados,", "transparência", "meritocracia.", "“sentimento", "dono”"]);
+  const hot = new Set<string>(culture.emphasis);
 
   return (
     <section ref={root} id="cultura" className="section relative overflow-hidden bg-ink grain">
