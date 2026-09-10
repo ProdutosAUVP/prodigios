@@ -7,7 +7,7 @@ type Props = {
   reducedMotion: boolean;
 };
 
-const WORDS = ["Foco", "Entrega", "Verdade", "Future"];
+const WORDS = ["Foco", "Entrega", "Verdade", "Prodígios"];
 
 /**
  * Loading screen: o olho AUVP abre, o contador vai de 0 a 100 enquanto as

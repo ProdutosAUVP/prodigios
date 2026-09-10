@@ -6,6 +6,10 @@ Toda a copy da página vive em `src/data/content.ts`, seção por seção, e é 
 
 Para alterar um texto, edite o objeto correspondente (`hero`, `process`, `trails`, `notRequired`, `culture`, `benefits`, `learn`, `notFor`, `cta`, `nav`). As palavras destacadas da `Intro` e da `Culture` ficam nos campos `emphasis` de cada objeto (comparação exata com a palavra, incluindo pontuação) — ajuste-os junto com a frase. Copy revisada pela diretoria em 09/2026: a Intro ganhou título próprio ("Isso não é um programa de estágio."), "garra" saiu do Hero e da Intro, "sentimento de dono" virou "puxa a responsabilidade para si" (pilar "Responsabilidade"), e o processo ganhou `lead` e `closing` ("Cinco fases. Nenhum atalho.").
 
+## Nome do programa
+
+O programa chama-se **AUVP Future** em toda a página (copy, marca, metadados). A única exceção, por decisão da diretoria, é a **tela de carregamento**: a última palavra do loader continua sendo "Prodígios." (lista `WORDS` em `src/components/Loader.tsx`).
+
 ## Sem eyebrows
 
 A página não usa *eyebrows* (a etiqueta pequena em caixa alta acima dos títulos). Cada dobra abre direto no título display; frases do briefing que eram etiquetas viraram títulos de verdade (`intro.title`, `cta.formTitle`). A classe `.label` continua existindo para etiquetas funcionais (carimbo "Opcional", "Trilha 1", rótulos de formulário).
