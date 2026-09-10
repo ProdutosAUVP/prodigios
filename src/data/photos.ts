@@ -1,5 +1,6 @@
 /**
- * Fotografia oficial da AUVP — arquivos de ProdutosAUVP/etica, convertidos
+ * Fotografia oficial da AUVP — arquivos de ProdutosAUVP/etica (e IMG_8570.jpg
+ * da raiz deste repositório, para o Hero), convertidos
  * para WebP (largura máx. 900–1400px, qualidade 78) em src/assets/photos/.
  * Cada entrada tem um `tone` usado como fallback (gradiente da marca) caso a
  * imagem não carregue, e `position` para o recorte (`object-position`).
@@ -7,7 +8,7 @@
  * Para trocar uma foto: substitua o arquivo em src/assets/photos/ mantendo a
  * proporção aproximada, ou aponte `src` para um novo import.
  */
-import heroArco from "@/assets/photos/hero-arco.webp";
+import heroPrincipal from "@/assets/photos/hero-principal.webp";
 import heroBandeira from "@/assets/photos/hero-bandeira.webp";
 import culturaTatuagens from "@/assets/photos/cultura-tatuagens.webp";
 import trilhaTecnologia from "@/assets/photos/trilha-tecnologia.webp";
@@ -29,10 +30,10 @@ export const photos: Record<string, Photo> = {
   /** Hero — foto-âncora em arco */
   heroB: {
     id: "heroB",
-    src: heroArco,
-    alt: "Colaboradora da AUVP sorrindo em um encontro do time",
+    src: heroPrincipal,
+    alt: "Jovem da AUVP de fones, sorrindo enquanto trabalha no computador",
     tone: "forest",
-    position: "center 30%",
+    position: "center 32%",
   },
   /** Hero — foto menor sobreposta */
   heroA: {

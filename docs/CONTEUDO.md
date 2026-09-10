@@ -2,7 +2,7 @@
 
 ## Copy
 
-Toda a copy da página vive em `src/data/content.ts`, seção por seção, e é a única fonte de verdade — os componentes não têm texto hardcoded. O texto reproduz o briefing ([briefing-original.md](briefing-original.md)) com o nome atualizado para **AUVP Prodígios**.
+Toda a copy da página vive em `src/data/content.ts`, seção por seção, e é a única fonte de verdade — os componentes não têm texto hardcoded. O texto reproduz o briefing ([briefing-original.md](briefing-original.md)) com o nome atualizado para **AUVP Future**.
 
 Para alterar um texto, edite o objeto correspondente (`hero`, `process`, `trails`, `notRequired`, `culture`, `benefits`, `learn`, `notFor`, `cta`, `nav`). As palavras destacadas da `Intro` e da `Culture` ficam nos campos `emphasis` de cada objeto (comparação exata com a palavra, incluindo pontuação) — ajuste-os junto com a frase. Copy revisada pela diretoria em 09/2026: a Intro ganhou título próprio ("Isso não é um programa de estágio."), "garra" saiu do Hero e da Intro, "sentimento de dono" virou "puxa a responsabilidade para si" (pilar "Responsabilidade"), e o processo ganhou `lead` e `closing` ("Cinco fases. Nenhum atalho.").
 
@@ -12,11 +12,11 @@ A página não usa *eyebrows* (a etiqueta pequena em caixa alta acima dos títul
 
 ## Fotografia
 
-`src/data/photos.ts` mapeia cada foto usada na página. São **fotos oficiais da AUVP**, vindas do repositório [ProdutosAUVP/etica](https://github.com/ProdutosAUVP/etica) (código de ética) e convertidas para WebP em `src/assets/photos/` (largura máxima 900–1400px, qualidade 78, EXIF removido; ~650 KB no total).
+`src/data/photos.ts` mapeia cada foto usada na página. São **fotos oficiais da AUVP**, vindas do repositório [ProdutosAUVP/etica](https://github.com/ProdutosAUVP/etica) (código de ética) e, no caso da foto principal do Hero, do arquivo `IMG_8570.jpg` na raiz deste repositório e convertidas para WebP em `src/assets/photos/` (largura máxima 900–1400px, qualidade 78, EXIF removido; ~650 KB no total).
 
 | Arquivo | Origem em `etica` | Onde aparece |
 |---|---|---|
-| `hero-arco.webp` | `imagem que acompanha item 5.1.jpg` | Hero, foto-âncora em arco |
+| `hero-principal.webp` | `IMG_8570.jpg` (raiz deste repositório) | Hero, foto-âncora em arco |
 | `hero-bandeira.webp` | `item 5 - imagem diversidade.webp` (recorte quadrado) | Hero, foto menor sobreposta |
 | `cultura-tatuagens.webp` | `item 3 - imagem diversidade.jpg` | Cultura |
 | `trilha-tecnologia.webp` | `imagem que acompanha item 4.jpg` | Trilha 1 — Tecnologia |

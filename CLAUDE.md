@@ -1,10 +1,10 @@
-# CLAUDE.md — AUVP Prodígios (landing page)
+# CLAUDE.md — AUVP Future (landing page)
 
 Guia rápido para IAs e novos contribuidores. Leia antes de mexer no código.
 
 ## O que é
 
-Landing page única (sem rotas) do programa AUVP Prodígios. Vite + React 18 + TypeScript + Tailwind, com Lenis + GSAP ScrollTrigger para o scroll. Sem WebGL. Publicada no GitHub Pages em `/prodigios/`.
+Landing page única (sem rotas) do programa AUVP Future. Vite + React 18 + TypeScript + Tailwind, com Lenis + GSAP ScrollTrigger para o scroll. Sem WebGL. Publicada no GitHub Pages em `/prodigios/`.
 
 ## Entry points
 
