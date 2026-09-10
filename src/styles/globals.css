@@ -226,6 +226,14 @@
     mask-image: linear-gradient(to top, #000 8%, rgba(0, 0, 0, 0.6) 26%, transparent 48%);
   }
 
+  /* Declaração da Intro: os destaques só acendem em lime com a frase toda revelada */
+  .statement [data-emphasis] {
+    transition: color 700ms var(--ease-ds);
+  }
+  .statement.is-lit [data-emphasis] {
+    color: hsl(var(--lime));
+  }
+
   /* Fases do processo: a fase que cruza o meio da tela acende, as outras esmaecem */
   .step {
     transition: opacity 320ms var(--ease-ds);

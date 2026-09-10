@@ -7,7 +7,7 @@ type Props = {
   reducedMotion: boolean;
 };
 
-const WORDS = ["Garra", "Foco", "Entrega", "Prodígios"];
+const WORDS = ["Foco", "Entrega", "Verdade", "Future"];
 
 /**
  * Loading screen: o olho AUVP abre, o contador vai de 0 a 100 enquanto as
@@ -97,7 +97,7 @@ export function Loader({ onDone, reducedMotion }: Props) {
   if (reducedMotion) return null;
 
   return (
-    <div ref={root} className="fixed inset-0 z-[100] overflow-hidden" aria-live="polite" aria-label="Carregando AUVP Prodígios">
+    <div ref={root} className="fixed inset-0 z-[100] overflow-hidden" aria-live="polite" aria-label="Carregando AUVP Future">
       <div data-curtain-top className="absolute inset-x-0 top-0 h-1/2 bg-graphite" />
       <div data-curtain-bottom className="absolute inset-x-0 bottom-0 h-1/2 bg-graphite" />
       <div aria-hidden className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(var(--paper)/0.06),transparent_60%)]" />

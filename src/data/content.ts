@@ -1,10 +1,10 @@
 /**
  * Copy oficial da página — fonte única de verdade para todos os componentes.
- * Programa: AUVP Prodígios.
+ * Programa: AUVP Future.
  */
 
 export const site = {
-  name: "AUVP Prodígios",
+  name: "AUVP Future",
   tagline: "Um programa para talentos fora da curva.",
   applyUrl: import.meta.env.VITE_APPLY_URL || "#inscricao",
   formEndpoint: import.meta.env.VITE_FORM_ENDPOINT || "",
@@ -15,7 +15,7 @@ export const hero = {
   facts: ["Qualquer curso", "Qualquer idade", "Três trilhas de carreira"],
   badge: "3 trilhas · 5 fases · 1 carreira",
   band: ["Um programa para talentos fora da curva", "Tecnologia", "Growth & Marketing", "Negócios & Finanças"],
-  ring: "Talentos fora da curva • AUVP Prodígios • ",
+  ring: "Talentos fora da curva • AUVP Future • ",
   subtitle:
     "Para estudantes de qualquer curso e qualquer idade que querem entrar no mercado aprendendo rápido, entregando de verdade e jogando em alta performance.",
   primaryCta: "Quero me inscrever",

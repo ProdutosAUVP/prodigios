@@ -1,6 +1,6 @@
-# AUVP Prodígios — Landing Page
+# AUVP Future — Landing Page
 
-Landing page do programa **AUVP Prodígios**, "um programa para talentos fora da curva". Experiência imersiva e séria, com scroll interativo, loading screen e micro-interações elásticas — construída sobre os tokens do [Design System AUVP](https://github.com/ProdutosAUVP/central) e extrapolando-os onde a página pede.
+Landing page do programa **AUVP Future**, "um programa para talentos fora da curva". Experiência imersiva e séria, com scroll interativo, loading screen e micro-interações elásticas — construída sobre os tokens do [Design System AUVP](https://github.com/ProdutosAUVP/central) e extrapolando-os onde a página pede.
 
 Pronta para deploy no **GitHub Pages** (workflow incluído).
 

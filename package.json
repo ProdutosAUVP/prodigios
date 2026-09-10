@@ -1,8 +1,8 @@
 {
-  "name": "auvp-prodigios",
+  "name": "auvp-future",
   "private": true,
   "version": "1.0.0",
-  "description": "Landing page do programa AUVP Prodígios — Vite + React + GSAP + Lenis, pronta para GitHub Pages.",
+  "description": "Landing page do programa AUVP Future — Vite + React + GSAP + Lenis, pronta para GitHub Pages.",
   "type": "module",
   "scripts": {
     "dev": "vite",
