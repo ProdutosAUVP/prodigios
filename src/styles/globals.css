@@ -228,7 +228,7 @@
 
   /* Declaração da Intro: os destaques só acendem em lime com a frase toda revelada */
   .statement [data-emphasis] {
-    transition: color 700ms var(--ease-ds);
+    transition: color 350ms var(--ease-ds);
   }
   .statement.is-lit [data-emphasis] {
     color: hsl(var(--lime));

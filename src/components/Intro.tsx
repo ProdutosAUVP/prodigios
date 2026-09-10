@@ -21,14 +21,14 @@ export function Intro({ reducedMotion }: { reducedMotion: boolean }) {
           y: 0,
           stagger: 0.05,
           ease: "none",
-          scrollTrigger: { trigger: "[data-statement]", start: "top 75%", end: "bottom 45%", scrub: 0.4 },
+          scrollTrigger: { trigger: "[data-statement]", start: "top 80%", end: "bottom 65%", scrub: 0.3 },
         },
       );
       // As palavras de destaque só acendem em lime quando a frase inteira
       // já foi revelada (mesmo ponto em que o scrub acima termina).
       ScrollTrigger.create({
         trigger: "[data-statement]",
-        start: "bottom 45%",
+        start: "bottom 65%",
         end: "bottom top",
         toggleClass: { targets: "[data-statement]", className: "is-lit" },
       });
