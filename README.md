@@ -70,7 +70,7 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 |---|---|---|---|
 | 0 | `Loader` | grafite | Olho AUVP abre, contador 0→100, palavras da cultura, cortinas abrem em sincronia com a entrada do Hero |
 | 1 | `Hero` | preta | Editorial, mobile-first: título em 3 linhas (a última em papel cheio), subtítulo + ações, e composição fotográfica — foto grande em arco revelada por `clip-path` com Ken Burns e base em meio-tom, foto menor sobreposta, adesivos com os fatos, adesivo circular girando e selo de vidro; grade de pontos no fundo; marquee cinza fechando a dobra; parallax em duas profundidades |
-| 2 | `About` | branca | "O que é a AUVP?": quatro credenciais em grade (60 mil+, Top 1, 4 frentes, Cultura) |
+| 2 | `About` | branca | "O que é a AUVP?": quatro credenciais em grade (60 mil+, Top 1, soluções integradas, valores) |
 | 3 | `Intro` | grafite | "Isso não é um programa de estágio": declaração que "acende" palavra a palavra com o scroll |
 | 4 | `Process` | cinza | Lista vertical das 5 fases com painel fixo (número grande, "Fase N de 5", progresso); a fase que cruza o meio da tela acende |
 | 5 | `Trails` | preta | Cards que se montam com elasticidade e inclinam em perspectiva no hover |
