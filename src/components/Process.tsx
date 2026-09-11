@@ -46,12 +46,17 @@ export function Process({ reducedMotion }: { reducedMotion: boolean }) {
           onEnterBack: () => activate(i),
         });
         if (reducedMotion) return;
-        const restore = freezeTransitions(row);
-        gsap.from(row, {
-          y: 40,
+        // A entrada anima os FILHOS da linha, não a linha: a opacidade da
+        // linha é controlada só pelo CSS (.step:not(.is-active)), e um tween
+        // na própria linha deixaria `opacity: 1` inline vencendo esse CSS.
+        const parts = Array.from(row.children).filter((el) => !el.classList.contains("step-bar"));
+        const restore = freezeTransitions(parts);
+        gsap.from(parts, {
+          y: 32,
           opacity: 0,
           duration: 0.9,
           ease: "expo.out",
+          stagger: 0.06,
           onComplete: restore,
           scrollTrigger: { trigger: row, start: "top 88%", once: true },
         });
