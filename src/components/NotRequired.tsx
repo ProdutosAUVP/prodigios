@@ -40,9 +40,7 @@ export function NotRequired({ reducedMotion }: { reducedMotion: boolean }) {
       <div className="wrap grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <SectionHeader tone="light" title={notRequired.title} />
-          <p data-reveal className="mt-6 max-w-md text-muted-foreground">
-            Potencial e vontade pesam mais que currículo. O resto a gente constrói junto.
-          </p>
+          <p data-reveal className="mt-6 max-w-md text-lg text-ink/70">{notRequired.lead}</p>
         </div>
 
         <ul className="flex flex-col lg:col-span-7">

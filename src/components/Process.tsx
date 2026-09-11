@@ -9,6 +9,7 @@ import { useReveal } from "@/hooks/useReveal";
  *
  *  - Desktop: painel fixo à esquerda (título, número grande da fase ativa,
  *    "Fase N de 5" e barra de progresso) + lista das cinco fases à direita.
+ *    A frase de fechamento saiu (a diretoria apontou repetição com o lead).
  *  - Mobile: título, depois a lista.
  *
  * A fase "ativa" é a que cruza o meio da viewport: um ScrollTrigger por
@@ -81,7 +82,6 @@ export function Process({ reducedMotion }: { reducedMotion: boolean }) {
               </div>
             </div>
 
-            <p data-reveal className="mt-10 hidden font-anek text-2xl font-semibold text-ink/40 lg:block">{process.closing}</p>
           </div>
         </div>
 
@@ -108,7 +108,6 @@ export function Process({ reducedMotion }: { reducedMotion: boolean }) {
           ))}
         </ol>
 
-        <p className="font-anek text-2xl font-semibold text-ink/40 lg:hidden">{process.closing}</p>
       </div>
     </section>
   );

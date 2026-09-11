@@ -33,4 +33,4 @@ Landing page única (sem rotas) do programa AUVP Future. Vite + React 18 + TypeS
 
 ## Documentação
 
-`README.md` (visão geral) · `docs/ARQUITETURA.md` · `docs/DESIGN-SYSTEM.md` · `docs/ANIMACOES.md` · `docs/DEPLOY.md` · `docs/CONTEUDO.md` · `docs/briefing-original.md`
+`README.md` (visão geral) · `docs/ARQUITETURA.md` · `docs/DESIGN-SYSTEM.md` · `docs/ANIMACOES.md` · `docs/DEPLOY.md` · `docs/CONTEUDO.md` · `docs/copy-oficial-2026-09.md` · `docs/briefing-original.md`

@@ -4,7 +4,7 @@ Landing page do programa **AUVP Future**, "um programa para talentos fora da cur
 
 Pronta para deploy no **GitHub Pages** (workflow incluído).
 
-> Documentação completa em [`docs/`](docs/): [Arquitetura](docs/ARQUITETURA.md) · [Design System e extensões](docs/DESIGN-SYSTEM.md) · [Animações e 3D](docs/ANIMACOES.md) · [Deploy](docs/DEPLOY.md) · [Conteúdo](docs/CONTEUDO.md) · [Briefing original](docs/briefing-original.md)
+> Documentação completa em [`docs/`](docs/): [Arquitetura](docs/ARQUITETURA.md) · [Design System e extensões](docs/DESIGN-SYSTEM.md) · [Animações e 3D](docs/ANIMACOES.md) · [Deploy](docs/DEPLOY.md) · [Conteúdo](docs/CONTEUDO.md) · [Copy oficial 09/2026](docs/copy-oficial-2026-09.md) · [Briefing original](docs/briefing-original.md)
 
 ---
 
@@ -70,15 +70,16 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 |---|---|---|---|
 | 0 | `Loader` | grafite | Olho AUVP abre, contador 0→100, palavras da cultura, cortinas abrem em sincronia com a entrada do Hero |
 | 1 | `Hero` | preta | Editorial, mobile-first: título em 3 linhas (a última em papel cheio), subtítulo + ações, e composição fotográfica — foto grande em arco revelada por `clip-path` com Ken Burns e base em meio-tom, foto menor sobreposta, adesivos com os fatos, adesivo circular girando e selo de vidro; grade de pontos no fundo; marquee cinza fechando a dobra; parallax em duas profundidades |
-| 2 | `Intro` | grafite | Declaração que "acende" palavra a palavra com o scroll |
-| 3 | `Process` | cinza | Lista vertical das 5 fases com painel fixo (número grande, "Fase N de 5", progresso); a fase que cruza o meio da tela acende |
-| 4 | `Trails` | preta | Cards que se montam com elasticidade e inclinam em perspectiva no hover |
-| 5 | `NotRequired` | branca | Requisitos riscados ao vivo + carimbo "Opcional" |
-| 6 | `Culture` | preta | Foto sticky com parallax e recorte; manifesto revela palavra a palavra |
-| 7 | `Benefits` | cinza | Grade assimétrica com hover oficial do DS + ícones que pulam |
-| 8 | `Fit` | grafite/preta | "O que você vai aprender" × "Para quem NÃO é" |
-| 9 | `CTA` | preta | Título + texto e foto em arco preenchendo a altura do formulário (5/7 colunas); formulário de inscrição (nome, e-mail, trilha) |
-| 10 | `Footer` | preta | — |
+| 2 | `About` | branca | "O que é a AUVP?": quatro credenciais em grade (60 mil+, Top 1, 4 frentes, Cultura) |
+| 3 | `Intro` | grafite | "Isso não é um programa de estágio": declaração que "acende" palavra a palavra com o scroll |
+| 4 | `Process` | cinza | Lista vertical das 5 fases com painel fixo (número grande, "Fase N de 5", progresso); a fase que cruza o meio da tela acende |
+| 5 | `Trails` | preta | Cards que se montam com elasticidade e inclinam em perspectiva no hover |
+| 6 | `NotRequired` | branca | Requisitos riscados ao vivo + carimbo "Opcional" |
+| 7 | `Culture` | preta | Foto sticky com parallax e recorte; manifesto revela palavra a palavra |
+| 8 | `Benefits` | cinza | Grade assimétrica com hover oficial do DS + ícones que pulam |
+| 9 | `Fit` | grafite/preta | "O que você vai aprender" × "Para quem NÃO é" |
+| 10 | `CTA` | preta | Título + texto e foto em arco preenchendo a altura do formulário (5/7 colunas); formulário de inscrição (nome, e-mail, trilha) |
+| 11 | `Footer` | preta | — |
 
 ## Acessibilidade e performance
 
