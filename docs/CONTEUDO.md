@@ -2,9 +2,9 @@
 
 ## Copy
 
-Toda a copy da página vive em `src/data/content.ts`, seção por seção, e é a única fonte de verdade — os componentes não têm texto hardcoded. O texto reproduz o briefing ([briefing-original.md](briefing-original.md)) com o nome atualizado para **AUVP Future**.
+Toda a copy da página vive em `src/data/content.ts`, seção por seção, e é a única fonte de verdade — os componentes não têm texto hardcoded. Desde 11/09/2026 o texto segue o **PDF da diretoria** ([copy-oficial-2026-09.md](copy-oficial-2026-09.md)) para Hero, "O que é a AUVP?" (`about`), Intro, Processo, Trilhas, "Sem barreiras" e Inscrição; Cultura, Benefícios e "Aprender × Não é" seguem a revisão anterior, pois o PDF não os cobre. O briefing original está em [briefing-original.md](briefing-original.md).
 
-Para alterar um texto, edite o objeto correspondente (`hero`, `process`, `trails`, `notRequired`, `culture`, `benefits`, `learn`, `notFor`, `cta`, `nav`). As palavras destacadas da `Intro` e da `Culture` ficam nos campos `emphasis` de cada objeto (comparação exata com a palavra, incluindo pontuação) — ajuste-os junto com a frase. Copy revisada pela diretoria em 09/2026: a Intro ganhou título próprio ("Isso não é um programa de estágio."), "garra" saiu do Hero e da Intro, "sentimento de dono" virou "puxa a responsabilidade para si" (pilar "Responsabilidade"), e o processo ganhou `lead` e `closing` ("Cinco fases. Nenhum atalho.").
+Para alterar um texto, edite o objeto correspondente (`hero`, `about`, `intro`, `process`, `trails`, `notRequired`, `culture`, `benefits`, `learn`, `notFor`, `cta`, `nav`). As palavras destacadas da `Intro` e da `Culture` ficam nos campos `emphasis` de cada objeto (comparação exata com a palavra, incluindo pontuação) — ajuste-os junto com a frase. Copy revisada pela diretoria em 09/2026: a Intro ganhou título próprio ("Isso não é um programa de estágio."), "garra" saiu do Hero e da Intro, "sentimento de dono" virou "puxa a responsabilidade para si" (pilar "Responsabilidade"), e o processo ganhou `lead` e `closing` ("Cinco fases. Nenhum atalho.").
 
 ## Nome do programa
 

@@ -5,35 +5,44 @@
 
 export const site = {
   name: "AUVP Future",
-  tagline: "Um programa para talentos fora da curva.",
+  tagline: "O programa para pessoas acima da média.",
   applyUrl: import.meta.env.VITE_APPLY_URL || "#inscricao",
   formEndpoint: import.meta.env.VITE_FORM_ENDPOINT || "",
 } as const;
 
 export const hero = {
-  title: ["Um programa", "para talentos", "fora da curva."],
+  title: ["O programa", "para pessoas", "acima da média"],
   facts: ["Qualquer curso", "Qualquer idade", "Três trilhas de carreira"],
   badge: "3 trilhas · 5 fases · 1 carreira",
-  band: ["Um programa para talentos fora da curva", "Tecnologia", "Growth & Marketing", "Negócios & Finanças"],
-  ring: "Talentos fora da curva • AUVP Future • ",
+  band: ["O programa para pessoas acima da média", "Tecnologia", "Growth & Marketing", "Negócios & Finanças"],
+  ring: "Pessoas acima da média • AUVP Future • ",
   subtitle:
-    "Para estudantes de qualquer curso e qualquer idade que querem entrar no mercado aprendendo rápido, entregando de verdade e jogando em alta performance.",
+    "Para estudantes de qualquer curso ou idade que querem jogar o jogo de quem constrói o mercado na prática.",
   primaryCta: "Quero me inscrever",
   secondaryCta: "Conhecer as trilhas",
 } as const;
 
+export const about = {
+  title: "O que é a AUVP?",
+  items: [
+    { stat: "60 mil+", title: "A maior escola de investimentos do Brasil", text: "Mais de 60 mil investidores formados." },
+    { stat: "Top 1", title: "Ranking BTG Pactual", text: "Primeiro lugar no ranking de consultoria pelo segundo ano consecutivo." },
+    { stat: "4 frentes", title: "Soluções financeiras integradas", text: "Educação, consultoria patrimonial, inteligência para o agronegócio e soluções internacionais." },
+    { stat: "Cultura", title: "Compromisso inegociável com nossos valores", text: "Inovação e crescimento só acontecem quando a cultura interna é sólida." },
+  ],
+} as const;
+
 export const intro = {
-  title: "Isso não é um programa de estágio.",
+  title: "Isso não é um programa de estágio",
   statement:
-    "É a porta de entrada para quem quer assumir responsabilidade de verdade, cedo. Sem curso certo, sem idade certa, sem currículo perfeito: aqui o que pesa é a entrega, e a régua é alta.",
+    "Não contratamos papéis. Contratamos capacidade de execução. Nosso programa nasceu para reunir quem tem sangue nos olhos e quer construir uma carreira sólida.",
   /** palavras da declaração que ficam em lime (comparação exata, com pontuação) */
-  emphasis: ["responsabilidade", "entrega,", "alta."],
+  emphasis: ["execução.", "sangue", "nos", "olhos"],
 } as const;
 
 export const process = {
   title: "As fases do nosso processo seletivo",
-  lead: "Cinco etapas, sem atalho. Cada uma filtra de verdade.",
-  closing: "Cinco fases. Nenhum atalho.",
+  lead: "Cinco etapas. Zero atalhos.",
   steps: [
     { n: "01", title: "Inscrição", text: "Preenchimento de dados e envio de informações." },
     { n: "02", title: "Testes", text: "Avaliações de perfil, lógica e nivelamento." },
@@ -44,8 +53,8 @@ export const process = {
 } as const;
 
 export const trails = {
-  title: "Um programa, três trilhas, uma carreira",
-  subtitle: "Desenvolva-se em áreas essenciais para o crescimento do ecossistema:",
+  title: "Você escolhe a área e nós te ensinamos o resto.",
+  subtitle: "Desenvolva-se em áreas essenciais para o crescimento do nosso ecossistema:",
   items: [
     {
       id: "tech",
@@ -72,11 +81,12 @@ export const trails = {
 } as const;
 
 export const notRequired = {
-  title: "O que NÃO fazemos questão que você tenha",
+  title: "Potencial e vontade pesam mais que currículo.",
+  lead: "Por isso, NÃO fazemos questão que você tenha:",
   items: [
-    { title: "Inglês fluente", text: "Não é um requisito obrigatório para a maioria das vagas." },
-    { title: "Experiência prévia", text: "Buscamos muito mais o potencial e a vontade do que o currículo." },
-    { title: "Diploma de faculdade de ponta", text: "Valorizamos o seu esforço real e capacidade de entrega." },
+    { title: "Inglês fluente", text: "Saber resolver o problema em português claro vale dez vezes mais do que falar termos bonitos em inglês." },
+    { title: "Experiência prévia", text: "Nosso foco é o seu desenvolvimento." },
+    { title: "Diploma de faculdade", text: "Valorizamos o seu esforço e a sua capacidade de entregar resultados." },
   ],
 } as const;
 
@@ -118,10 +128,10 @@ export const notFor = {
 } as const;
 
 export const cta = {
-  title: "Garanta sua chance.",
+  title: "Você tem o perfil que a gente procura?",
   formTitle: "Próximos passos e inscrição",
-  text: "Garanta sua chance de participar de um dos processos seletivos mais transformadores do mercado preenchendo os dados e aplicando para a vaga ideal para o seu perfil.",
-  button: "Aplicar para a vaga",
+  text: "Preencha seus dados e garanta sua inscrição no nosso banco de talentos.",
+  button: "Garantir minha inscrição",
 } as const;
 
 export const nav = [
