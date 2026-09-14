@@ -4,6 +4,7 @@
 
 Observações de aplicação:
 - "A maior **escolha** de investimentos do Brasil" foi lido como erro de digitação de **escola** e assim aplicado.
+- Em "Soluções financeiras integradas" vale a redação do documento original: "educação, **consultoria e proteção patrimonial**, inteligência para o agronegócio e soluções internacionais" (a extração do PDF havia perdido "e proteção"). Os cards sem número no documento não ganham número: o título vira a manchete.
 - A frase "Cinco fases. Nenhum atalho." foi removida do Processo, como o PDF pede; o lead virou "Cinco etapas. Zero atalhos.".
 - O título do Hero "O programa para pessoas acima da média" foi quebrado em três linhas: "O programa / para pessoas / acima da média".
 

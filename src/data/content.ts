@@ -24,11 +24,12 @@ export const hero = {
 
 export const about = {
   title: "O que é a AUVP?",
+  /** `stat` só quando o dado existe no documento (60 mil+, Top 1); sem ele, o título vira a manchete do card */
   items: [
     { stat: "60 mil+", title: "A maior escola de investimentos do Brasil", text: "Mais de 60 mil investidores formados." },
     { stat: "Top 1", title: "Ranking BTG Pactual", text: "Primeiro lugar no ranking de consultoria pelo segundo ano consecutivo." },
-    { stat: "4 frentes", title: "Soluções financeiras integradas", text: "Educação, consultoria patrimonial, inteligência para o agronegócio e soluções internacionais." },
-    { stat: "Cultura", title: "Compromisso inegociável com nossos valores", text: "Inovação e crescimento só acontecem quando a cultura interna é sólida." },
+    { title: "Soluções financeiras integradas", text: "Educação, consultoria e proteção patrimonial, inteligência para o agronegócio e soluções internacionais." },
+    { title: "Compromisso inegociável com nossos valores", text: "Inovação e crescimento só acontecem quando a cultura interna é sólida." },
   ],
 } as const;
 
