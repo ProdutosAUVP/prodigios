@@ -1,0 +1,31 @@
+AUVP Carreiras
+
+RESULTADO
+
+Obrigado, {{nome}}.
+===================
+
+Queremos agradecer pelo seu tempo e pela sua dedicação no Desafio de Potencial.
+
+Desta vez, não vamos seguir com a sua participação na próxima etapa do AUVP Carreiras. Essa decisão foi revisada por uma pessoa da nossa equipe e considera os critérios do programa e as oportunidades abertas agora. Ela não mede o seu valor nem o seu futuro.
+
+O que acontece com seus dados
+- Até quando: {{data_eliminacao}} (no máximo 12 meses)
+- Depois disso: Seus dados são eliminados
+- Uso: Nunca para publicidade ou ofertas
+
+Você pode pedir a revisão desta decisão ou a exclusão dos seus dados agora pelo e-mail dpo@auvp.com.br (mailto:dpo@auvp.com.br).
+
+---
+
+Continue estudando e se desafiando. Foi muito bom ter você por aqui.
+
+Até breve,
+Time AUVP Carreiras
+
+--
+Você recebeu este e-mail porque se inscreveu no AUVP Carreiras. Este é um e-mail sobre a sua participação: não enviamos ofertas nem publicidade para este endereço.
+Seus dados e direitos: dpo@auvp.com.br
+Aviso de Privacidade: https://produtosauvp.github.io/prodigios/privacidade.html
+Termos de Participação: https://produtosauvp.github.io/prodigios/termos.html
+HOLDING SUPERNOVA LTDA (grupo AUVP) · CNPJ 51.197.828/0001-12

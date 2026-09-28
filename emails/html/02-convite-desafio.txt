@@ -1,0 +1,35 @@
+AUVP Carreiras
+
+DESAFIO DE POTENCIAL
+
+{{nome}}, chegou a sua vez.
+===========================
+
+O Desafio de Potencial é uma atividade voluntária e gratuita para conhecer como você pensa, aprende e resolve problemas. Não existe resposta "de decoreba": vale o seu raciocínio.
+
+- Data: {{data_desafio}}
+- Horário: {{horario_desafio}}
+- Duração: {{duracao}}
+- Formato: {{formato}}
+
+Acessar o Desafio: {{link_desafio}}
+
+Antes de começar, você vai confirmar que tem 14 anos completos ou mais e que leu as informações sobre o Desafio e o tratamento dos seus dados.
+
+01. Separe um tempo sem interrupções e, se for online, uma conexão estável.
+02. Leia cada questão com calma. Algumas são corrigidas automaticamente, mas quem decide os convites é sempre uma pessoa da nossa equipe.
+03. Precisa de alguma adaptação ou recurso de acessibilidade? Responda este e-mail até {{prazo_adaptacao}}. Não é necessário enviar laudo, diagnóstico ou CID.
+
+Fazer o Desafio não garante convite, vaga ou contratação. Se não quiser mais participar, é só responder este e-mail.
+
+---
+
+Até breve,
+Time AUVP Carreiras
+
+--
+Você recebeu este e-mail porque se inscreveu no AUVP Carreiras. Este é um e-mail sobre a sua participação: não enviamos ofertas nem publicidade para este endereço.
+Seus dados e direitos: dpo@auvp.com.br
+Aviso de Privacidade: https://produtosauvp.github.io/prodigios/privacidade.html
+Termos de Participação: https://produtosauvp.github.io/prodigios/termos.html
+HOLDING SUPERNOVA LTDA (grupo AUVP) · CNPJ 51.197.828/0001-12

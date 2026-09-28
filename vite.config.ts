@@ -18,6 +18,12 @@ export default defineConfig({
     target: "es2020",
     sourcemap: false,
     rollupOptions: {
+      // LP + páginas legais (Aviso de Privacidade e Termos), linkadas no formulário
+      input: {
+        main: path.resolve(__dirname, "index.html"),
+        privacidade: path.resolve(__dirname, "privacidade.html"),
+        termos: path.resolve(__dirname, "termos.html"),
+      },
       output: {
         manualChunks(id) {
           if (!id.includes("node_modules")) return undefined;

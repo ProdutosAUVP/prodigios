@@ -1,0 +1,28 @@
+AUVP Carreiras
+
+DESAFIO CONCLUÍDO
+
+Missão cumprida, {{nome}}.
+==========================
+
+Suas respostas do Desafio de Potencial foram recebidas. Obrigado pelo tempo e pela dedicação.
+
+E agora?
+
+01. Algumas questões são corrigidas automaticamente e geram sua pontuação.
+02. Uma pessoa da nossa equipe analisa os resultados. A decisão sobre quem recebe convite para a próxima etapa nunca é só da máquina.
+03. Você recebe um retorno por e-mail até {{prazo_retorno}}.
+
+A pontuação sozinha não garante convite, vaga ou contratação: os convites dependem dos critérios do programa e das oportunidades abertas.
+
+---
+
+Até breve,
+Time AUVP Carreiras
+
+--
+Você recebeu este e-mail porque se inscreveu no AUVP Carreiras. Este é um e-mail sobre a sua participação: não enviamos ofertas nem publicidade para este endereço.
+Seus dados e direitos: dpo@auvp.com.br
+Aviso de Privacidade: https://produtosauvp.github.io/prodigios/privacidade.html
+Termos de Participação: https://produtosauvp.github.io/prodigios/termos.html
+HOLDING SUPERNOVA LTDA (grupo AUVP) · CNPJ 51.197.828/0001-12

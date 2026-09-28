@@ -32,7 +32,23 @@ No GitHub: **Settings → Secrets and variables → Actions**
 | Secret | `FORM_ENDPOINT` | `https://formspree.io/f/xxxxxxxx` |
 | Variable | `APPLY_URL` | `https://auvp.gupy.io/...` (opcional — troca os botões "Quero me inscrever" por link externo) |
 
-Campos enviados: `nome`, `email`, `trilha` (`tech` \| `growth` \| `biz`).
+Campos enviados (JSON): `nome`, `data_nascimento` (AAAA-MM-DD), `instituicao`, `serie_curso`, `email`, `telefone` (pelo menos um dos dois), `acessibilidade` (`nao` \| `sim`), `acessibilidade_recurso`, `confirma_14_anos` e `ciencia_termos` (sempre `true`), `versao_aviso_privacidade`, `versao_termos` e `enviado_em` (ISO). Guarde as versões e o horário: são a prova da ciência de cada participante.
+
+### Proteção de dados (LGPD art. 14)
+
+- **Menores de 14 anos:** a LP bloqueia no navegador e não envia nada. **O endpoint também precisa recusar** (HTTP 422, sem gravar) qualquer `data_nascimento` com menos de 14 anos completos, e qualquer envio sem `confirma_14_anos` e `ciencia_termos` iguais a `true`, porque a checagem do navegador pode ser contornada.
+- Não aceite nem grave campos além dos listados (nada de CPF, RG, endereço, renda, dados bancários ou dos responsáveis).
+- `acessibilidade_recurso` pode revelar dado de saúde: acesso restrito a quem organiza a adaptação, fora da planilha de avaliação.
+- Retenção: quem não receber convite tem os dados eliminados em até 12 meses.
+- Sem pixels, analytics de terceiros ou remarketing nesta página.
+
+## Páginas legais
+
+`privacidade.html` (Aviso de Privacidade completo) e `termos.html` (Termos de Participação e Ciência) são entradas extras do Vite (`build.rollupOptions.input`), com texto em `src/data/legal.ts`. O PDF original dos Termos fica em `public/termos-de-participacao-auvp-carreiras.pdf`. Ao mudar um texto legal, suba a versão em `legal.ts` **e** em `privacyNotice` (`content.ts`), que é o que vai no envio.
+
+## E-mails transacionais
+
+Modelos em `emails/` (`npm run emails:build`). Ver [`emails/README.md`](../emails/README.md).
 
 ## CI em pull requests
 

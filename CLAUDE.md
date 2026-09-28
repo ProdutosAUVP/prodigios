@@ -1,10 +1,10 @@
-# CLAUDE.md — AUVP Future (landing page)
+# CLAUDE.md — AUVP Carreiras (landing page)
 
 Guia rápido para IAs e novos contribuidores. Leia antes de mexer no código.
 
 ## O que é
 
-Landing page única (sem rotas) do programa AUVP Future. Vite + React 18 + TypeScript + Tailwind, com Lenis + GSAP ScrollTrigger para o scroll. Sem WebGL. Publicada no GitHub Pages em `/prodigios/`.
+Landing page única (sem rotas) do programa AUVP Carreiras. Vite + React 18 + TypeScript + Tailwind, com Lenis + GSAP ScrollTrigger para o scroll. Sem WebGL. Publicada no GitHub Pages em `/prodigios/`.
 
 ## Entry points
 
@@ -14,11 +14,13 @@ Landing page única (sem rotas) do programa AUVP Future. Vite + React 18 + TypeS
 | `src/data/content.ts` | **toda** a copy da página |
 | `src/styles/tokens.css` | tokens do DS AUVP + extensões da LP |
 | `src/lib/gsap.ts` | registro do GSAP, easings, `freezeTransitions()` |
-| `vite.config.ts` | base path e chunks |
+| `vite.config.ts` | base path, chunks e entradas das páginas legais (`privacidade.html`, `termos.html`) |
+| `emails/` | e-mails transacionais (`npm run emails:build`) |
 
 ## Regras
 
-- Texto só em `src/data/content.ts`. Fotos só em `src/data/photos.ts` via `<Photo>`.
+- Texto só em `src/data/` — `content.ts` (LP) e `legal.ts` (Aviso de Privacidade e Termos). Fotos só em `src/data/photos.ts` via `<Photo>`.
+- Formulário (`CTA.tsx`): público de 14 a 21 anos, LGPD art. 14. Não adicionar campos fora da lista em `docs/DEPLOY.md`, não gravar nada antes do envio final (sem localStorage/rascunho) e manter o bloqueio de menores de 14 anos. Texto legal mudou → subir as versões em `legal.ts` e `privacyNotice`.
 - Importar `gsap`/`ScrollTrigger` de `@/lib/gsap`. Animações dentro de `gsap.context()` em `useLayoutEffect`, revertidas no cleanup.
 - `gsap.from()` em elemento com `transition` CSS → envolver com `freezeTransitions()` (ver `docs/ANIMACOES.md`).
 - Usar `rotation`, não `rotate`, nos tweens.
@@ -29,7 +31,7 @@ Landing page única (sem rotas) do programa AUVP Future. Vite + React 18 + TypeS
 
 ## Comandos
 
-`npm run dev` · `npm run build` · `npm run preview` · `npm run lint` · `npm run typecheck` · `npm run tokens:sync`
+`npm run dev` · `npm run build` · `npm run preview` · `npm run lint` · `npm run typecheck` · `npm run tokens:sync` · `npm run emails:build`
 
 ## Documentação
 

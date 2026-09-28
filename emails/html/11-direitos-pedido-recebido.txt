@@ -1,0 +1,29 @@
+AUVP Carreiras
+
+PEDIDO RECEBIDO
+
+Estamos cuidando disso, {{nome}}.
+=================================
+
+Recebemos o seu pedido sobre os dados pessoais que você informou no AUVP Carreiras.
+
+- Protocolo: {{protocolo}}
+- Pedido: {{tipo_pedido}}
+- Recebido em: {{data_pedido}}
+- Resposta até: {{prazo_resposta}}
+
+Para proteger seus dados, só respondemos para o contato que você informou na inscrição. Se precisarmos confirmar alguma informação, vamos perguntar por aqui. Nunca pedimos senha, CPF ou dados bancários.
+
+Se você tem menos de 18 anos, seu responsável legal também pode acompanhar ou fazer o pedido em seu nome.
+
+---
+
+Até breve,
+Time AUVP Carreiras
+
+--
+Você recebeu este e-mail porque fez um pedido sobre os seus dados no AUVP Carreiras. Este é um e-mail sobre a sua participação: não enviamos ofertas nem publicidade para este endereço.
+Seus dados e direitos: dpo@auvp.com.br
+Aviso de Privacidade: https://produtosauvp.github.io/prodigios/privacidade.html
+Termos de Participação: https://produtosauvp.github.io/prodigios/termos.html
+HOLDING SUPERNOVA LTDA (grupo AUVP) · CNPJ 51.197.828/0001-12

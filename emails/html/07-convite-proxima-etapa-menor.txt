@@ -1,0 +1,34 @@
+AUVP Carreiras
+
+PRÓXIMA ETAPA
+
+{{nome}}, queremos te conhecer melhor.
+======================================
+
+Depois de analisar o seu Desafio de Potencial, a nossa equipe quer seguir com você para a próxima etapa do AUVP Carreiras.
+
+- Etapa: {{etapa}}
+- Quando: {{data_etapa}}
+- Autorização até: {{prazo_autorizacao}}
+
+Como você tem menos de 18 anos, precisamos da autorização do seu responsável legal para seguir. É simples:
+
+01. Mostre este e-mail para o seu responsável legal (mãe, pai ou quem tem a sua guarda).
+02. Juntos, abram o Termo de Autorização pelo botão abaixo. Ele explica a próxima etapa e como seus dados serão usados.
+03. O seu responsável preenche e assina até {{prazo_autorizacao}}. Nós avisamos você assim que recebermos.
+
+Abrir Termo de Autorização: {{link_autorizacao}}
+
+Sem a autorização, não é possível avançar para as atividades que dependem dela. O convite não é uma contratação e não garante vaga.
+
+---
+
+Até breve,
+Time AUVP Carreiras
+
+--
+Você recebeu este e-mail porque se inscreveu no AUVP Carreiras. Este é um e-mail sobre a sua participação: não enviamos ofertas nem publicidade para este endereço.
+Seus dados e direitos: dpo@auvp.com.br
+Aviso de Privacidade: https://produtosauvp.github.io/prodigios/privacidade.html
+Termos de Participação: https://produtosauvp.github.io/prodigios/termos.html
+HOLDING SUPERNOVA LTDA (grupo AUVP) · CNPJ 51.197.828/0001-12
