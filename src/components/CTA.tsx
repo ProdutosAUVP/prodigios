@@ -217,6 +217,13 @@ export function CTA({ reducedMotion }: { reducedMotion: boolean }) {
                     {cta.next}
                     <ArrowIcon />
                   </Button>
+                  <p className="mt-4 text-center text-xs leading-relaxed text-paper/55">
+                    {cta.legalNote[0]}
+                    <DocLink href={site.privacyUrl}>{cta.legalNote[1]}</DocLink>
+                    {cta.legalNote[2]}
+                    <DocLink href={site.termsUrl}>{cta.legalNote[3]}</DocLink>
+                    {cta.legalNote[4]}
+                  </p>
                 </div>
               </form>
             )}

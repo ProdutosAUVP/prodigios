@@ -15,7 +15,7 @@ Depois da análise da nossa equipe, {{nome_participante}} recebeu um convite par
 
 Ler e autorizar: {{link_autorizacao}}
 
-Até aqui, usamos apenas nome, data de nascimento, instituição de ensino, ano/série ou curso, contato e as respostas do Desafio. Não pedimos CPF, endereço, renda ou dados bancários. Tudo está explicado no Aviso de Privacidade (https://produtosauvp.github.io/prodigios/privacidade.html) e nos Termos de Participação (https://produtosauvp.github.io/prodigios/termos.html).
+Até aqui, usamos apenas nome, data de nascimento, instituição de ensino, ano/série ou curso, contato e as respostas do Desafio. Não pedimos CPF, endereço, renda ou dados bancários. Tudo está explicado no Aviso de Privacidade (https://produtosauvp.github.io/prodigios/privacidade) e nos Termos de Participação (https://produtosauvp.github.io/prodigios/termos).
 
 O convite não é uma contratação e não garante vaga. Se preferir não autorizar, basta ignorar este e-mail ou nos avisar: não há nenhuma penalidade.
 
@@ -27,6 +27,6 @@ Time AUVP Carreiras
 --
 Você recebeu este e-mail porque foi indicado como responsável legal de uma pessoa inscrita no AUVP Carreiras. Este é um e-mail sobre a sua participação: não enviamos ofertas nem publicidade para este endereço.
 Seus dados e direitos: dpo@auvp.com.br
-Aviso de Privacidade: https://produtosauvp.github.io/prodigios/privacidade.html
-Termos de Participação: https://produtosauvp.github.io/prodigios/termos.html
+Aviso de Privacidade: https://produtosauvp.github.io/prodigios/privacidade
+Termos de Participação: https://produtosauvp.github.io/prodigios/termos
 HOLDING SUPERNOVA LTDA (grupo AUVP) · CNPJ 51.197.828/0001-12

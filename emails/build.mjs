@@ -37,8 +37,8 @@ const F = {
 
 const LINKS = {
   site: SITE,
-  privacy: `${SITE}privacidade.html`,
-  terms: `${SITE}termos.html`,
+  privacy: `${SITE}privacidade`,
+  terms: `${SITE}termos`,
   dpo: "dpo@auvp.com.br",
 };
 

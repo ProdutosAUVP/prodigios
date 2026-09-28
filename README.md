@@ -43,7 +43,7 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 
 | Variável | Padrão | Uso |
 |---|---|---|
-| `VITE_BASE` | `/prodigios/` | Base path do build. Use `/` em domínio próprio |
+| `VITE_BASE` | `/` na Vercel, `/prodigios/` fora dela | Base path do build. Na Vercel é automático (`VERCEL=1`); defina só para forçar outro valor |
 | `VITE_FORM_ENDPOINT` | vazio | Endpoint que recebe o formulário de inscrição (Formspree, Getform, n8n…). Sem ele o formulário roda em **modo demonstração** |
 | `VITE_APPLY_URL` | `#inscricao` | Link externo de inscrição (ATS, Gupy, Typeform). Se definido, os botões "Quero me inscrever" apontam para ele |
 
@@ -94,4 +94,8 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 
 ## Deploy
 
-Push na `main` dispara o workflow que builda e publica em `https://<org>.github.io/prodigios/`. Antes do primeiro deploy, em **Settings → Pages**, escolha **Source: GitHub Actions**. Detalhes (domínio próprio, secrets do formulário) em [`docs/DEPLOY.md`](docs/DEPLOY.md).
+**Vercel (recomendado):** importe o repositório na Vercel. O `vercel.json` já define build, saída, URLs limpas (`/privacidade`, `/termos`), cache e cabeçalhos de segurança, e o base path vira `/` sozinho. Só falta cadastrar `VITE_FORM_ENDPOINT` nas variáveis de ambiente.
+
+**GitHub Pages:** push na `main` dispara o workflow que builda e publica em `https://<org>.github.io/prodigios/`.
+
+Passo a passo, domínio próprio e regras do formulário em [`docs/DEPLOY.md`](docs/DEPLOY.md).
