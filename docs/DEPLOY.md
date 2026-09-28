@@ -1,6 +1,42 @@
-# Deploy no GitHub Pages
+# Deploy
 
-## Primeira vez
+Dois destinos funcionam com o mesmo código: **Vercel** (recomendado) e **GitHub Pages**. O base path se ajusta sozinho (`vite.config.ts`): `/` quando o build roda na Vercel (`VERCEL=1`), `/prodigios/` fora dela. `VITE_BASE` sempre tem prioridade.
+
+## Vercel
+
+### Primeira vez
+
+1. Em **Add New → Project**, importe o repositório. O `vercel.json` já define instalação (`npm ci`), build (`npm run build`), saída (`dist`) e framework (Vite); não mude nada na tela de configuração.
+2. Em **Settings → Environment Variables**, marcando **Production** e **Preview**:
+
+   | Nome | Valor |
+   |---|---|
+   | `VITE_FORM_ENDPOINT` | endpoint que recebe as inscrições (obrigatório em produção; sem ele o formulário fica em modo demonstração) |
+   | `VITE_APPLY_URL` | opcional: troca os botões "Quero me inscrever" por um link externo |
+
+   Não é preciso definir `VITE_BASE`.
+3. Faça o deploy. Cada PR ganha um preview próprio; a `main` vai para produção.
+
+### Domínio próprio
+
+Em **Settings → Domains**, adicione o domínio (ex.: `carreiras.auvp.com.br`) e crie no DNS o registro que a Vercel indicar (CNAME para `cname.vercel-dns.com` em subdomínio). Depois, regere os e-mails com o domínio final, para os links do rodapé:
+
+```bash
+EMAIL_SITE_URL=https://carreiras.auvp.com.br/ npm run emails:build
+```
+
+### O que o `vercel.json` faz
+
+- `cleanUrls`: as páginas legais ficam em `/privacidade` e `/termos` (quem acessar `.html` é redirecionado).
+- Cache de 1 ano, imutável, para `/assets/*` (arquivos com hash no nome).
+- Cabeçalhos de segurança: `X-Content-Type-Options`, `X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy` (sem câmera, microfone ou localização) e HSTS.
+- Rotas inexistentes caem em `public/404.html`, que manda para a home do ambiente (`/` na Vercel, `/prodigios/` no Pages).
+
+## GitHub Pages
+
+Se a Vercel for o único destino, desative o Pages (**Settings → Pages**) ou remova `.github/workflows/deploy.yml`. O `ci.yml` continua rodando os checks nos PRs.
+
+### Primeira vez
 
 1. No repositório, abra **Settings → Pages** e em **Build and deployment → Source** escolha **GitHub Actions**.
 2. Faça push na branch `main`. O workflow `.github/workflows/deploy.yml` roda lint, typecheck, build e publica `dist/`.
@@ -8,12 +44,12 @@
 
 O workflow também aceita disparo manual (**Actions → Deploy to GitHub Pages → Run workflow**).
 
-## Base path
+### Base path e domínio próprio no Pages
 
 O Vite builda com `base: "/prodigios/"` (nome do repositório). Se o repositório for renomeado, ajuste:
 
 - `VITE_BASE` no `deploy.yml` (ou o padrão em `vite.config.ts`);
-- o redirect em `public/404.html`.
+- o prefixo testado em `public/404.html`.
 
 Para **domínio próprio** (ex.: `prodigios.auvp.com.br`):
 
@@ -44,7 +80,7 @@ Campos enviados (JSON): `nome`, `data_nascimento` (AAAA-MM-DD), `instituicao`, `
 
 ## Páginas legais
 
-`privacidade.html` (Aviso de Privacidade completo) e `termos.html` (Termos de Participação e Ciência) são entradas extras do Vite (`build.rollupOptions.input`), com texto em `src/data/legal.ts`. O PDF original dos Termos fica em `public/termos-de-participacao-auvp-carreiras.pdf`. Ao mudar um texto legal, suba a versão em `legal.ts` **e** em `privacyNotice` (`content.ts`), que é o que vai no envio.
+`privacidade.html` (Aviso de Privacidade completo) e `termos.html` (Termos de Participação e Ciência), servidas como `/privacidade` e `/termos`, são entradas extras do Vite (`build.rollupOptions.input`), com texto em `src/data/legal.ts`. O PDF original dos Termos fica em `public/termos-de-participacao-auvp-carreiras.pdf`. Ao mudar um texto legal, suba a versão em `legal.ts` **e** em `privacyNotice` (`content.ts`), que é o que vai no envio.
 
 ## E-mails transacionais
 

@@ -8,9 +8,9 @@ export const site = {
   tagline: "O programa para pessoas acima da média.",
   applyUrl: import.meta.env.VITE_APPLY_URL || "#inscricao",
   formEndpoint: import.meta.env.VITE_FORM_ENDPOINT || "",
-  /** páginas legais geradas no próprio build (ver vite.config.ts) */
-  privacyUrl: `${import.meta.env.BASE_URL}privacidade.html`,
-  termsUrl: `${import.meta.env.BASE_URL}termos.html`,
+  /** páginas legais geradas no próprio build, com URL limpa (ver vite.config.ts) */
+  privacyUrl: `${import.meta.env.BASE_URL}privacidade`,
+  termsUrl: `${import.meta.env.BASE_URL}termos`,
   controller: "HOLDING SUPERNOVA LTDA",
   cnpj: "51.197.828/0001-12",
   dpoEmail: "dpo@auvp.com.br",
