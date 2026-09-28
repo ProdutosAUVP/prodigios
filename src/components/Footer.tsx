@@ -1,5 +1,7 @@
-import { nav, site } from "@/data/content";
+import { legal, nav, site } from "@/data/content";
 import { Logo } from "./Logo";
+
+const link = "transition-colors duration-240 hover:text-paper";
 
 export function Footer() {
   return (
@@ -11,14 +13,24 @@ export function Footer() {
         </div>
         <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm" aria-label="Rodapé">
           {nav.map((n) => (
-            <a key={n.href} href={n.href} className="transition-colors duration-240 hover:text-paper">{n.label}</a>
+            <a key={n.href} href={n.href} className={link}>{n.label}</a>
           ))}
-          <a href="#inscricao" className="transition-colors duration-240 hover:text-paper">Inscrição</a>
+          <a href="#inscricao" className={link}>Inscrição</a>
         </nav>
       </div>
-      <div className="wrap-wide mt-10 flex flex-col gap-2 border-t border-paper/10 pt-6 text-xs text-paper/40 md:flex-row md:justify-between">
-        <p>© {new Date().getFullYear()} AUVP. Todos os direitos reservados.</p>
-        <p>Design System AUVP como base · feito com React, GSAP e Lenis</p>
+
+      <div className="wrap-wide mt-10 flex flex-col gap-4 border-t border-paper/10 pt-6 text-xs md:flex-row md:items-center md:justify-between">
+        <nav className="flex flex-wrap gap-x-6 gap-y-2 text-paper/70" aria-label="Documentos legais">
+          <a href={site.privacyUrl} className={link}>{legal.privacy}</a>
+          <a href={site.termsUrl} className={link}>{legal.terms}</a>
+          <span>
+            {legal.dpo} <a href={`mailto:${site.dpoEmail}`} className={`underline decoration-paper/30 underline-offset-4 ${link}`}>{site.dpoEmail}</a>
+          </span>
+        </nav>
+        <div className="flex flex-col gap-1 text-paper/40 md:items-end">
+          <p>{site.controller} (grupo AUVP) · CNPJ {site.cnpj}</p>
+          <p>© {new Date().getFullYear()} AUVP. Todos os direitos reservados.</p>
+        </div>
       </div>
     </footer>
   );

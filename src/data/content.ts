@@ -163,6 +163,8 @@ export const cta = {
     note: "Não é necessário enviar laudo, diagnóstico ou CID.",
   },
   next: "Continuar",
+  /** aviso sob o botão da etapa 1; os trechos 1 e 3 viram links */
+  legalNote: ["Na próxima etapa você lê o ", "Aviso de Privacidade", " e os ", "Termos de Participação", " antes de enviar."],
 
   /** Etapa 2: aviso de privacidade resumido + ciência. Lido antes de qualquer envio. */
   noticeTitle: "Antes de enviar, leia com atenção",
@@ -216,6 +218,13 @@ export const privacyNotice = {
       ", compreendi a finalidade do Desafio de Potencial AUVP Carreiras e desejo participar voluntariamente da atividade.",
     ],
   },
+} as const;
+
+/** Links legais do rodapé e da inscrição */
+export const legal = {
+  privacy: "Aviso de Privacidade",
+  terms: "Termos de Participação",
+  dpo: "Seus dados:",
 } as const;
 
 export const nav = [
