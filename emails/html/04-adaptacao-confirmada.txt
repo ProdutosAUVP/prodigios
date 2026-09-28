@@ -1,0 +1,28 @@
+AUVP Carreiras
+
+ACESSIBILIDADE
+
+Adaptação confirmada, {{nome}}.
+===============================
+
+Recebemos o seu pedido e preparamos tudo para que você faça o Desafio de Potencial em igualdade de condições.
+
+- Recurso: {{recurso}}
+- Como vai funcionar: {{como_funciona}}
+- Data do Desafio: {{data_desafio}}
+
+Essa informação é usada apenas para oferecer a adaptação e não entra na sua avaliação.
+
+Se precisar de algo diferente, é só responder este e-mail.
+
+---
+
+Até breve,
+Time AUVP Carreiras
+
+--
+Você recebeu este e-mail porque se inscreveu no AUVP Carreiras. Este é um e-mail sobre a sua participação: não enviamos ofertas nem publicidade para este endereço.
+Seus dados e direitos: dpo@auvp.com.br
+Aviso de Privacidade: https://produtosauvp.github.io/prodigios/privacidade.html
+Termos de Participação: https://produtosauvp.github.io/prodigios/termos.html
+HOLDING SUPERNOVA LTDA (grupo AUVP) · CNPJ 51.197.828/0001-12

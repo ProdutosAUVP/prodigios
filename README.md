@@ -1,6 +1,6 @@
-# AUVP Future — Landing Page
+# AUVP Carreiras — Landing Page
 
-Landing page do programa **AUVP Future**, "um programa para talentos fora da curva". Experiência imersiva e séria, com scroll interativo, loading screen e micro-interações elásticas — construída sobre os tokens do [Design System AUVP](https://github.com/ProdutosAUVP/central) e extrapolando-os onde a página pede.
+Landing page do programa **AUVP Carreiras**, "um programa para talentos fora da curva". Experiência imersiva e séria, com scroll interativo, loading screen e micro-interações elásticas — construída sobre os tokens do [Design System AUVP](https://github.com/ProdutosAUVP/central) e extrapolando-os onde a página pede.
 
 Pronta para deploy no **GitHub Pages** (workflow incluído).
 
@@ -78,7 +78,7 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 | 7 | `Culture` | preta | Foto sticky com parallax e recorte; manifesto revela palavra a palavra |
 | 8 | `Benefits` | cinza | Grade assimétrica com hover oficial do DS + ícones que pulam |
 | 9 | `Fit` | grafite/preta | "O que você vai aprender" × "Para quem NÃO é" |
-| 10 | `CTA` | preta | Título + texto e foto em arco preenchendo a altura do formulário (5/7 colunas); formulário de inscrição (nome, e-mail, trilha) |
+| 10 | `CTA` | preta | Título + texto e foto em arco preenchendo a altura do formulário (5/7 colunas); formulário em duas etapas: dados (nome, nascimento, instituição, série/curso, e-mail e/ou telefone, acessibilidade) e aviso de privacidade + dois checkboxes de ciência; bloqueio para menores de 14 anos |
 | 11 | `Footer` | preta | — |
 
 ## Acessibilidade e performance
@@ -87,7 +87,7 @@ Copie `.env.example` para `.env` (opcional — tudo tem padrão):
 - Sem WebGL: o fundo das dobras escuras é o preto sólido da marca com halo e grão em CSS. Bundle inicial ≈ 110 KB gzip (React + GSAP/Lenis + app).
 - Padrões únicos de espaçamento (`--section-y`, `--section-gap`, `--stack`), curvatura (12px do DS + arco como forma-assinatura) e tratamento de foto (`<Photo>`), documentados em `docs/DESIGN-SYSTEM.md`.
 - Mobile-first: classes base para 360px, `sm`/`lg` só adicionam colunas. Título do Hero em 3 linhas curtas que cabem em 360px (`text-display-xl` = `clamp(2.75rem, 8.4vw, 8.5rem)`).
-- Cor: preto, grafite e papel, sem verde escuro; lime só nos botões de CTA e no check do formulário (ver `docs/DESIGN-SYSTEM.md`).
+- Cor: preto, grafite e papel, sem verde escuro; lime só nos botões de CTA e no check de sucesso (ver `docs/DESIGN-SYSTEM.md`).
 - Fotos oficiais da AUVP (repositório `etica`) em WebP local, `loading="lazy"` (exceto o Hero) e fallback em gradiente da marca se a imagem não carregar.
 - Navegação por teclado com `:focus-visible` em lime; formulário com labels e `aria-live` no loader.
 - Contraste seguindo os tokens `*-emphasis` do DS nas dobras claras.

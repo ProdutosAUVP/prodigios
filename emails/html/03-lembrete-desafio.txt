@@ -1,0 +1,28 @@
+AUVP Carreiras
+
+LEMBRETE
+
+Seu Desafio é {{quando}}.
+=========================
+
+Oi, {{nome}}. Passando para lembrar do seu Desafio de Potencial. Deixe este e-mail à mão: o link de acesso está logo abaixo.
+
+- Data: {{data_desafio}}
+- Horário: {{horario_desafio}}
+- Formato: {{formato}}
+
+Acessar o Desafio: {{link_desafio}}
+
+Não vai conseguir participar ou precisa de alguma adaptação? Responda este e-mail. Não é necessário enviar laudo, diagnóstico ou CID.
+
+---
+
+Até breve,
+Time AUVP Carreiras
+
+--
+Você recebeu este e-mail porque se inscreveu no AUVP Carreiras. Este é um e-mail sobre a sua participação: não enviamos ofertas nem publicidade para este endereço.
+Seus dados e direitos: dpo@auvp.com.br
+Aviso de Privacidade: https://produtosauvp.github.io/prodigios/privacidade.html
+Termos de Participação: https://produtosauvp.github.io/prodigios/termos.html
+HOLDING SUPERNOVA LTDA (grupo AUVP) · CNPJ 51.197.828/0001-12

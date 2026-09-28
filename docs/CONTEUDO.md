@@ -8,7 +8,13 @@ Para alterar um texto, edite o objeto correspondente (`hero`, `about`, `intro`, 
 
 ## Nome do programa
 
-O programa chama-se **AUVP Future** em toda a página (copy, marca, metadados). A única exceção, por decisão da diretoria, é a **tela de carregamento**: a última palavra do loader continua sendo "Prodígios." (lista `WORDS` em `src/components/Loader.tsx`).
+O programa chama-se **AUVP Carreiras** em toda a página (copy, marca, metadados, tela de carregamento, páginas legais e e-mails). Nomes anteriores: AUVP Jovens Talentos (briefing), AUVP Prodígios e AUVP Future. O repositório e o base path continuam `/prodigios/`.
+
+O público é de **14 a 21 anos** (Termos, item 1): a copy não deve dizer "qualquer idade".
+
+## Formulário e textos legais
+
+O formulário de inscrição (`cta` em `content.ts`) segue as orientações de proteção de dados do jurídico para adolescentes (LGPD art. 14 e ECA Digital): dados mínimos, campo de acessibilidade sem laudo, aviso de privacidade resumido (`privacyNotice`) lido antes do envio e dois checkboxes desmarcados. O Aviso completo e os Termos estão em `src/data/legal.ts`; o Aviso completo é um rascunho que precisa de validação do jurídico/DPO.
 
 ## Sem eyebrows
 

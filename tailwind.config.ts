@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Tailwind da landing AUVP Prodígios.
+ * Tailwind da landing AUVP Carreiras.
  *
  * Base: tokens do Design System AUVP (ProdutosAUVP/central) expostos como
  * variáveis CSS em src/styles/tokens.css. As extensões (escala "display",
@@ -10,7 +10,7 @@ import type { Config } from "tailwindcss";
  */
 export default {
   darkMode: ["class"],
-  content: ["./index.html", "./src/**/*.{ts,tsx}"],
+  content: ["./*.html", "./src/**/*.{ts,tsx}"],
   theme: {
     container: {
       center: true,

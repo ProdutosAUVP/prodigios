@@ -1,8 +1,8 @@
 {
-  "name": "auvp-future",
+  "name": "auvp-carreiras",
   "private": true,
   "version": "1.0.0",
-  "description": "Landing page do programa AUVP Future — Vite + React + GSAP + Lenis, pronta para GitHub Pages.",
+  "description": "Landing page do programa AUVP Carreiras — Vite + React + GSAP + Lenis, pronta para GitHub Pages.",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "typecheck": "tsc -b --noEmit",
-    "tokens:sync": "node scripts/sync-tokens.mjs"
+    "tokens:sync": "node scripts/sync-tokens.mjs",
+    "emails:build": "node emails/build.mjs"
   },
   "dependencies": {
     "gsap": "^3.12.5",

@@ -1,0 +1,32 @@
+AUVP Carreiras
+
+INSCRIÇÃO RECEBIDA
+
+Tudo certo, {{nome}}.
+=====================
+
+Sua inscrição no AUVP Carreiras chegou até a gente. Obrigado por topar o desafio.
+
+O próximo passo é o Desafio de Potencial. Ele acontece depois: vamos enviar para este e-mail a data, o horário e como acessar. Não precisa fazer nada agora.
+
+O que você informou
+- Instituição: {{instituicao}}
+- Ano/série ou curso: {{serie_curso}}
+- Contato: {{contato}}
+- Acessibilidade: {{acessibilidade_resumo}}
+
+Algum dado errado? Responda este e-mail ou escreva para dpo@auvp.com.br (mailto:dpo@auvp.com.br).
+
+Lembrete importante: participar do Desafio é voluntário e não garante convite, vaga ou contratação. Você pode desistir quando quiser.
+
+---
+
+Até breve,
+Time AUVP Carreiras
+
+--
+Você recebeu este e-mail porque se inscreveu no AUVP Carreiras. Este é um e-mail sobre a sua participação: não enviamos ofertas nem publicidade para este endereço.
+Seus dados e direitos: dpo@auvp.com.br
+Aviso de Privacidade: https://produtosauvp.github.io/prodigios/privacidade.html
+Termos de Participação: https://produtosauvp.github.io/prodigios/termos.html
+HOLDING SUPERNOVA LTDA (grupo AUVP) · CNPJ 51.197.828/0001-12
